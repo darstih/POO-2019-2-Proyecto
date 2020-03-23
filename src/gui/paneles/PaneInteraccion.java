@@ -130,7 +130,13 @@ public class PaneInteraccion extends VBox{
 				if((((MenuItem) var).getText()).equals(i.toString())) {
 					try {
 						i.ejecutar();
-					} catch (IOException | NoCoincideTamaño | CantBeNull e) {
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (NoCoincideTamaño e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (CantBeNull e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}

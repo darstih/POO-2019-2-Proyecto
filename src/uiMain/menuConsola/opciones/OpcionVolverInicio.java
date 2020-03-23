@@ -1,6 +1,6 @@
 package uiMain.menuConsola.opciones;
 
-import gui.escena.EscenaInicial;
+//import gui.escena.EscenaInicial;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import uiMain.menuConsola.OpcionDeMenu;
@@ -14,7 +14,7 @@ public class OpcionVolverInicio extends OpcionDeMenu {
 	
 	@Override
 	public void ejecutar() {
-		EscenaInicial.init();
+		//EscenaInicial.init();
 	}
 	
 	public Pane toGrafic() {

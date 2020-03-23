@@ -14,7 +14,6 @@ import gui.paneles.IndexPanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import uiMain.menuConsola.MenuDeConsola;
 
 public class Main  extends Application{
 	Scene main1,main2;
@@ -27,8 +26,7 @@ public class Main  extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception,JsonParseException, JsonMappingException, IOException {
-		IndexPanel a1 = new IndexPanel();
-		main1 = new Scene(a1.getPanel(),600,600);
+		main1 = new Scene(new IndexPanel(),600,600);
 		primaryStage.setScene(main1);
 		primaryStage.show();
 		

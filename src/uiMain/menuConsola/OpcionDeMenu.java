@@ -24,7 +24,7 @@ public abstract class OpcionDeMenu{ // La clase abstracta obligatoria
 	
 	
 	
-	abstract public void ejecutar() throws JsonGenerationException, JsonMappingException, IOException;
+	public abstract void ejecutar() throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamaño, CantBeNull ;
 	
 	
 	

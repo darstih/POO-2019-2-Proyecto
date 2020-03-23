@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import gestorAplicacion.Interacciones.Comentario;
 
+//Autor de clase y estructura Darwin Herrera
+
 
 public class Obra extends ObjetoReporte{
 	public Obra() {Obra.obras.add(this);}
@@ -17,15 +19,16 @@ public class Obra extends ObjetoReporte{
 	private static ArrayList<Tecnica> listaTecnicas = new ArrayList<Tecnica>();
 	private Tecnica tecnica;
 	private String descripcion;
+	private String imagen= "Aquí irían las imagenes, si tuviesemos base de datos";
 	private Double altura;
 	private Double ancho;
 	private static ArrayList<Etiqueta> listaEtiquetas = new ArrayList<Etiqueta>();
-	private ArrayList<Etiqueta> etiquetas = new ArrayList<>();
+	private ArrayList<Etiqueta> etiquetas = new ArrayList<Etiqueta>();
 	private Calendar fechaCreacion;
 	private Calendar fechaIngreso;
 	private String autor;
 	private String titulo;
-        private boolean visible = true;
+    private boolean visible = true;
 	private static ArrayList<Obra> obras= new ArrayList<Obra>();//Andor el json tiene que actualizar esto
 	private ArrayList<Comentario> comentarios; 
 	//Metodos
@@ -42,6 +45,23 @@ public class Obra extends ObjetoReporte{
 		
 		return retornar;
 	}
+	//Cree este método nuevo para verificar si una etiqueta existente ya está agregada en la obra
+	public boolean verificarEtiquetaEnObra(Etiqueta etiqueta){//Retornará true si ya está creada
+		boolean retornar = false;
+		if(etiquetas.isEmpty()){
+			for (int i=0;i<etiquetas.size();i++){
+				if(etiqueta.getLabel().equalsIgnoreCase(etiquetas.get(i).getLabel())){
+					retornar=true;
+					break;
+				}
+			}
+		}
+		
+		return retornar;
+	}
+	
+	
+	
 	
 	public Pane graficar() {
 		BorderPane obraGrafica = new BorderPane();
@@ -61,22 +81,6 @@ public class Obra extends ObjetoReporte{
 	
 	
 	
-	
-	//Cree este método nuevo para verificar si una etiqueta existente ya está agregada en la obra
-	public boolean verificarEtiquetaEnObra(Etiqueta etiqueta){//Retornará true si ya está creada
-		boolean retornar = false;
-		if(etiquetas.isEmpty()){
-			for (int i=0;i<etiquetas.size();i++){
-				if(etiqueta.getLabel().equalsIgnoreCase(etiquetas.get(i).getLabel())){
-					retornar=true;
-					break;
-				}
-			}
-		}
-		
-		return retornar;
-	}
-
 	public void crearEtiqueta(Etiqueta etiqueta){
 		if(!verificarEtiqueta(etiqueta)){
 			listaEtiquetas.add(etiqueta);

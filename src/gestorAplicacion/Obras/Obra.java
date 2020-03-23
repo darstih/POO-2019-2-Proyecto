@@ -45,6 +45,26 @@ public class Obra extends ObjetoReporte{
 		
 		return retornar;
 	}
+	
+	public Pane graficar() {
+		BorderPane obraGrafica = new BorderPane();
+		Text imagen = new Text(this.imagen);
+		Text titulo = new Text(this.titulo);
+		Text autor = new Text(this.autor);
+		obraGrafica.setPadding(new Insets(10,10,10,10));
+		obraGrafica.setPrefSize(176, 226);
+		obraGrafica.setTop(titulo);
+		obraGrafica.setCenter(imagen);
+		obraGrafica.setBottom(autor);
+		
+		return obraGrafica;
+	}
+	
+	
+	
+	
+	
+	
 	//Cree este método nuevo para verificar si una etiqueta existente ya está agregada en la obra
 	public boolean verificarEtiquetaEnObra(Etiqueta etiqueta){//Retornará true si ya está creada
 		boolean retornar = false;

@@ -2,6 +2,8 @@ package gui.paneles;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
+
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamaño;
 import gestorAplicacion.Obras.Obra;
@@ -21,7 +23,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 import uiMain.menuConsola.OpcionDeMenu;
-import uiMain.menuConsola.opciones.OpcionBuscarObras;
 import uiMain.menuConsola.opciones.OpcionVolverInicio;
 
 
@@ -33,18 +34,36 @@ public class PaneInteraccion extends VBox{
 	//Atributo
 	private static BorderPane actual; 
 	private static ArrayList<OpcionDeMenu> opciones;
-	
+	private static String tipousuario;
+	private static Hashtable<BorderPane,Obra> auxiliar; 
 	//Metodos
 	
 	
 	//Getter y setter
+	
+	
+	public static Hashtable<BorderPane,Obra> getAux() {
+		return auxiliar;
+	}
+	public static void setAux(Hashtable<BorderPane,Obra> a) {
+		auxiliar = a;
+	}
+	
+	
+	
+	
+	
+	
+	
 	public static Pane getPaneActual() {
 		return (Pane) actual.getCenter();
 	}
 	public static void setPaneActual(Pane panel) {
 		actual.setCenter(panel);
 	}
-	
+	public static String getTipoUsuario() {
+		return tipousuario;
+	}
 	
 	
 	//Constructores
@@ -53,6 +72,7 @@ public class PaneInteraccion extends VBox{
 	public PaneInteraccion(String user,ArrayList<OpcionDeMenu> proccons) {
 		this.setPadding(new Insets(20,20,20,20));
 		this.opciones = proccons;
+		tipousuario = user;
 		Label header = new Label("Usuario : "+user);
 		header.setPadding(new Insets(3,3,3,3));
 		
@@ -108,16 +128,6 @@ public class PaneInteraccion extends VBox{
 		
 		
 		actual.setCenter(Usuario.listarObraGrafica(Obra.getObras(), 1));
-//		String[] criterios = new String[] {"Tipo","Busqueda","Listado"};
-//		FieldPanel buscar= null;
-//		try {
-//			buscar = new FieldPanel(new OpcionBuscarObras(),"criterios",criterios,"valores",null,null,handler);
-//		} catch (NoCoincideTamaño | CantBeNull e) {
-//			e.printStackTrace();
-//		}
-//		actual.setCenter(buscar);
-//		
-		
 		this.getChildren().add(actual);
 		
 		

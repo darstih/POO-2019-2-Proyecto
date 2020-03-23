@@ -2,9 +2,12 @@ package gestorAplicacion.Usuario;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 
 import gestorAplicacion.Excepciones.ExcepcionFueraRango;
 import gestorAplicacion.Obras.Obra;
+import gui.paneles.PaneInteraccion;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 
 
@@ -46,9 +49,14 @@ public abstract class Usuario{
 		pane.setVgap(10);
 		pane.setHgap(10);
 		obras= listarObra(obras,listado);
+		Hashtable<BorderPane,Obra> tabla = new Hashtable<BorderPane,Obra>(); 
 		for(Obra i:obras) {
-			pane.getChildren().add(i.graficar());
+			BorderPane a = i.graficar();
+			tabla.put(a, i);
+			pane.getChildren().add(a);
+			
 		}
+		PaneInteraccion.setAux(tabla);
 		return pane;
 	}
 	//Autor Darwin Herrera

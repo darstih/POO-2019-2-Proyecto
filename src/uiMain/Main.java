@@ -3,23 +3,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 import baseDatos.DBObra;
-import gestorAplicacion.Obras.Etiqueta;
-import gestorAplicacion.Obras.Obra;
-import gestorAplicacion.Obras.Tecnica;
+import baseDatos.DBUsuario;
 import gui.paneles.IndexPanel;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import uiMain.menuConsola.opciones.OpcionSalir;
 
 public class Main  extends Application{
 	Scene main1,main2;
 	
 	public static void main (String [ ] args) throws JsonParseException, JsonMappingException, IOException {
-		DBObra.inicializar();			
+		DBObra.inicializar();
+		DBUsuario.inicializar();
 		launch(args);
 		
 	}
@@ -30,15 +31,10 @@ public class Main  extends Application{
 		primaryStage.setScene(main1);
 		primaryStage.show();
 		
-		//System.out.println(Obra.getCantObras());
-		// Para usar acentos y caracteres especiales en Strings:
-		// https://www.freeformatter.com/java-dotnet-escape.html
-		// Recordar que el '\' debe estar solo, ej. '\\' no sirve
 		
-		/*MenuDeConsola menu= MenuDeConsola.inicializar();
-		while (true) {
-			menu =  menu.lanzarMenu();
-		}*/
 		
+	}
+	public void stop() throws JsonGenerationException, JsonMappingException, IOException {
+		new OpcionSalir().ejecutar();
 	}
 }

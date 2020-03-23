@@ -21,15 +21,16 @@ import java.util.Hashtable;
 		
 		//Atributos
 		private Hashtable<String,TextField> valores = new Hashtable<String,TextField>();
-		private OpcionDeMenu opcion;
 		private Button borrar;
-		
+		private static Object aux;
 		//Metodos
-		public FieldPanel get() {
-			return this;
+		
+		public static Object getAux() {
+			return aux;
 		}
-		
-		
+		public static void setAux(Object a) {
+			aux = a;
+		}
 		
 		
 		//getter y setter
@@ -43,9 +44,10 @@ import java.util.Hashtable;
 		public FieldPanel(OpcionDeMenu opcion,String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado, EventHandler<ActionEvent> hand) throws NoCoincideTamaño, CantBeNull{
 			this.setPadding(new Insets(20,20,20,20));
 			this.setStyle("-fx-background-color: #E0EE97");
-			
-			this.opcion = opcion;
-			this.getChildren().add(new Label(opcion.toString()));
+			Label titulo = new Label(opcion.toString());
+			titulo.setAlignment(Pos.CENTER);
+			titulo.setPadding(new Insets(10,10,10,10));
+			this.getChildren().add(titulo);
 			if(criterios == null) {
 				throw new CantBeNull("criterios");
 			}else {
@@ -70,6 +72,8 @@ import java.util.Hashtable;
 					this.borrar = new Button("Borrar");
 					GridPane panel = new GridPane();
 					//panel.setStyle("-fx-background-color: #E0EE97");
+					panel.setHgap(10);
+					panel.setVgap(10);
 					panel.add(tcrt, 0, 0);
 					panel.add(tvl, 1, 0);
 					int i;

@@ -2,11 +2,24 @@ package gestorAplicacion.Obras;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import Excepciones.CantBeNull;
+import Excepciones.NoCoincideTamaño;
 import gestorAplicacion.Interacciones.ObjetoReporte;
+import gui.paneles.FieldPanel;
+import gui.paneles.PaneInteraccion;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import uiMain.menuConsola.opciones.administrador.OpcionAgregarObra;
+import uiMain.menuConsola.opciones.invitado.OpcionAgregarComentario;
 import gestorAplicacion.Interacciones.Comentario;
 
 //Autor de clase y estructura Darwin Herrera
@@ -63,8 +76,9 @@ public class Obra extends ObjetoReporte{
 	
 	
 	
-	public Pane graficar() {
+	public BorderPane graficar() {
 		BorderPane obraGrafica = new BorderPane();
+		obraGrafica.setStyle("-fx-background-color: #F94978");
 		Text imagen = new Text(this.imagen);
 		Text titulo = new Text(this.titulo);
 		Text autor = new Text(this.autor);
@@ -72,10 +86,93 @@ public class Obra extends ObjetoReporte{
 		obraGrafica.setPrefSize(176, 226);
 		obraGrafica.setTop(titulo);
 		obraGrafica.setCenter(imagen);
-		obraGrafica.setBottom(autor);
+		
+		//_------------------------
+		VBox a = new VBox();
+		a.getChildren().add(autor);
+		Button addCom = new Button("+Comentario");
+		Button addEti = new Button("+Etiqueta");
+		HBox botones = new HBox();
+		botones.getChildren().add(addCom);
+		botones.getChildren().add(addEti);
+		a.getChildren().add(autor);
+		a.getChildren().add(botones);
+		//--------------------------
+		obraGrafica.setBottom(a);
 		
 		return obraGrafica;
 	}
+	
+	class AbrirObraHandler implements EventHandler<ActionEvent>{
+
+		@Override
+		public void handle(ActionEvent arg0) {
+			if(PaneInteraccion.getTipoUsuario()=="Administrador") {
+				BorderPane a = new BorderPane();
+				a.setPadding(new Insets(20,20,20,20));
+				BorderPane graf = (BorderPane) arg0.getSource();
+				Obra obr = PaneInteraccion.getAux().get(graf);
+				
+				Label titulo = new Label(obr.titulo);
+				a.setTop(titulo);
+				
+				a.setLeft(new Label(obr.imagen));
+				VBox descripcion = new VBox(10);
+				descripcion.getChildren().add(new Label("Descripción:"));
+				descripcion.getChildren().add(new Label(Obra.this.descripcion));
+				descripcion.getChildren().add(new Label("Altura:"));
+				descripcion.getChildren().add(new Label(Obra.this.altura.toString()));
+				descripcion.getChildren().add(new Label("Ancho:"));
+				descripcion.getChildren().add(new Label(Obra.this.ancho.toString()));
+				descripcion.getChildren().add(new Label("Autor:"));
+				descripcion.getChildren().add(new Label(Obra.this.autor.toString()));
+				descripcion.getChildren().add(new Label("Fecha creación:"));
+				descripcion.getChildren().add(new Label(Obra.this.fechaCreacion.toString()));
+				descripcion.getChildren().add(new Label("Tecnica:"));
+				descripcion.getChildren().add(new Label(Obra.this.tecnica.getNombre()));
+				a.setCenter(descripcion);
+				
+				HBox etiq = new HBox();
+				for(Etiqueta i:etiquetas) {
+					etiq.getChildren().add(i.graficar());
+				}
+				
+				
+				Button com = new OpcionAgregarComentario().graficar();
+				Button eti = new OpcionAgregarComentario().graficar();
+				HBox botones = new HBox(20);
+				botones.getChildren().add(com);
+				botones.getChildren().add(eti);
+				
+				
+				VBox contenedor = new VBox();
+				contenedor.getChildren().add(botones);
+				contenedor.getChildren().add(etiq);
+				a.setBottom(contenedor);
+				
+				PaneInteraccion.setPaneActual(a);
+			}
+			
+		}
+		
+	}
+	class AgregarComentarioHandler implements EventHandler<ActionEvent>{
+
+		@Override
+		public void handle(ActionEvent arg0) {
+			
+			FieldPanel.setAux(Obra.this);
+			try {
+				new OpcionAgregarComentario().ejecutar();
+			} catch (NoCoincideTamaño | CantBeNull e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
 	
 	
 	

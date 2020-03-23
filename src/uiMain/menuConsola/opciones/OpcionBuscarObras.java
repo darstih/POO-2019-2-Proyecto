@@ -22,7 +22,7 @@ public class OpcionBuscarObras extends OpcionDeMenu {
 			String[] criterios = new String[] {"Tipo","Busqueda","Listado"};
 			System.out.println("Ejecución de buscar obras");
 			BuscarObra handler = new BuscarObra();
-			FieldPanel buscar = new FieldPanel(this,"criterios",criterios,"valores",null,null,handler);
+			FieldPanel buscar = new FieldPanel(this,"criterios",criterios,"valores",new String[] {"Titulo","","1"},null,handler);
 			PaneInteraccion.setPaneActual(buscar);
 	}
 	

@@ -13,7 +13,10 @@ public class Administrador extends Usuario {
     private static ArrayList<Obra> obrasPendientes = new ArrayList<Obra>();
 	private static ArrayList<Reporte> reportesComentario = new ArrayList<Reporte>();
 	private static ArrayList<Reporte> reportesObra = new ArrayList<Reporte>();
-
+	private static ArrayList<Administrador> usuarios= new ArrayList<Administrador>();
+	private String usuario;
+	private String password;
+	
 	//Metodos
 	//autor Darwin Herrera
 	public static void agregarObra(Obra a) {
@@ -31,7 +34,18 @@ public class Administrador extends Usuario {
 	public static void addReporteObra(Reporte r){
 		reportesObra.add(r);
 	}
-
+	public static boolean verificarAdmin(String usuario,String password) {
+		boolean answer = false;
+		for(int i = 0; i<usuarios.size();i++) {
+			if(usuarios.get(i).getUsuario().equals(usuario) && usuarios.get(i).getPassword().equals(password)) {
+				answer = true;
+				break;
+			}
+		}
+		return answer;
+		
+	}
+	
 	public static void aprobarReporte(Comentario c){
 		c.setVisible(false);
 	}
@@ -56,6 +70,15 @@ public class Administrador extends Usuario {
 		public static ArrayList<Obra> getObrasPendientes() {
 			return obrasPendientes;
 		}
+		public String getUsuario() {
+			return usuario;
+		}
+		public String getPassword() {
+			return password;
+		}
+		public static ArrayList<Administrador> getAdministradores(){
+			return usuarios;
+		}
 		public static void setObrasPendientes(ArrayList<Obra> obrasPendientes) {
 			Administrador.obrasPendientes = obrasPendientes;
 		}
@@ -70,6 +93,15 @@ public class Administrador extends Usuario {
 		}
 		public static void setReportesObra(ArrayList<Reporte> reportesObra) {
 			Administrador.reportesObra = reportesObra;
+		}
+		public void setUsuario(String usuario) {
+			this.usuario = usuario;
+		}
+		public void setPassword(String password) {
+			this.password = password;
+		}
+		public static void setAdministradores(ArrayList<Administrador> la) {
+			Administrador.usuarios = la;
 		}
 	
     //Constructores

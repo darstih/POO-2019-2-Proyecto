@@ -1,14 +1,11 @@
 package uiMain.menuConsola.opciones;
-
 import gestorAplicacion.Obras.Obra;
-import uiMain.menuConsola.MenuDeConsola;
+import gestorAplicacion.Usuario.Usuario;
+import gui.paneles.PaneInteraccion;
+import javafx.scene.layout.FlowPane;
 import uiMain.menuConsola.OpcionDeMenu;
 
 public class OpcionListarObras extends OpcionDeMenu {
-	
-	public OpcionListarObras() {
-		super();
-	}
 	
 	@Override
 	public String toString() {
@@ -16,10 +13,7 @@ public class OpcionListarObras extends OpcionDeMenu {
 	}
 	
 	@Override
-	public MenuDeConsola ejecutar() {		
-		MenuDeConsola.getMenuActual().setAux(Obra.getObras());
-		
-		System.out.println(obraSelec(MenuDeConsola.getMenuActual().getAux()));
-		return null;
+	public void ejecutar() {
+		PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(),1));
 	}
 }

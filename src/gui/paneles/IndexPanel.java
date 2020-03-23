@@ -1,5 +1,8 @@
 package gui.paneles;
 
+import gestorAplicacion.Usuario.Administrador;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -15,37 +18,31 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-public class IndexPanel extends Pane{
+public class IndexPanel extends GridPane{
 		
 	private static String[] pathImagenes = {"../../Imagenes/imagen1.jpg","../../Imagenes/imagen2.jpg",
 			"../../Imagenes/imagen3.jpg","../../Imagenes/imagen4.jpg","../../Imagenes/imagen5.jpg"};
-	
 	private static String[] nombres = {"Darwin Stiven Herrera Cartagena",
 			"Alejandro Bedoya Taborda    ","David Antonio Aristizabal Giraldo"}; 
-	
 	private static String[] edades = {"20","20","19"};
-	
 	private static String[] correos = {"dsherrerac@unal.edu.co","albedoyat@unal.edu.co","daaristizabalg@unal.edu.co"};
-	
 	private static String[] fechas = {"15/08/1999","24/09/1999","24/01/2001"};
-	
 	private static String[] pathFotos = {"../../Imagenes/fotoDarwin.jpeg",
 			"../../Imagenes/fotoAlejandro.jpeg","../../Imagenes/fotoDavid.jpeg"};
-	
 	private static Label ltxtNombre,ltxtEdad,ltxtCorreo,ltxtFecha;
 	private Image imgFoto,imagen; 
 	private ImageView imgF,imga;
-	
-	private GridPane p0;
+	private TextField txtUsu;
+	private Label lblsaludo;
+	private PasswordField pssfUsu;
 	private static int cntI = 0;
 	private static int cntD = 0;
 	
 	public IndexPanel() throws Exception {
-		p0 = new GridPane();
+		
 		
 		GridPane p1 = new GridPane();
 		GridPane p2 = new GridPane();
@@ -76,17 +73,17 @@ public class IndexPanel extends Pane{
 		
 		VBox P6 = new VBox(p3,p4);
 		
-		p0.add(P5,0,0);
-		p0.add(P6,1,0);
+		this.add(P5,0,0);
+		this.add(P6,1,0);
 		
 		//ELEMENTOS VALIDACION
 		Label lblLogin = new Label("Iniciar seccion ");
 		Label lblUsu = new Label("Usuario: ");
 		Label lbli = new Label("¿No tienes cuenta?");
 		Label lblPass = new Label("Contraseña: ");
-		Label lblsaludo = new Label("Bienvenido a Művezárt");
-		TextField txtUsu = new TextField();
-		PasswordField pssfUsu = new PasswordField();
+		lblsaludo = new Label("Bienvenido a Művezárt");
+		txtUsu = new TextField();
+		pssfUsu = new PasswordField();
 		Button btnAceptar = new Button("Aceptar");
 		Button btnInvitado = new Button("Acceder como invitado");
 		lblLogin.setFont(new Font(15));
@@ -110,6 +107,8 @@ public class IndexPanel extends Pane{
 		imgF.setStyle("-fx-background-color: #795548;");
 		//lblCambiar.setStyle("-fx-background-color: #795548;");
 		
+		//p1.setStyle("-fx-background-color: #795548;");
+		
 		//ELEMENTOS IMAGENES ASOCIADAS
 		imagen = new Image(getClass().getResourceAsStream(pathImagenes[cntI%5]));
 		imga = new ImageView(imagen);
@@ -124,7 +123,7 @@ public class IndexPanel extends Pane{
 		lbli.setAlignment(Pos.CENTER);
 		lblLogin.setAlignment(Pos.CENTER);
 		lblsaludo.setFont(new Font(18));
-		
+		lblsaludo.setWrapText(true);
 		
 		
 		p1.add(imga, 0, 0);
@@ -161,9 +160,15 @@ public class IndexPanel extends Pane{
 		
 		//ESCUCHADORES
 		LblHandlerClassH lblHandlerClass = new LblHandlerClassH();
-		lblCambiar.setOnMouseClicked(lblHandlerClass);
+		btnHandlerClasssalir salir = new btnHandlerClasssalir();
+		btnHandlerClassdesc desc = new btnHandlerClassdesc();
 		ImgHandlerClassImg handlerFotos = new ImgHandlerClassImg();
+		validarHandler validar = new validarHandler();
+		lblCambiar.setOnMouseClicked(lblHandlerClass);
+		mdescripcion.setOnAction(desc);
 		imga.setOnMouseEntered(handlerFotos);
+		msalir.setOnAction(salir);
+		btnAceptar.setOnMouseClicked(validar);
 	}
 	
 	private class LblHandlerClassH implements EventHandler<Event>{
@@ -185,10 +190,34 @@ public class IndexPanel extends Pane{
     		cntI++;
     		imagen = new Image(getClass().getResourceAsStream(pathImagenes[cntI%5]));
     		imga.setImage(imagen);
-		}
+    	}
     }
     
-    public Pane getPanel() {
-		return p0;
-	}
+    private class btnHandlerClasssalir implements  EventHandler<ActionEvent>{
+    	@Override
+		public void handle(ActionEvent event) {
+			Platform.exit();
+		}
+    }
+    private class btnHandlerClassdesc implements  EventHandler<ActionEvent>{
+    	@Override
+		public void handle(ActionEvent event) {
+    		lblsaludo.setFont(new Font(14));
+    		lblsaludo.setMaxHeight(200);
+    		
+    		lblsaludo.setText("Művezárt es un software que simula el funcionamiento de una galeria de arte,"
+    				+ "los usuarios de Művezárt podran visualizar diferentes obras de arte con criticas de demas"
+    				+ " usuarios del sistema");
+		}
+    }
+    private class validarHandler implements  EventHandler<Event>{
+		@Override
+		public void handle(Event event) {
+			if(Administrador.verificarAdmin(txtUsu.getText(),pssfUsu.getText())) {
+				txtUsu.setText("si existe");
+			}else {
+				txtUsu.setText("No existe");
+			}
+		}
+    }
 }

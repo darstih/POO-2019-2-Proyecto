@@ -1,4 +1,9 @@
 package gestorAplicacion.Obras;
+
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 //Autor Darwin Herrera
 public class Etiqueta {
 	//Atributos
@@ -8,7 +13,16 @@ public class Etiqueta {
 	int cantObras=0;
 
 	//Metodos
-
+	public Pane graficar() {
+		VBox a = new VBox();
+		a.setPadding(new Insets(2,2,2,2));
+		a.setSpacing(2);
+		a.getChildren().add(new Label(label));
+		a.getChildren().add(new Label(tipo));
+		a.getChildren().add(new Label(descripcion));
+		return a;
+	}
+	
 	//Getters y setters
 	public String getTipo(){
 		return tipo;

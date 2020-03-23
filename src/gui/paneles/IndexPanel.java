@@ -42,8 +42,6 @@ public class IndexPanel extends GridPane{
 	private static int cntD = 0;
 	
 	public IndexPanel() throws Exception {
-		
-		
 		GridPane p1 = new GridPane();
 		GridPane p2 = new GridPane();
 		BorderPane p3 = new BorderPane();

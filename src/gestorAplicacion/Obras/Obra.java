@@ -1,16 +1,13 @@
 package gestorAplicacion.Obras;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
-
 import gestorAplicacion.Interacciones.ObjetoReporte;
-import org.codehaus.jackson.map.ObjectMapper;
-
+import javafx.geometry.Insets;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import gestorAplicacion.Interacciones.Comentario;
-
-//Autor de clase y estructura Darwin Herrera
 
 
 public class Obra extends ObjetoReporte{

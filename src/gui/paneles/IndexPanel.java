@@ -21,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import uiMain.Main;
 import uiMain.menuConsola.opciones.OpcionSalir;
 
 public class IndexPanel extends GridPane{
@@ -164,11 +165,13 @@ public class IndexPanel extends GridPane{
 		btnHandlerClassdesc desc = new btnHandlerClassdesc();
 		ImgHandlerClassImg handlerFotos = new ImgHandlerClassImg();
 		validarHandler validar = new validarHandler();
+		invitadoHandler invitado = new invitadoHandler();
 		lblCambiar.setOnMouseClicked(lblHandlerClass);
 		mdescripcion.setOnAction(desc);
 		imga.setOnMouseEntered(handlerFotos);
 		msalir.setOnAction(salir);
 		btnAceptar.setOnMouseClicked(validar);
+		btnInvitado.setOnMouseClicked(invitado);
 	}
 	
 	private class LblHandlerClassH implements EventHandler<Event>{
@@ -218,10 +221,16 @@ public class IndexPanel extends GridPane{
 		@Override
 		public void handle(Event event) {
 			if(Administrador.verificarAdmin(txtUsu.getText(),pssfUsu.getText())) {
-				txtUsu.setText("si existe");
+				Main.cambiarScene(txtUsu.getText(),pssfUsu.getText());
 			}else {
-				txtUsu.setText("No existe");
+				txtUsu.setStyle("-fx-border-color: #b71c1c;");
 			}
+		}
+    }
+    private class invitadoHandler implements  EventHandler<Event>{
+		@Override
+		public void handle(Event event) {
+			Main.cambiarScene("Invitado");
 		}
     }
 }

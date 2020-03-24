@@ -12,6 +12,7 @@ public class Etiqueta {
 	private String label;
 	int cantObras=0;
 
+	public Etiqueta() {}
 	//Metodos
 	public Pane graficar() {
 		VBox a = new VBox();

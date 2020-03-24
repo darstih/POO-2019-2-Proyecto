@@ -34,7 +34,6 @@ public class DBObra {
 		String coso="";
 		while((linea=br.readLine())!=null)
 			coso = coso + linea;
-		//System.out.println(coso);
 		Obra.setObras(soyElMapa.readValue(coso, new TypeReference<ArrayList<Obra>>() {} ));
 		if( null != lector ){   
             lector.close();     

@@ -13,12 +13,14 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import uiMain.menuConsola.opciones.OpcionAgregarComentario;
+import uiMain.menuConsola.opciones.OpcionAgregarEtiqueta;
 import uiMain.menuConsola.opciones.administrador.OpcionAgregarObra;
 import gestorAplicacion.Interacciones.Comentario;
 
@@ -77,9 +79,11 @@ public class Obra extends ObjetoReporte{
 	
 	
 	public BorderPane graficar() {
+		AbrirObraHandler eve = new AbrirObraHandler();
 		BorderPane obraGrafica = new BorderPane();
 		obraGrafica.setStyle("-fx-background-color: #F94978");
 		Text imagen = new Text(this.imagen);
+		
 		Text titulo = new Text(this.titulo);
 		Text autor = new Text(this.autor);
 		obraGrafica.setPadding(new Insets(10,10,10,10));
@@ -87,10 +91,17 @@ public class Obra extends ObjetoReporte{
 		obraGrafica.setTop(titulo);
 		obraGrafica.setCenter(imagen);
 		
+		
+		obraGrafica.getCenter().setOnMouseClicked(eve);
+		
 		//_------------------------
 		VBox nuevo = new VBox();
+		AgregarComentarioHandler co = new AgregarComentarioHandler();
 		Button addCom = new Button("+Comentario");
+		addCom.setOnAction(co);
+		AgregarEtiquetaHandler et = new AgregarEtiquetaHandler();
 		Button addEti = new Button("+Etiqueta");
+		addEti.setOnAction(et);
 		HBox botones = new HBox();
 		botones.getChildren().add(addCom);
 		botones.getChildren().add(addEti);
@@ -102,10 +113,9 @@ public class Obra extends ObjetoReporte{
 		return obraGrafica;
 	}
 	
-	class AbrirObraHandler implements EventHandler<ActionEvent>{
-
+	class AbrirObraHandler implements EventHandler<MouseEvent>{
 		@Override
-		public void handle(ActionEvent arg0) {
+		public void handle(MouseEvent arg0) {
 			if(PaneInteraccion.getTipoUsuario()=="Administrador") {
 				BorderPane a = new BorderPane();
 				a.setPadding(new Insets(20,20,20,20));
@@ -170,6 +180,22 @@ public class Obra extends ObjetoReporte{
 		}
 		
 	}
+	class AgregarEtiquetaHandler implements EventHandler<ActionEvent>{
+
+		@Override
+		public void handle(ActionEvent arg0) {
+			
+			FieldPanel.setAux(Obra.this);
+			try {
+				new OpcionAgregarEtiqueta().ejecutar();
+			} catch (NoCoincideTamaño | CantBeNull e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
 	
 	
 	
@@ -328,7 +354,6 @@ public class Obra extends ObjetoReporte{
 			crearEtiqueta(etiquetas.get(i));
 		}
 		crearTecnica(tecnica);
-		Obra.obras.add(this);
 	}
 	public static ArrayList<Obra> getObras() {
 		return obras;

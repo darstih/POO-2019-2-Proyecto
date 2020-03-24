@@ -4,11 +4,15 @@ import Excepciones.NoCoincideTamaño;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Invitado;
+import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.FieldPanel;
 import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.StageStyle;
 import uiMain.menuConsola.OpcionDeMenu;
 
 public class OpcionAgregarComentario extends OpcionDeMenu {
@@ -35,9 +39,14 @@ public class OpcionAgregarComentario extends OpcionDeMenu {
 		@Override
 		public void handle(ActionEvent arg0) {
 			FieldPanel pane = (FieldPanel) PaneInteraccion.getPaneActual();
-			
-			Invitado.addComentario((Obra) FieldPanel.getAux(),new Comentario(pane.getValue("Comentario")));
-			
+			Obra obr = (Obra) FieldPanel.getAux();
+			Invitado.addComentario(obr,new Comentario(pane.getValue("Comentario")));
+			Alert dialogo = new Alert(AlertType.INFORMATION);
+			dialogo.setTitle("Comentario agregado");
+			dialogo.setContentText("Cuando la apruebe un administrador será exitosamente agregado.");
+			dialogo.initStyle(StageStyle.UTILITY);
+			dialogo.showAndWait();
+			PaneInteraccion.setPaneActual(obr.graficar());
 		}
 		
 	}

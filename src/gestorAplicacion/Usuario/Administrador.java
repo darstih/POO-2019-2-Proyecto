@@ -1,8 +1,6 @@
 package gestorAplicacion.Usuario;
 
 import java.util.ArrayList;
-
-import baseDatos.DBObra;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Interacciones.Reporte;
 import gestorAplicacion.Obras.Etiqueta;
@@ -21,7 +19,6 @@ public class Administrador extends Usuario {
 	//autor Darwin Herrera
 	public static void agregarObra(Obra a) {
 		Obra.addObra(a);
-		DBObra dbObra = new DBObra();//abriendo db
   	}
 	//autor Darwin Herrera
 	public static void addComentario(Obra o,Comentario c) {

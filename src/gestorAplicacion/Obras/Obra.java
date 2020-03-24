@@ -89,7 +89,6 @@ public class Obra extends ObjetoReporte{
 		
 		//_------------------------
 		VBox a = new VBox();
-		a.getChildren().add(autor);
 		Button addCom = new Button("+Comentario");
 		Button addEti = new Button("+Etiqueta");
 		HBox botones = new HBox();

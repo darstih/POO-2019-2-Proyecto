@@ -11,6 +11,7 @@ import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -34,7 +35,7 @@ public class Obra extends ObjetoReporte{
 	private static ArrayList<Tecnica> listaTecnicas = new ArrayList<Tecnica>();
 	private Tecnica tecnica;
 	private String descripcion;
-	private String imagen= "Aquí irían las imagenes, si tuviesemos base de datos";
+	private String imagen= "Ruta de imagen";
 	private Double altura;
 	private Double ancho;
 	private static ArrayList<Etiqueta> listaEtiquetas = new ArrayList<Etiqueta>();
@@ -44,10 +45,10 @@ public class Obra extends ObjetoReporte{
 	private String autor;
 	private String titulo;
     private boolean visible = true;
-	private static ArrayList<Obra> obras= new ArrayList<Obra>();//Andor el json tiene que actualizar esto
+	private static ArrayList<Obra> obras= new ArrayList<Obra>();
 	private ArrayList<Comentario> comentarios; 
 	//Metodos
-	public boolean verificarEtiqueta(Etiqueta etiqueta){//Retornará true si ya está creada
+	public boolean verificarEtiqueta(Etiqueta etiqueta){
 		boolean retornar = false;
 		if(listaEtiquetas.isEmpty()){
 			for (int i=0;i<listaEtiquetas.size();i++){
@@ -119,13 +120,13 @@ public class Obra extends ObjetoReporte{
 			if(!(PaneInteraccion.getTipoUsuario()=="Invitado")) {
 				BorderPane a = new BorderPane();
 				a.setPadding(new Insets(20,20,20,20));
-				BorderPane graf = (BorderPane) arg0.getSource();
-				Obra obr = PaneInteraccion.getAux().get(graf);
+				System.out.println( arg0.getSource().getClass());
+				//Obra obr = PaneInteraccion.getAux().get(graf.getText());
 				
-				Label titulo = new Label(obr.titulo);
-				a.setTop(titulo);
+				//Label titulo = new Label(obr.titulo);
+				//a.setTop(titulo);
 				
-				a.setLeft(new Label(obr.imagen));
+				//a.setLeft(new Label(obr.imagen));
 				VBox descripcion = new VBox(10);
 				descripcion.getChildren().add(new Label("Descripción:"));
 				descripcion.getChildren().add(new Label(Obra.this.descripcion));

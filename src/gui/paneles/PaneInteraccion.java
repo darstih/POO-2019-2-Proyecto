@@ -87,7 +87,8 @@ public class PaneInteraccion extends VBox{
 		MenuItem usuario = new MenuItem("Usuario "+user);
 		SeparatorMenuItem separador = new SeparatorMenuItem();
 		MenuItem salir = new OpcionVolverInicio().toMenu();
-		salir.setOnAction(handler);
+		VolverInicioHandler handlerInicio = new VolverInicioHandler();
+		salir.setOnAction(handlerInicio);
 		Menu archivo = new Menu("Archivo");
 		archivo.getItems().addAll(usuario,separador,salir);
 		//-------------------------------------------------
@@ -154,6 +155,14 @@ public class PaneInteraccion extends VBox{
 			}
 			
 		}
+	}
+	class VolverInicioHandler implements EventHandler<ActionEvent>{
+
+		@Override
+		public void handle(ActionEvent arg0) {
+			new OpcionVolverInicio().ejecutar();
+		}
+		
 	}
 	class AcercaDeHandler implements EventHandler<ActionEvent>{
 

@@ -25,12 +25,4 @@ public class OpcionVolverInicio extends OpcionDeMenu {
 		}
 	}
 	
-	public Pane toGrafic() {
-		Pane a = new Pane();
-		Button b = new Button(this.toString());
-		a.getChildren().add(b);
-		return a;
-		
-	}
-	
 }

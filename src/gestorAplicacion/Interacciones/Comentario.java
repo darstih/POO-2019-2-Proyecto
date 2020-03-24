@@ -2,6 +2,9 @@ package gestorAplicacion.Interacciones;
 
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Usuario;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 //Autor Darwin Herrera
 public class Comentario extends ObjetoReporte{
     public Comentario() {}
@@ -20,9 +23,6 @@ public class Comentario extends ObjetoReporte{
     public String getAutor(){
 	return autor;
     }
-    public String getContenido(){
-	return contenido;
-    }
     public boolean getVisible(){
 	return this.visible;
     }
@@ -30,6 +30,21 @@ public class Comentario extends ObjetoReporte{
 	this.visible = v;//se oculta comentario por reporte
     }   
     
+    public String getContenido(){
+	return contenido;
+    }
+//    public boolean getVisible(){
+//	return this.visible;
+//    }
+//    public void setVisible(boolean v){
+//	this.visible = v;//se oculta comentario por reporte
+//    }   
+    
+    public Label graficar() {
+    	Label cont = new Label();
+    	cont.setPadding(new Insets(20,20,20,20));
+    	return cont;
+    }
     
     
 	

@@ -1,17 +1,13 @@
 package gestorAplicacion.Interacciones;
 
-import gestorAplicacion.Obras.Obra;
-import gestorAplicacion.Usuario.Usuario;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 //Autor Darwin Herrera
 public class Comentario extends ObjetoReporte{
     public Comentario() {}
     //Atributos
     private String autor;
     private String contenido;
-    private int cant=0;
     private boolean visible = true; //false cuando el comentario es reportado y un admin lo acepta
     
     
@@ -41,8 +37,10 @@ public class Comentario extends ObjetoReporte{
 //    }   
     
     public Label graficar() {
-    	Label cont = new Label();
+    	Label cont = new Label(this.contenido);
     	cont.setPadding(new Insets(20,20,20,20));
+    	cont.maxWidth(300);
+    	cont.setStyle("-fx-background-color: #BF7BF3");
     	return cont;
     }
     

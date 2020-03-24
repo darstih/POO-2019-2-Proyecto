@@ -3,6 +3,7 @@ import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamaño;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Obra;
+import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Invitado;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.FieldPanel;
@@ -39,11 +40,17 @@ public class OpcionAgregarComentario extends OpcionDeMenu {
 		@Override
 		public void handle(ActionEvent arg0) {
 			FieldPanel pane = (FieldPanel) PaneInteraccion.getPaneActual();
-			Obra obr = (Obra) FieldPanel.getAux();
-			Invitado.addComentario(obr,new Comentario(pane.getValue("Comentario")));
 			Alert dialogo = new Alert(AlertType.INFORMATION);
-			dialogo.setTitle("Comentario agregado");
-			dialogo.setContentText("Cuando la apruebe un administrador será exitosamente agregado.");
+			Obra obr = (Obra) FieldPanel.getAux();
+			if(!(PaneInteraccion.getTipoUsuario()=="Invitado")) {
+				Administrador.addComentario(obr,new Comentario( pane.getValue("Comentario")));
+				dialogo.setTitle("Comentario agregado");
+				dialogo.setContentText("Comentario agregado");
+			}else {
+				Invitado.addComentario(obr,new Comentario(pane.getValue("Comentario")));
+				dialogo.setTitle("Comentario agregado");
+				dialogo.setContentText("Cuando la apruebe un administrador será exitosamente agregado.");
+			}
 			dialogo.initStyle(StageStyle.UTILITY);
 			dialogo.showAndWait();
 			PaneInteraccion.setPaneActual(obr.graficar());

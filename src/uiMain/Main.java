@@ -30,6 +30,10 @@ public class Main  extends Application{
 	static Scene  main1,main2;
 	static Stage pantalla;
 	
+	public static void setScene(Scene a) {
+		pantalla.setScene(a);
+	}
+	
 	public static void main (String [ ] args) throws JsonParseException, JsonMappingException, IOException {
 		DBObra.inicializar();
 		DBUsuario.inicializar();

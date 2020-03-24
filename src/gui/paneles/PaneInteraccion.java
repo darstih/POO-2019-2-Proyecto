@@ -161,6 +161,7 @@ public class PaneInteraccion extends VBox{
 		public void handle(ActionEvent arg0) {
 			Alert a = new Alert(AlertType.INFORMATION);
 			a.setTitle("Acerca de ");
+			a.setTitle("Autores");
 			a.setContentText("Alejandro Bedoya Taborda \nDarwin Stiven Herrera Cartagena \nDavid Antonio Aristizabal Giraldo \nAndor Flander");
 			a.initStyle(StageStyle.UTILITY);
 			a.showAndWait();

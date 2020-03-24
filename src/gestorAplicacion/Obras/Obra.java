@@ -116,7 +116,7 @@ public class Obra extends ObjetoReporte{
 	class AbrirObraHandler implements EventHandler<MouseEvent>{
 		@Override
 		public void handle(MouseEvent arg0) {
-			if(PaneInteraccion.getTipoUsuario()=="Administrador") {
+			if(!(PaneInteraccion.getTipoUsuario()=="Invitado")) {
 				BorderPane a = new BorderPane();
 				a.setPadding(new Insets(20,20,20,20));
 				BorderPane graf = (BorderPane) arg0.getSource();

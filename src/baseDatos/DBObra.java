@@ -26,7 +26,7 @@ public class DBObra {
 	
 	
 	public static void inicializar() throws JsonParseException, JsonMappingException, IOException {
-		
+		DBObra dbObra = new DBObra();
 		FileReader lector = new FileReader (archivo);
 		BufferedReader br = new BufferedReader(lector);
 		// Lectura del fichero
@@ -34,6 +34,8 @@ public class DBObra {
 		String coso="";
 		while((linea=br.readLine())!=null)
 			coso = coso + linea;
+		System.out.println(coso);
+		
 		Obra.setObras(soyElMapa.readValue(coso, new TypeReference<ArrayList<Obra>>() {} ));
 		if( null != lector ){   
             lector.close();     

@@ -78,7 +78,7 @@ public class IndexPanel extends GridPane{
 		this.add(P6,1,0);
 		
 		//ELEMENTOS VALIDACION
-		Label lblLogin = new Label("Iniciar seccion ");
+		Label lblLogin = new Label("Iniciar sesión ");
 		Label lblUsu = new Label("Usuario: ");
 		Label lbli = new Label("¿No tienes cuenta?");
 		Label lblPass = new Label("Contraseña: ");

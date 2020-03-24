@@ -1,3 +1,4 @@
+package uiMain.menuConsola.opciones;
 //package uiMain.menuConsola.opciones.invitado;
 //
 //import gestorAplicacion.Obras.Etiqueta;

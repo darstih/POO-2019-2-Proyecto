@@ -112,7 +112,7 @@ import java.util.Hashtable;
 			@Override
 			public void handle(ActionEvent e) {
 				for(TextField i :valores.values()) {
-					i.setAccessibleText("");
+					i.setText("");
 				}
 			}
 		}

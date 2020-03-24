@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones;
+package uiMain.menuConsola.opciones.invitado;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;

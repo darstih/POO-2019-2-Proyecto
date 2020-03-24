@@ -18,8 +18,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import uiMain.menuConsola.opciones.OpcionAgregarComentario;
 import uiMain.menuConsola.opciones.administrador.OpcionAgregarObra;
-import uiMain.menuConsola.opciones.invitado.OpcionAgregarComentario;
 import gestorAplicacion.Interacciones.Comentario;
 
 //Autor de clase y estructura Darwin Herrera
@@ -88,16 +88,16 @@ public class Obra extends ObjetoReporte{
 		obraGrafica.setCenter(imagen);
 		
 		//_------------------------
-		VBox a = new VBox();
+		VBox nuevo = new VBox();
 		Button addCom = new Button("+Comentario");
 		Button addEti = new Button("+Etiqueta");
 		HBox botones = new HBox();
 		botones.getChildren().add(addCom);
 		botones.getChildren().add(addEti);
-		a.getChildren().add(autor);
-		a.getChildren().add(botones);
+		nuevo.getChildren().add(autor);
+		nuevo.getChildren().add(botones);
 		//--------------------------
-		obraGrafica.setBottom(a);
+		obraGrafica.setBottom(nuevo);
 		
 		return obraGrafica;
 	}
@@ -164,7 +164,6 @@ public class Obra extends ObjetoReporte{
 			try {
 				new OpcionAgregarComentario().ejecutar();
 			} catch (NoCoincideTamaño | CantBeNull e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

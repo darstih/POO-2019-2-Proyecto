@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones.invitado;
+package uiMain.menuConsola.opciones;
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamaño;
 import gestorAplicacion.Interacciones.Comentario;

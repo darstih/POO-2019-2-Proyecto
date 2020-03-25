@@ -69,7 +69,7 @@ public class PaneInteraccion extends VBox{
 	//Constructores
 
     
-	public PaneInteraccion(String user,ArrayList<OpcionDeMenu> proccons) {
+	public PaneInteraccion(String user,ArrayList<OpcionDeMenu> proccons,Usuario usu) {
 		this.setPadding(new Insets(20,20,20,20));
 		this.opciones = proccons;
 		tipousuario = user;
@@ -85,6 +85,9 @@ public class PaneInteraccion extends VBox{
 		MenuBar barra = new MenuBar();
 		//-------------------------------------------------
 		MenuItem usuario = new MenuItem("Usuario "+user);
+		DescripcionUsuarioHandler handlerdesc = new DescripcionUsuarioHandler();
+		usuario.setOnAction(handlerdesc);
+		tipousuario=usu.descripcion();
 		SeparatorMenuItem separador = new SeparatorMenuItem();
 		MenuItem salir = new OpcionVolverInicio().toMenu();
 		VolverInicioHandler handlerInicio = new VolverInicioHandler();
@@ -172,6 +175,18 @@ public class PaneInteraccion extends VBox{
 			a.setTitle("Acerca de ");
 			a.setTitle("Autores");
 			a.setContentText("Alejandro Bedoya Taborda \nDarwin Stiven Herrera Cartagena \nDavid Antonio Aristizabal Giraldo \nAndor Flander");
+			a.initStyle(StageStyle.UTILITY);
+			a.showAndWait();
+		}
+		
+	}
+	
+	class DescripcionUsuarioHandler implements EventHandler<ActionEvent>{
+		@Override
+		public void handle(ActionEvent arg0) {
+			Alert a = new Alert(AlertType.INFORMATION);
+			a.setTitle("Información sobre usuario: ");
+			a.setContentText(tipousuario);
 			a.initStyle(StageStyle.UTILITY);
 			a.showAndWait();
 		}

@@ -12,6 +12,7 @@ import Excepciones.NoCoincideTamano;
 import baseDatos.DBObra;
 import baseDatos.DBUsuario;
 import gestorAplicacion.Usuario.Administrador;
+import gestorAplicacion.Usuario.Invitado;
 import gui.paneles.IndexPanel;
 import gui.paneles.PaneInteraccion;
 import javafx.application.Application;
@@ -58,7 +59,7 @@ public class Main  extends Application{
 		op.add(new OpcionEnviarObra());
 		
 		
-		main2 = new Scene(new PaneInteraccion("Invitado",op),600,600);
+		main2 = new Scene(new PaneInteraccion("Invitado",op,new Invitado()),600,600);
 		pantalla.setScene(main2);
 		pantalla.show();
 	}
@@ -68,7 +69,7 @@ public class Main  extends Application{
 		op.add(new OpcionListarObras());
 		op.add(new OpcionAgregarObra());
 		op.add(new OpcionListarObrasPendientes());
-		main2 = new Scene(new PaneInteraccion(usu,op),600,600);
+		main2 = new Scene(new PaneInteraccion(usu,op,new Administrador()),600,600);
 		pantalla.setScene(main2);
 		pantalla.setTitle(usu);
 		pantalla.show();

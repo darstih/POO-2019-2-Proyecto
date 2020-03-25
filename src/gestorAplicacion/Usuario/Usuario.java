@@ -40,7 +40,7 @@ public abstract class Usuario{
 		return listaO;
 	}
 
-
+	public abstract String descripcion(); 
 
 
 

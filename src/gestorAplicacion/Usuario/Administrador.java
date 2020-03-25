@@ -125,4 +125,9 @@ public class Administrador extends Usuario {
 			return pane;
 		}
     //Constructores
+		@Override
+		public String descripcion() {
+			// TODO Auto-generated method stub
+			return "Soy un administrador";
+		}
 }

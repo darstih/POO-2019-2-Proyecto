@@ -29,6 +29,12 @@ public class Invitado extends Usuario{
 	Administrador.addObraPendiente(o);
     }
     //Getters y setters
+	@Override
+	public String descripcion() {
+		
+		return "Soy un usuario invitado";
+		
+	}
 		
     //Constructores
 }

@@ -22,8 +22,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
-import uiMain.menuConsola.OpcionDeMenu;
-import uiMain.menuConsola.opciones.publico.Salir;
+import gui.opciones.OpcionDeMenu;
+import gui.opciones.publico.Salir;
 
 
 

@@ -13,23 +13,19 @@ import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import uiMain.menuConsola.opciones.ActualizarObra;
-import uiMain.menuConsola.opciones.AgregarComentario;
-import uiMain.menuConsola.opciones.AgregarEtiqueta;
-import uiMain.menuConsola.opciones.administrador.AgregarObra;
-import uiMain.menuConsola.opciones.administrador.ListarObrasPendientes;
-import uiMain.menuConsola.opciones.publico.AgregarReporte;
+import gui.opciones.botones.ActualizarObra;
+import gui.opciones.botones.AgregarComentario;
+import gui.opciones.botones.AgregarEtiqueta;
+import gui.opciones.publico.AgregarReporte;
 import gestorAplicacion.Interacciones.Comentario;
+
 
 //Autor de clase y estructura Darwin Herrera
 
@@ -345,6 +341,7 @@ public class Obra extends ObjetoReporte{
 		return retornar;
 	}
 
+	@SuppressWarnings("static-access")
 	public void crearTecnica(Tecnica tecnica){
 		if(!verificarTecnica(tecnica)){
 			listaTecnicas.add(tecnica);

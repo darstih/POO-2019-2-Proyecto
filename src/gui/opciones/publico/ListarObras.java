@@ -1,10 +1,9 @@
-package uiMain.menuConsola.opciones.publico;
+package gui.opciones.publico;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
-import javafx.scene.layout.FlowPane;
-import uiMain.menuConsola.Independiente;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.opciones.Independiente;
+import gui.opciones.OpcionDeMenu;
 
 public class ListarObras extends OpcionDeMenu implements Independiente{
 	

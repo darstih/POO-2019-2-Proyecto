@@ -1,5 +1,4 @@
-package uiMain.menuConsola.opciones.administrador;
-
+package gui.opciones.publico;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -8,25 +7,20 @@ import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
-import gestorAplicacion.Usuario.Administrador;
+import gestorAplicacion.Usuario.Invitado;
 import gestorAplicacion.Usuario.Usuario;
-import gui.paneles.PaneInteraccion;
 import gui.paneles.FieldPanel;
+import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.Pane;
 import javafx.stage.StageStyle;
-import uiMain.menuConsola.Independiente;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.opciones.Independiente;
+import gui.opciones.OpcionDeMenu;
 
+public class EnviarObra extends OpcionDeMenu implements Independiente{
 
-
-	
-public class AgregarObra extends OpcionDeMenu implements Independiente{
-	
-	
 	@Override
 	public String toString() {
 		return "Agregar Obra";
@@ -46,19 +40,18 @@ public class AgregarObra extends OpcionDeMenu implements Independiente{
 		@Override
 		public void handle(ActionEvent arg0) {//Si este handler se activa es porque se está mostrando por lo tanto es el actual
 			try {
-				Pane pane = PaneInteraccion.getPaneActual();
-				Administrador.agregarObra(new Obra(((FieldPanel) pane).getValue("Titulo"), ((FieldPanel) pane).getValue("Descripcion") ,Double.parseDouble(((FieldPanel) pane).getValue("Altura")), Double.parseDouble(((FieldPanel) pane).getValue("Ancho")),Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica(((FieldPanel) pane).getValue("Tecnica")), ((FieldPanel) pane).getValue("Autor"),true));
+				FieldPanel pane = (FieldPanel) PaneInteraccion.getPaneActual();
+				Invitado.postularObra(new Obra(pane.getValue("Titulo"), pane.getValue("Descripcion") ,Double.parseDouble(pane.getValue("Altura")), Double.parseDouble( pane.getValue("Ancho")),Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica( pane.getValue("Tecnica")), pane.getValue("Autor"),false));
 				Alert dialogo = new Alert(AlertType.INFORMATION);
 				dialogo.setTitle("Obra agregada correctamente");
-				dialogo.setContentText("La obra se agrego correctamente");
+				dialogo.setContentText("Cuando la apruebe un administrador será exitosamente agregada.");
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
 				PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(), 1));
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
+				System.out.println("Error por formato del número");
 			}
 		}
 	}
-	
-	
 }

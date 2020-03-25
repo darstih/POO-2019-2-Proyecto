@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones;
+package gui.opciones.botones;
 
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
@@ -12,8 +12,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
-import uiMain.menuConsola.Dependiente;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.opciones.Dependiente;
+import gui.opciones.OpcionDeMenu;
 
 public class AgregarEtiqueta extends OpcionDeMenu implements Dependiente{
 	private static String[] criterios = new String[] {"Label", "Tipo", "Descripción"};

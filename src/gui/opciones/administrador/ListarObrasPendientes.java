@@ -1,19 +1,15 @@
-package uiMain.menuConsola.opciones.administrador;
+package gui.opciones.administrador;
 
 import java.io.IOException;
-
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
-
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
-import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Administrador;
-import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
-import uiMain.menuConsola.Independiente;
+import gui.opciones.Independiente;
 //import uiMain.menuConsola.MenuDeConsola;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.opciones.OpcionDeMenu;
 public class ListarObrasPendientes extends OpcionDeMenu implements Independiente{
 	
 	@Override

@@ -1,4 +1,4 @@
-package uiMain;
+package gui;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -14,12 +14,12 @@ import gui.paneles.PaneInteraccion;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import uiMain.menuConsola.OpcionDeMenu;
-import uiMain.menuConsola.opciones.administrador.AgregarObra;
-import uiMain.menuConsola.opciones.administrador.ListarObrasPendientes;
-import uiMain.menuConsola.opciones.publico.BuscarObras;
-import uiMain.menuConsola.opciones.publico.EnviarObra;
-import uiMain.menuConsola.opciones.publico.ListarObras;
+import gui.opciones.OpcionDeMenu;
+import gui.opciones.administrador.AgregarObra;
+import gui.opciones.administrador.ListarObrasPendientes;
+import gui.opciones.publico.BuscarObras;
+import gui.opciones.publico.EnviarObra;
+import gui.opciones.publico.ListarObras;
 
 public class Main  extends Application{
 	static Scene  main1,main2;

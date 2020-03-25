@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones.publico;
+package gui.opciones.publico;
 
 import Excepciones.CantBeNull;
 import Excepciones.ExcepcionFueraRango;
@@ -9,8 +9,8 @@ import gui.paneles.FieldPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
-import uiMain.menuConsola.Independiente;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.opciones.Independiente;
+import gui.opciones.OpcionDeMenu;
 
 public class BuscarObras extends OpcionDeMenu implements Independiente{
 	

@@ -1,13 +1,10 @@
-package uiMain.menuConsola.opciones.publico;
+package gui.opciones.publico;
 
 import gui.paneles.IndexPanel;
 import javafx.scene.Scene;
-//import gui.escena.EscenaInicial;
-import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
-import uiMain.Main;
-import uiMain.menuConsola.Independiente;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.Main;
+import gui.opciones.Independiente;
+import gui.opciones.OpcionDeMenu;
 
 public class Salir extends OpcionDeMenu implements Independiente{
 	

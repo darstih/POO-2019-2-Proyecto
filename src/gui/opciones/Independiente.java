@@ -1,4 +1,4 @@
-package uiMain.menuConsola;
+package gui.opciones;
 
 import javafx.scene.control.MenuItem;
 

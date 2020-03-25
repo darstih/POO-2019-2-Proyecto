@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones;
+package gui.opciones.botones;
 //package uiMain.menuConsola.opciones.invitado;
 //
 //import java.util.ArrayList;

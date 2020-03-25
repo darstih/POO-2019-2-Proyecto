@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones;
+package gui.opciones.botones;
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.Comentario;
@@ -13,8 +13,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
-import uiMain.menuConsola.Dependiente;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.opciones.Dependiente;
+import gui.opciones.OpcionDeMenu;
 
 public class AgregarComentario extends OpcionDeMenu implements Dependiente{
 	

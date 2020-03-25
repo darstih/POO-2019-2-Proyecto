@@ -1,14 +1,9 @@
-package uiMain.menuConsola.opciones;
-
-import java.util.ArrayList;
-import java.util.Calendar;
+package gui.opciones.botones;
 
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
-import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
-import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
 import gui.paneles.FieldPanel;
@@ -19,8 +14,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.StageStyle;
-import uiMain.menuConsola.Dependiente;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.opciones.Dependiente;
+import gui.opciones.OpcionDeMenu;
 
 public class ActualizarObra extends OpcionDeMenu implements Dependiente{
 

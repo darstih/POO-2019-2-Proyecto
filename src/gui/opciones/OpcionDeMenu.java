@@ -1,4 +1,4 @@
-package uiMain.menuConsola;
+package gui.opciones;
 
 import java.io.IOException;
 import java.util.ArrayList;

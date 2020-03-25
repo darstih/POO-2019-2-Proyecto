@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones.publico;
+package gui.opciones.publico;
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;
@@ -14,8 +14,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
-import uiMain.menuConsola.Independiente;
-import uiMain.menuConsola.OpcionDeMenu;
+import gui.opciones.Independiente;
+import gui.opciones.OpcionDeMenu;
 
 public class AgregarReporte extends OpcionDeMenu implements Independiente{
 	//Atributos

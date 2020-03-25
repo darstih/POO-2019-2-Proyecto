@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones.administrador;
+package gui.opciones.administrador;
 //package uiMain.menuConsola.opciones.administrador;
 //
 //import gestorAplicacion.Obras.Obra;

@@ -8,7 +8,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 import Excepciones.CantBeNull;
-import Excepciones.NoCoincideTamaño;
+import Excepciones.NoCoincideTamano;
 import baseDatos.DBObra;
 import baseDatos.DBUsuario;
 import gestorAplicacion.Usuario.Administrador;

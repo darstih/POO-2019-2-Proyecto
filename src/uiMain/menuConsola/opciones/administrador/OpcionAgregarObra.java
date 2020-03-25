@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Excepciones.CantBeNull;
-import Excepciones.NoCoincideTamaño;
+import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
@@ -32,7 +32,7 @@ public class OpcionAgregarObra extends OpcionDeMenu {
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamaño, CantBeNull {
+	public void ejecutar() throws NoCoincideTamano, CantBeNull {
 		String[] criterios = new String[] {"Titulo","Descripcion","Altura","Ancho","Tecnica","Autor"};
 		CrearObraHandler hand = new CrearObraHandler();
 		FieldPanel a = new FieldPanel(this,"criterios",criterios,"valores",null,null,hand);

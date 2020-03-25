@@ -1,6 +1,6 @@
 package uiMain.menuConsola.opciones;
 import Excepciones.CantBeNull;
-import Excepciones.NoCoincideTamaño;
+import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Administrador;
@@ -29,7 +29,7 @@ public class OpcionAgregarComentario extends OpcionDeMenu {
 	
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamaño, CantBeNull {
+	public void ejecutar() throws NoCoincideTamano, CantBeNull {
 		CrearComentarioHandler handler = new CrearComentarioHandler();
 		FieldPanel form = new FieldPanel(this,"Criterio",new String[] {"Comentario"},"Valores",null,null,handler);
 		PaneInteraccion.setPaneActual(form);

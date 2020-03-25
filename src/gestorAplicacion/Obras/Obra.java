@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Excepciones.CantBeNull;
-import Excepciones.NoCoincideTamaño;
+import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;
 import gestorAplicacion.Usuario.Administrador;
 import gui.paneles.FieldPanel;
@@ -282,7 +282,7 @@ public class Obra extends ObjetoReporte{
 			FieldPanel.setAux(Obra.this);
 			try {
 				new OpcionAgregarComentario().ejecutar();
-			} catch (NoCoincideTamaño | CantBeNull e) {
+			} catch (NoCoincideTamano | CantBeNull e) {
 				e.printStackTrace();
 			}
 			
@@ -297,7 +297,7 @@ public class Obra extends ObjetoReporte{
 			FieldPanel.setAux(Obra.this);
 			try {
 				new OpcionAgregarEtiqueta().ejecutar();
-			} catch (NoCoincideTamaño | CantBeNull e) {
+			} catch (NoCoincideTamano | CantBeNull e) {
 				e.printStackTrace();
 			}
 			

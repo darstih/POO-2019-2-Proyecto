@@ -6,7 +6,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 import Excepciones.CantBeNull;
-import Excepciones.NoCoincideTamaño;
+import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Usuario;
@@ -22,7 +22,7 @@ public class OpcionListarObrasPendientes extends OpcionDeMenu {
 
 	@Override
 	public void ejecutar()
-			throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamaño, CantBeNull {
+			throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamano, CantBeNull {
 		PaneInteraccion.setPaneActual(Administrador.listarObraGraficaPendiente());
 		
 	}

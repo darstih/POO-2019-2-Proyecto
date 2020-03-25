@@ -1,7 +1,7 @@
 package uiMain.menuConsola.opciones;
 
 import Excepciones.CantBeNull;
-import Excepciones.NoCoincideTamaño;
+import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gui.paneles.FieldPanel;
@@ -22,7 +22,7 @@ public class OpcionAgregarEtiqueta extends OpcionDeMenu {
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamaño, CantBeNull {
+	public void ejecutar() throws NoCoincideTamano, CantBeNull {
 		CrearEtiquetaHandler handler = new CrearEtiquetaHandler();
 		FieldPanel form = new FieldPanel(this,"Criterio",criterios,"Valores",null,null,handler);
 		PaneInteraccion.setPaneActual(form);

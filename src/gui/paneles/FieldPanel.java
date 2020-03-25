@@ -4,7 +4,7 @@
 import java.util.Enumeration;
 import java.util.Hashtable;
 	import Excepciones.CantBeNull;
-	import Excepciones.NoCoincideTamaño;
+	import Excepciones.NoCoincideTamano;
 	import javafx.event.ActionEvent;
 	import javafx.event.EventHandler;
 	import javafx.geometry.Insets;
@@ -41,7 +41,7 @@ import java.util.Hashtable;
 
 		
 		//Constructores
-		public FieldPanel(OpcionDeMenu opcion,String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado, EventHandler<ActionEvent> hand) throws NoCoincideTamaño, CantBeNull{
+		public FieldPanel(OpcionDeMenu opcion,String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado, EventHandler<ActionEvent> hand) throws NoCoincideTamano, CantBeNull{
 			this.setPadding(new Insets(20,20,20,20));
 			this.setStyle("-fx-background-color: #E0EE97");
 			Label titulo = new Label(opcion.toString());
@@ -100,7 +100,7 @@ import java.util.Hashtable;
 					
 					
 				}else {
-					throw new NoCoincideTamaño();
+				throw new NoCoincideTamano();
 				}
 			}
 			

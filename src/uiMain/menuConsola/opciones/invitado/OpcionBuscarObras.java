@@ -1,7 +1,7 @@
 package uiMain.menuConsola.opciones.invitado;
 
 import Excepciones.CantBeNull;
-import Excepciones.NoCoincideTamaño;
+import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Excepciones.ExcepcionFueraRango;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
@@ -18,7 +18,7 @@ public class OpcionBuscarObras extends OpcionDeMenu {
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamaño, CantBeNull {
+	public void ejecutar() throws NoCoincideTamano, CantBeNull {
 			String[] criterios = new String[] {"Tipo","Busqueda","Listado"};
 			System.out.println("Ejecución de buscar obras");
 			BuscarObra handler = new BuscarObra();

@@ -7,7 +7,10 @@ import org.codehaus.jackson.map.JsonMappingException;
 
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamaño;
+import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Administrador;
+import gestorAplicacion.Usuario.Usuario;
+import gui.paneles.PaneInteraccion;
 //import uiMain.menuConsola.MenuDeConsola;
 import uiMain.menuConsola.OpcionDeMenu;
 public class OpcionListarObrasPendientes extends OpcionDeMenu {
@@ -20,7 +23,7 @@ public class OpcionListarObrasPendientes extends OpcionDeMenu {
 	@Override
 	public void ejecutar()
 			throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamaño, CantBeNull {
-		// TODO Auto-generated method stub
+		PaneInteraccion.setPaneActual(Administrador.listarObraGraficaPendiente());
 		
 	}
 	

@@ -29,20 +29,13 @@ public class Comentario extends ObjetoReporte{
     public String getContenido(){
 	return contenido;
     }
-//    public boolean getVisible(){
-//	return this.visible;
-//    }
-//    public void setVisible(boolean v){
-//	this.visible = v;//se oculta comentario por reporte
-//    }   
-    
-    public Label graficar() {
-    	Label cont = new Label(this.contenido);
-    	cont.setPadding(new Insets(20,20,20,20));
-    	cont.maxWidth(300);
-    	cont.setStyle("-fx-background-color: #BF7BF3");
-    	return cont;
-    }
+////    public boolean getVisible(){
+////	return this.visible;
+////    }
+////    public void setVisible(boolean v){
+////	this.visible = v;//se oculta comentario por reporte
+////    }   
+//    
     
     
 	

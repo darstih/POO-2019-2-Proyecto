@@ -14,15 +14,7 @@ public class Etiqueta {
 
 	public Etiqueta() {}
 	//Metodos
-	public Pane graficar() {
-		VBox a = new VBox();
-		a.setPadding(new Insets(2,2,2,2));
-		a.setSpacing(2);
-		a.getChildren().add(new Label(label));
-		a.getChildren().add(new Label(tipo));
-		a.getChildren().add(new Label(descripcion));
-		return a;
-	}
+	
 	
 	//Getters y setters
 	public String getTipo(){

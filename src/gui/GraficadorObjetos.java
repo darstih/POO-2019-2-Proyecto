@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class GraficadorObjetos {
@@ -95,7 +96,14 @@ public class GraficadorObjetos {
 		}
 	
 	}
-	
+	public static Label graficar(Comentario o) {
+    	Label cont = new Label(o.getContenido());
+    	cont.setPadding(new Insets(20,20,20,20));
+    	cont.maxWidth(300);
+    	cont.setStyle("-fx-background-color: #BF7BF3");
+    	return cont;
+    }
+    
 	public static void eliminarObra(Obra o) {
 		for(int i = 0; i<Administrador.getObrasPendientes().size();i++) {
 			if((o.getTitulo()+o.getAutor()).equals(Administrador.getObrasPendientes().get(i).getTitulo()+Administrador.getObrasPendientes().get(i).getAutor())) {
@@ -154,7 +162,7 @@ public class GraficadorObjetos {
 			
 			FlowPane etiq = new FlowPane();
 			for(Etiqueta i:obr.getEtiquetas()) {
-				etiq.getChildren().add(i.graficar());
+				etiq.getChildren().add(graficar(i));
 			}
 			
 			
@@ -189,7 +197,7 @@ public class GraficadorObjetos {
 			contenedor.getChildren().add(botones);
 			contenedor.getChildren().add(etiq);
 			for(Comentario i: obr.getComentarios()) {
-				contenedor.getChildren().add(i.graficar());
+				contenedor.getChildren().add(graficar(i));
 			}
 			a.setBottom(contenedor);
 			PaneInteraccion.setPaneActual(a);
@@ -197,6 +205,17 @@ public class GraficadorObjetos {
 			
 		}
 		
+		
+		
+	}
+	public static Pane graficar(Etiqueta e) {
+		VBox a = new VBox();
+		a.setPadding(new Insets(2,2,2,2));
+		a.setSpacing(2);
+		a.getChildren().add(new Label(e.getLabel()));
+		a.getChildren().add(new Label(e.getTipo()));
+		a.getChildren().add(new Label(e.getDescripcion()));
+		return a;
 	}
 	class AgregarReporteHandler implements EventHandler<ActionEvent>{
 		@Override

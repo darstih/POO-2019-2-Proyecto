@@ -12,6 +12,7 @@ import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
+import gui.GraficadorObjetos;
 import gui.paneles.FieldPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,8 +22,11 @@ import javafx.scene.layout.FlowPane;
 public abstract class OpcionDeMenu{ // La clase abstracta obligatoria
 	
 	private FieldPanel auxiliar;
+	private String descripcion;
 	
-	
+	public String getDescripcion() {
+		return descripcion;
+	}
 	
 	public abstract void ejecutar() throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamano, CantBeNull ;
 	
@@ -37,7 +41,7 @@ public abstract class OpcionDeMenu{ // La clase abstracta obligatoria
 	protected FlowPane mostrarEtiquetas(Obra o) {
 		FlowPane panel = new FlowPane();
 		for(Etiqueta i:o.getEtiquetas()) {
-			panel.getChildren().add(i.graficar());
+			panel.getChildren().add(GraficadorObjetos.graficar(i));
 		}
 		return panel;
 	}

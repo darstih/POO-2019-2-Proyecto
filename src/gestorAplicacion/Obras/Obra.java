@@ -6,6 +6,7 @@ import java.util.Calendar;
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamaño;
 import gestorAplicacion.Interacciones.ObjetoReporte;
+import gestorAplicacion.Usuario.Administrador;
 import gui.paneles.FieldPanel;
 import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
@@ -79,7 +80,7 @@ public class Obra extends ObjetoReporte{
 	
 	
 	
-	public BorderPane graficar() {
+	public BorderPane graficar(int opcion) {
 		AbrirObraHandler eve = new AbrirObraHandler();
 		BorderPane obraGrafica = new BorderPane();
 		obraGrafica.setStyle("-fx-background-color: #F94978");
@@ -97,21 +98,41 @@ public class Obra extends ObjetoReporte{
 		
 		//_------------------------
 		VBox nuevo = new VBox();
-		AgregarComentarioHandler co = new AgregarComentarioHandler();
-		Button addCom = new Button("+Comentario");
-		addCom.setOnAction(co);
-		AgregarEtiquetaHandler et = new AgregarEtiquetaHandler();
-		Button addEti = new Button("+Etiqueta");
-		addEti.setOnAction(et);
 		HBox botones = new HBox();
-		botones.getChildren().add(addCom);
-		botones.getChildren().add(addEti);
+		if(opcion==1) {//listar obras
+			AgregarComentarioHandler co = new AgregarComentarioHandler();
+			Button addCom = new Button("+Comentario");
+			addCom.setOnAction(co);
+			AgregarEtiquetaHandler et = new AgregarEtiquetaHandler();
+			Button addEti = new Button("+Etiqueta");
+			addEti.setOnAction(et);
+			botones.getChildren().add(addCom);
+			botones.getChildren().add(addEti);
+		}else if(opcion==2) {
+			Button addObra = new Button("Aprobar");
+			AprobarObraHandler ap = new AprobarObraHandler();
+			addObra.setOnAction(ap);
+			AgregarEtiquetaHandler et = new AgregarEtiquetaHandler();
+			Button addEti = new Button("Eliminar");
+			addEti.setOnAction(et);
+			botones.getChildren().add(addObra);
+			botones.getChildren().add(addEti);
+		}
 		nuevo.getChildren().add(autor);
 		nuevo.getChildren().add(botones);
 		//--------------------------
 		obraGrafica.setBottom(nuevo);
 		
 		return obraGrafica;
+	}
+	class AprobarObraHandler implements EventHandler<ActionEvent>{
+
+		@Override
+		public void handle(ActionEvent event) {
+			Obra.addObra(Obra.this);
+			Obra.this.setVisible(true);
+		}
+	
 	}
 	
 	class AbrirObraHandler implements EventHandler<MouseEvent>{
@@ -255,7 +276,6 @@ public class Obra extends ObjetoReporte{
 		
 	}
 	class AgregarComentarioHandler implements EventHandler<ActionEvent>{
-
 		@Override
 		public void handle(ActionEvent arg0) {
 			
@@ -429,12 +449,13 @@ public class Obra extends ObjetoReporte{
 		Obra.obras = a;
 	}
 	//constructores
-	public Obra(String titulo, String descripcion, Double altura, Double ancho, Calendar fecCreacion,  ArrayList<Etiqueta> etiquetas,Tecnica tecnica, String autor){
+	public Obra(String titulo, String descripcion, Double altura, Double ancho, Calendar fecCreacion,  ArrayList<Etiqueta> etiquetas,Tecnica tecnica, String autor,boolean visible){
 		
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.altura = altura;
 		this.ancho = ancho;
+		this.visible = visible;
 		this.fechaCreacion = fecCreacion;
 		this.fechaIngreso = Calendar.getInstance();
 		this.autor = autor;

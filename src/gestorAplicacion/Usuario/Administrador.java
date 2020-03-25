@@ -105,30 +105,7 @@ public class Administrador extends Usuario {
 		public static void setAdministradores(ArrayList<Administrador> la) {
 			Administrador.usuarios = la;
 		}
-		public static void eliminarObra(Obra o) {
-			for(int i = 0; i<obrasPendientes.size();i++) {
-				if((o.getTitulo()+o.getAutor()).equals(obrasPendientes.get(i).getTitulo()+obrasPendientes.get(i).getAutor())) {
-					obrasPendientes.remove(i);
-					PaneInteraccion.setPaneActual(Administrador.listarObraGraficaPendiente());
-					break;
-				}
-			}
-		}
 		
-		public static FlowPane listarObraGraficaPendiente() {
-			FlowPane pane = new FlowPane();
-			pane.setVgap(10);
-			pane.setHgap(10);
-			Hashtable<BorderPane,Obra> tabla = new Hashtable<BorderPane,Obra>(); 
-			for(Obra i:obrasPendientes) {
-				BorderPane a = i.graficar(2);
-				tabla.put(a, i);
-				pane.getChildren().add(a);
-				
-			}
-			PaneInteraccion.setAux(tabla);
-			return pane;
-		}
     //Constructores
 		@Override
 		public String descripcion() {

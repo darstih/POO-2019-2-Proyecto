@@ -6,6 +6,7 @@ import java.util.Hashtable;
 
 import Excepciones.ExcepcionFueraRango;
 import gestorAplicacion.Obras.Obra;
+import gui.GraficadorObjetos;
 import gui.paneles.PaneInteraccion;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
@@ -51,7 +52,7 @@ public abstract class Usuario{
 		obras= listarObra(obras,listado);
 		Hashtable<BorderPane,Obra> tabla = new Hashtable<BorderPane,Obra>(); 
 		for(Obra i:obras) {
-			BorderPane a = i.graficar(1);
+			BorderPane a = GraficadorObjetos.graficar(i,1);
 			tabla.put(a, i);
 			pane.getChildren().add(a);
 			

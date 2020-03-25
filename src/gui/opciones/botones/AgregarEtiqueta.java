@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
+import gui.GraficadorObjetos;
 import gui.opciones.Dependiente;
 import gui.opciones.OpcionDeMenu;
 
@@ -49,7 +50,7 @@ public class AgregarEtiqueta extends OpcionDeMenu implements Dependiente{
 			dialogo.setContentText("Etiqueta agregada");
 			dialogo.initStyle(StageStyle.UTILITY);
 			dialogo.showAndWait();
-			PaneInteraccion.setPaneActual(obr.graficar(1));
+			PaneInteraccion.setPaneActual(GraficadorObjetos.graficar(obr,1));
 		}
 		
 	}

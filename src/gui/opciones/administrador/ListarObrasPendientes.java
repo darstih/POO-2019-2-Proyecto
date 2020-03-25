@@ -7,6 +7,7 @@ import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Usuario.Administrador;
 import gui.paneles.PaneInteraccion;
+import gui.GraficadorObjetos;
 import gui.opciones.Independiente;
 //import uiMain.menuConsola.MenuDeConsola;
 import gui.opciones.OpcionDeMenu;
@@ -20,7 +21,7 @@ public class ListarObrasPendientes extends OpcionDeMenu implements Independiente
 	@Override
 	public void ejecutar()
 			throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamano, CantBeNull {
-		PaneInteraccion.setPaneActual(Administrador.listarObraGraficaPendiente());
+		PaneInteraccion.setPaneActual(GraficadorObjetos.listarObraGraficaPendiente());
 		
 	}
 	

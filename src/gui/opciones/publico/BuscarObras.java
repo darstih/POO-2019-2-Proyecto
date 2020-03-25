@@ -21,7 +21,6 @@ public class BuscarObras extends OpcionDeMenu implements Independiente{
 	@Override
 	public void ejecutar() throws NoCoincideTamano, CantBeNull {
 			String[] criterios = new String[] {"Tipo","Busqueda","Listado"};
-			System.out.println("Ejecución de buscar obras");
 			BuscarObra handler = new BuscarObra();
 			FieldPanel buscar = new FieldPanel(this,"criterios",criterios,"valores",new String[] {"Titulo","","1"},null,handler);
 			PaneInteraccion.setPaneActual(buscar);
@@ -32,8 +31,12 @@ public class BuscarObras extends OpcionDeMenu implements Independiente{
 		public void handle(ActionEvent arg0) {//Si este handler se activa es porque se está mostrando por lo tanto es el actual
 			try {
 				Pane pane = PaneInteraccion.getPaneActual();
+				int a=1;
+				if(((FieldPanel) pane).getValue("Tipo")=="Tecnica") {
+					a=0;
+				}
 				
-				PaneInteraccion.setPaneActual(Usuario.buscarObra(((FieldPanel) pane).getValue("Busqueda"), (((FieldPanel) pane).getValue("Tipo") == "Tecnica") ?  0: 1, Integer.parseInt(((FieldPanel) pane).getValue("Listado"))));
+				PaneInteraccion.setPaneActual(Usuario.buscarObra(((FieldPanel) pane).getValue("Busqueda"), a, Integer.parseInt(((FieldPanel) pane).getValue("Listado"))));
 				
 			} catch (NumberFormatException e) {
 				e.printStackTrace();

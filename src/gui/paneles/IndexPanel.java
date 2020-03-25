@@ -1,11 +1,15 @@
 package gui.paneles;
 
+import java.util.ArrayList;
+
 import gestorAplicacion.Usuario.Administrador;
+import gestorAplicacion.Usuario.Invitado;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -21,6 +25,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
 import gui.Main;
+import gui.opciones.OpcionDeMenu;
+import gui.opciones.administrador.AgregarObra;
+import gui.opciones.administrador.ListarObrasPendientes;
+import gui.opciones.publico.BuscarObras;
+import gui.opciones.publico.EnviarObra;
+import gui.opciones.publico.ListarObras;
 
 public class IndexPanel extends GridPane{
 		
@@ -214,7 +224,7 @@ public class IndexPanel extends GridPane{
 		@Override
 		public void handle(Event event) {
 			if(Administrador.verificarAdmin(txtUsu.getText(),pssfUsu.getText())) {
-				Main.cambiarScene(txtUsu.getText(),pssfUsu.getText());
+				cambiarScene(txtUsu.getText(),pssfUsu.getText());
 			}else {
 				txtUsu.setStyle("-fx-border-color: #b71c1c;");
 			}
@@ -223,7 +233,25 @@ public class IndexPanel extends GridPane{
     private class invitadoHandler implements  EventHandler<Event>{
 		@Override
 		public void handle(Event event) {
-			Main.cambiarScene("Invitado");
+			cambiarScene("Invitado");
 		}
     }
+    public static void cambiarScene(String invitado) {
+		ArrayList<OpcionDeMenu> op = new ArrayList<OpcionDeMenu>();
+		op.add(new BuscarObras());
+		op.add(new ListarObras());
+		op.add(new EnviarObra());
+		Scene main2 = new Scene(new PaneInteraccion("Invitado",op,new Invitado()),600,600);
+		Main.setScene(main2);
+	}
+	public static void cambiarScene(String usu, String pass) {
+		ArrayList<OpcionDeMenu> op = new ArrayList<OpcionDeMenu>();
+		op.add(new BuscarObras());
+		op.add(new ListarObras());
+		op.add(new AgregarObra());
+		op.add(new ListarObrasPendientes());
+		Scene main2 = new Scene(new PaneInteraccion(usu,op,new Administrador()),600,600);
+		Main.setScene(main2);
+		
+	}
 }

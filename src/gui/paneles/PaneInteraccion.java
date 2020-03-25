@@ -69,6 +69,7 @@ public class PaneInteraccion extends VBox{
 	//Constructores
 
     
+	@SuppressWarnings("static-access")
 	public PaneInteraccion(String user,ArrayList<OpcionDeMenu> proccons,Usuario usu) {
 		this.setPadding(new Insets(20,20,20,20));
 		this.opciones = proccons;
@@ -80,7 +81,6 @@ public class PaneInteraccion extends VBox{
 		
 		
 		EjecutarOpcion handler = new EjecutarOpcion();
-		
 		
 		MenuBar barra = new MenuBar();
 		//-------------------------------------------------

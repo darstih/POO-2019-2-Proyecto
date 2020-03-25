@@ -1,14 +1,10 @@
 package uiMain;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
-
-import Excepciones.CantBeNull;
-import Excepciones.NoCoincideTamano;
 import baseDatos.DBObra;
 import baseDatos.DBUsuario;
 import gestorAplicacion.Usuario.Administrador;
@@ -19,7 +15,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uiMain.menuConsola.OpcionDeMenu;
-import uiMain.menuConsola.opciones.AgregarComentario;
 import uiMain.menuConsola.opciones.administrador.AgregarObra;
 import uiMain.menuConsola.opciones.administrador.ListarObrasPendientes;
 import uiMain.menuConsola.opciones.publico.BuscarObras;
@@ -57,8 +52,6 @@ public class Main  extends Application{
 		op.add(new BuscarObras());
 		op.add(new ListarObras());
 		op.add(new EnviarObra());
-		
-		
 		main2 = new Scene(new PaneInteraccion("Invitado",op,new Invitado()),600,600);
 		pantalla.setScene(main2);
 		pantalla.show();

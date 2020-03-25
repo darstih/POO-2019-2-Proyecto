@@ -3,9 +3,10 @@ import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
 import javafx.scene.layout.FlowPane;
+import uiMain.menuConsola.Independiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class ListarObras extends OpcionDeMenu {
+public class ListarObras extends OpcionDeMenu implements Independiente{
 	
 	@Override
 	public String toString() {

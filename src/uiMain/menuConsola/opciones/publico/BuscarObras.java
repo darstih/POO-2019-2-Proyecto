@@ -9,9 +9,10 @@ import gui.paneles.FieldPanel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
+import uiMain.menuConsola.Independiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class BuscarObras extends OpcionDeMenu {
+public class BuscarObras extends OpcionDeMenu implements Independiente{
 	
 	public String toString() {
 		return "Buscar Obras";

@@ -17,9 +17,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.StageStyle;
+import uiMain.menuConsola.Independiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class EnviarObra extends OpcionDeMenu {
+public class EnviarObra extends OpcionDeMenu implements Independiente{
 
 	@Override
 	public String toString() {

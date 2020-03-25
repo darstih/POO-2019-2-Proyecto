@@ -11,9 +11,10 @@ import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
+import uiMain.menuConsola.Independiente;
 //import uiMain.menuConsola.MenuDeConsola;
 import uiMain.menuConsola.OpcionDeMenu;
-public class ListarObrasPendientes extends OpcionDeMenu {
+public class ListarObrasPendientes extends OpcionDeMenu implements Independiente{
 	
 	@Override
 	public String toString() {

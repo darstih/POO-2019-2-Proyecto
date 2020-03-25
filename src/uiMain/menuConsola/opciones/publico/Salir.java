@@ -6,9 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import uiMain.Main;
+import uiMain.menuConsola.Independiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class Salir extends OpcionDeMenu {
+public class Salir extends OpcionDeMenu implements Independiente{
 	
 	@Override
 	public String toString() {

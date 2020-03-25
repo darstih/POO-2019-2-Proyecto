@@ -14,9 +14,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
+import uiMain.menuConsola.Independiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class AgregarReporte extends OpcionDeMenu {
+public class AgregarReporte extends OpcionDeMenu implements Independiente{
 	//Atributos
 	String[] criterios = new String[] {"Contenido"};
 	

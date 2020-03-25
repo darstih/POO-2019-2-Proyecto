@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones.administrador;
+package uiMain.menuConsola.opciones;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,9 +19,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.StageStyle;
+import uiMain.menuConsola.Dependiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class ActualizarObra extends OpcionDeMenu{
+public class ActualizarObra extends OpcionDeMenu implements Dependiente{
 
 
 	@Override

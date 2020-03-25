@@ -167,8 +167,8 @@ public class IndexPanel extends GridPane{
 		mdescripcion.setOnAction(desc);
 		imga.setOnMouseEntered(handlerFotos);
 		msalir.setOnAction(salir);
-		btnAceptar.setOnAction(validar);
-		btnInvitado.setOnAction(invitado);
+		btnAceptar.setOnMouseClicked(validar);
+		btnInvitado.setOnMouseClicked(invitado);
 	}
 	
 	private class LblHandlerClassH implements EventHandler<Event>{
@@ -210,9 +210,9 @@ public class IndexPanel extends GridPane{
     				+ " usuarios del sistema");
 		}
     }
-    private class validarHandler implements  EventHandler<ActionEvent>{
+    private class validarHandler implements  EventHandler<Event>{
 		@Override
-		public void handle(ActionEvent event) {
+		public void handle(Event event) {
 			if(Administrador.verificarAdmin(txtUsu.getText(),pssfUsu.getText())) {
 				Main.cambiarScene(txtUsu.getText(),pssfUsu.getText());
 			}else {
@@ -220,9 +220,9 @@ public class IndexPanel extends GridPane{
 			}
 		}
     }
-    private class invitadoHandler implements  EventHandler<ActionEvent>{
+    private class invitadoHandler implements  EventHandler<Event>{
 		@Override
-		public void handle(ActionEvent event) {
+		public void handle(Event event) {
 			Main.cambiarScene("Invitado");
 		}
     }

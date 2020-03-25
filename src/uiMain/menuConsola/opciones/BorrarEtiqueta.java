@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones.publico;
+package uiMain.menuConsola.opciones;
 //package uiMain.menuConsola.opciones.invitado;
 //
 //import java.util.ArrayList;

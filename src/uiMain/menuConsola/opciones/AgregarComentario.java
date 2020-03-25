@@ -5,7 +5,6 @@ import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Invitado;
-import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.FieldPanel;
 import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
@@ -14,9 +13,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
+import uiMain.menuConsola.Dependiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class AgregarComentario extends OpcionDeMenu {
+public class AgregarComentario extends OpcionDeMenu implements Dependiente{
 	
 	
 	@Override

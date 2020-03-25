@@ -18,12 +18,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 import javafx.stage.StageStyle;
+import uiMain.menuConsola.Independiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
 
 
 	
-public class AgregarObra extends OpcionDeMenu {
+public class AgregarObra extends OpcionDeMenu implements Independiente{
 	
 	
 	@Override

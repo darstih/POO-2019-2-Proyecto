@@ -12,9 +12,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
+import uiMain.menuConsola.Dependiente;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class AgregarEtiqueta extends OpcionDeMenu {
+public class AgregarEtiqueta extends OpcionDeMenu implements Dependiente{
 	private static String[] criterios = new String[] {"Label", "Tipo", "Descripción"};
 	
 	@Override

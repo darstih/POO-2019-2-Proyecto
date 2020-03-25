@@ -1,8 +1,8 @@
 package uiMain.menuConsola.opciones.invitado;
 
 import Excepciones.CantBeNull;
+import Excepciones.ExcepcionFueraRango;
 import Excepciones.NoCoincideTamano;
-import gestorAplicacion.Excepciones.ExcepcionFueraRango;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
 import gui.paneles.FieldPanel;

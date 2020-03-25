@@ -1,7 +1,5 @@
 package gui.paneles;
 
-import java.io.IOException;
-
 import gestorAplicacion.Usuario.Administrador;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -22,7 +20,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import uiMain.Main;
-import uiMain.menuConsola.opciones.OpcionSalir;
 
 public class IndexPanel extends GridPane{
 		
@@ -51,7 +48,7 @@ public class IndexPanel extends GridPane{
 		GridPane p4 = new GridPane();
 		MenuBar barraMenu = new MenuBar();
 		Menu inicio = new Menu("Inicio");
-		MenuItem msalir = new OpcionSalir().toMenu();
+		MenuItem msalir = new MenuItem("Salir");
 		MenuItem mdescripcion = new MenuItem("Descripcion");
 		
 		inicio.getItems().add(mdescripcion);		
@@ -199,11 +196,7 @@ public class IndexPanel extends GridPane{
     private class btnHandlerClasssalir implements  EventHandler<ActionEvent>{
     	@Override
 		public void handle(ActionEvent event) {
-			try {
-				new OpcionSalir().ejecutar();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			System.exit(0);
 		}
     }
     private class btnHandlerClassdesc implements  EventHandler<ActionEvent>{

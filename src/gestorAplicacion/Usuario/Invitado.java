@@ -32,7 +32,11 @@ public class Invitado extends Usuario{
 	@Override
 	public String descripcion() {
 		
-		return "Soy un usuario invitado";
+		return "Soy un usuario invitado y puedo realizar sin autorizacion lo siguiente:"
+				+ "\n -Agregar y borrar etiquetas de una obra."
+				+ "\n Y puedo hacer los siguiente sólo si un admistrador lo autoriza:"
+				+ "\n -Agregar y reportar obras."
+				+ "\n -Agregar y reportar comentario en una obra.";
 		
 	}
 		

@@ -133,6 +133,10 @@ public class Administrador extends Usuario {
 		@Override
 		public String descripcion() {
 			// TODO Auto-generated method stub
-			return "Soy un administrador";
+			return "Soy un administrador y puedo hacer lo siguiente:"
+					+ "\n -Agregar y aprobar obras."
+					+ "\n -Agregar y aprobar comentarios."
+					+ "\n -Agregar y aprobar reportes de obras y comentarios."
+					+ "\n -Agregar y borrar etiquetas.";
 		}
 }

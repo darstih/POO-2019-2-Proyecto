@@ -19,7 +19,7 @@ public class OpcionAgregarEtiqueta extends OpcionDeMenu {
 	
 	@Override
 	public String toString() {
-		return "Agregar Etiqueta";
+		return "+Etiqueta";
 	}
 	
 	@Override

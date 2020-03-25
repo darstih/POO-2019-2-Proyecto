@@ -70,6 +70,7 @@ public class Main  extends Application{
 		op.add(new OpcionListarObrasPendientes());
 		main2 = new Scene(new PaneInteraccion(usu,op),600,600);
 		pantalla.setScene(main2);
+		pantalla.setTitle(usu);
 		pantalla.show();
 	}
 }

@@ -1,6 +1,7 @@
 package baseDatos;
 
 import gestorAplicacion.Obras.Obra;
+import gestorAplicacion.Usuario.Administrador;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -35,8 +36,19 @@ public class DBObra {
 		while((linea=br.readLine())!=null)
 			coso = coso + linea;
 		System.out.println(coso);
-		
-		Obra.setObras(soyElMapa.readValue(coso, new TypeReference<ArrayList<Obra>>() {} ));
+		ArrayList<Obra> obrasVisible = new ArrayList<Obra>();
+		ArrayList<Obra> obrasNoVisible = new ArrayList<Obra>();
+		ArrayList<Obra> obras = (soyElMapa.readValue(coso, new TypeReference<ArrayList<Obra>>() {} ));
+		for(int i = 0;i<obras.size();i++) {
+			Obra temp = obras.get(i);
+			if(temp.getVisible()) {
+				obrasVisible.add(temp);
+			}else {
+				obrasNoVisible.add(temp);
+			}
+		}
+		Obra.setObras(obrasVisible);
+		Administrador.setObrasPendientes(obrasNoVisible);
 		if( null != lector ){   
             lector.close();     
          }  
@@ -45,7 +57,12 @@ public class DBObra {
 	public static void guardar() throws JsonGenerationException, JsonMappingException, IOException {
 		FileWriter escritor = new FileWriter(rutaFichero);
 		PrintWriter pw = new PrintWriter(escritor);
-		String theJsonText = soyElMapa.writeValueAsString(Obra.getObras());
+		ArrayList<Obra> obras = Obra.getObras();
+		ArrayList<Obra> obrasP = Administrador.getObrasPendientes();
+		for(int i = 0; i<obrasP.size();i++) {
+			obras.add(obrasP.get(i));
+		}
+		String theJsonText = soyElMapa.writeValueAsString(obras);
 		pw.println(theJsonText);
 		System.out.println(theJsonText);
 		System.out.println("Se guardaron todas las obras");

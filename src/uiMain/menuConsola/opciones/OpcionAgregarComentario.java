@@ -53,7 +53,7 @@ public class OpcionAgregarComentario extends OpcionDeMenu {
 			}
 			dialogo.initStyle(StageStyle.UTILITY);
 			dialogo.showAndWait();
-			PaneInteraccion.setPaneActual(obr.graficar());
+			PaneInteraccion.setPaneActual(obr.graficar(1));
 		}
 		
 	}

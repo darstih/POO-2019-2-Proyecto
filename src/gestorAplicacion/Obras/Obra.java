@@ -7,6 +7,7 @@ import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;
 import gestorAplicacion.Usuario.Administrador;
+import gestorAplicacion.Usuario.Invitado;
 import gui.paneles.FieldPanel;
 import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
@@ -25,6 +26,7 @@ import uiMain.menuConsola.opciones.OpcionAgregarComentario;
 import uiMain.menuConsola.opciones.OpcionAgregarEtiqueta;
 import uiMain.menuConsola.opciones.administrador.OpcionAgregarObra;
 import uiMain.menuConsola.opciones.administrador.OpcionListarObrasPendientes;
+import uiMain.menuConsola.opciones.invitado.OpcionAgregarReporte;
 import gestorAplicacion.Interacciones.Comentario;
 
 //Autor de clase y estructura Darwin Herrera

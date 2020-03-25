@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones;
+package uiMain.menuConsola.opciones.invitado;
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;

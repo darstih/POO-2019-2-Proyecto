@@ -51,7 +51,7 @@ public abstract class Usuario{
 		obras= listarObra(obras,listado);
 		Hashtable<BorderPane,Obra> tabla = new Hashtable<BorderPane,Obra>(); 
 		for(Obra i:obras) {
-			BorderPane a = i.graficar();
+			BorderPane a = i.graficar(1);
 			tabla.put(a, i);
 			pane.getChildren().add(a);
 			

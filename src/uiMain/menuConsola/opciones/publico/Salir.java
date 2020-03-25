@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones;
+package uiMain.menuConsola.opciones.publico;
 
 import gui.paneles.IndexPanel;
 import javafx.scene.Scene;
@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 import uiMain.Main;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class OpcionVolverInicio extends OpcionDeMenu {
+public class Salir extends OpcionDeMenu {
 	
 	@Override
 	public String toString() {

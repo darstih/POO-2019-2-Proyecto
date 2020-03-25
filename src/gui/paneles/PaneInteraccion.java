@@ -23,7 +23,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
 import uiMain.menuConsola.OpcionDeMenu;
-import uiMain.menuConsola.opciones.OpcionVolverInicio;
+import uiMain.menuConsola.opciones.publico.Salir;
 
 
 
@@ -89,7 +89,7 @@ public class PaneInteraccion extends VBox{
 		usuario.setOnAction(handlerdesc);
 		tipousuario=usu.descripcion();
 		SeparatorMenuItem separador = new SeparatorMenuItem();
-		MenuItem salir = new OpcionVolverInicio().toMenu();
+		MenuItem salir = new Salir().toMenu();
 		VolverInicioHandler handlerInicio = new VolverInicioHandler();
 		salir.setOnAction(handlerInicio);
 		Menu archivo = new Menu("Archivo");
@@ -163,7 +163,7 @@ public class PaneInteraccion extends VBox{
 
 		@Override
 		public void handle(ActionEvent arg0) {
-			new OpcionVolverInicio().ejecutar();
+			new Salir().ejecutar();
 		}
 		
 	}
@@ -185,7 +185,7 @@ public class PaneInteraccion extends VBox{
 		@Override
 		public void handle(ActionEvent arg0) {
 			Alert a = new Alert(AlertType.INFORMATION);
-			a.setTitle("Información sobre usuario: ");
+			a.setTitle("Informaciï¿½n sobre usuario: ");
 			a.setContentText(tipousuario);
 			a.initStyle(StageStyle.UTILITY);
 			a.showAndWait();

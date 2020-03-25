@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones.invitado;
+package uiMain.menuConsola.opciones.publico;
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;
@@ -16,7 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class OpcionAgregarReporte extends OpcionDeMenu {
+public class AgregarReporte extends OpcionDeMenu {
 	//Atributos
 	String[] criterios = new String[] {"Contenido"};
 	
@@ -27,7 +27,7 @@ public class OpcionAgregarReporte extends OpcionDeMenu {
 		return "Reportar";
 	}
 	public Button graficar() {
-		return new Button(new OpcionAgregarReporte().toString());
+		return new Button(new AgregarReporte().toString());
 	}
 	
 	

@@ -16,7 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.StageStyle;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class OpcionAgregarComentario extends OpcionDeMenu {
+public class AgregarComentario extends OpcionDeMenu {
 	
 	
 	@Override
@@ -24,7 +24,7 @@ public class OpcionAgregarComentario extends OpcionDeMenu {
 		return "+Comentario";
 	}
 	public Button graficar() {
-		return new Button(new OpcionAgregarComentario().toString());
+		return new Button(new AgregarComentario().toString());
 	}
 	
 	

@@ -13,7 +13,7 @@ import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
 //import uiMain.menuConsola.MenuDeConsola;
 import uiMain.menuConsola.OpcionDeMenu;
-public class OpcionListarObrasPendientes extends OpcionDeMenu {
+public class ListarObrasPendientes extends OpcionDeMenu {
 	
 	@Override
 	public String toString() {

@@ -1,3 +1,4 @@
+package uiMain.menuConsola.opciones.publico;
 //package uiMain.menuConsola.opciones.invitado;
 //
 //import java.util.ArrayList;

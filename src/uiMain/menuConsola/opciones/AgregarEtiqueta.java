@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class OpcionAgregarEtiqueta extends OpcionDeMenu {
+public class AgregarEtiqueta extends OpcionDeMenu {
 	private static String[] criterios = new String[] {"Label", "Tipo", "Descripción"};
 	
 	@Override
@@ -31,7 +31,7 @@ public class OpcionAgregarEtiqueta extends OpcionDeMenu {
 	}
 	
 	public Button graficar() {
-		return new Button(new OpcionAgregarEtiqueta().toString());
+		return new Button(new AgregarEtiqueta().toString());
 	}
 	
 	

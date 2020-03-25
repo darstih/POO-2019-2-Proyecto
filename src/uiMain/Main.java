@@ -19,12 +19,12 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uiMain.menuConsola.OpcionDeMenu;
-import uiMain.menuConsola.opciones.OpcionAgregarComentario;
-import uiMain.menuConsola.opciones.administrador.OpcionAgregarObra;
-import uiMain.menuConsola.opciones.administrador.OpcionListarObrasPendientes;
-import uiMain.menuConsola.opciones.invitado.OpcionBuscarObras;
-import uiMain.menuConsola.opciones.invitado.OpcionEnviarObra;
-import uiMain.menuConsola.opciones.invitado.OpcionListarObras;
+import uiMain.menuConsola.opciones.AgregarComentario;
+import uiMain.menuConsola.opciones.administrador.AgregarObra;
+import uiMain.menuConsola.opciones.administrador.ListarObrasPendientes;
+import uiMain.menuConsola.opciones.publico.BuscarObras;
+import uiMain.menuConsola.opciones.publico.EnviarObra;
+import uiMain.menuConsola.opciones.publico.ListarObras;
 
 public class Main  extends Application{
 	static Scene  main1,main2;
@@ -54,9 +54,9 @@ public class Main  extends Application{
 	}
 	public static void cambiarScene(String invitado) {
 		ArrayList<OpcionDeMenu> op = new ArrayList<OpcionDeMenu>();
-		op.add(new OpcionBuscarObras());
-		op.add(new OpcionListarObras());
-		op.add(new OpcionEnviarObra());
+		op.add(new BuscarObras());
+		op.add(new ListarObras());
+		op.add(new EnviarObra());
 		
 		
 		main2 = new Scene(new PaneInteraccion("Invitado",op,new Invitado()),600,600);
@@ -65,10 +65,10 @@ public class Main  extends Application{
 	}
 	public static void cambiarScene(String usu, String pass) {
 		ArrayList<OpcionDeMenu> op = new ArrayList<OpcionDeMenu>();
-		op.add(new OpcionBuscarObras());
-		op.add(new OpcionListarObras());
-		op.add(new OpcionAgregarObra());
-		op.add(new OpcionListarObrasPendientes());
+		op.add(new BuscarObras());
+		op.add(new ListarObras());
+		op.add(new AgregarObra());
+		op.add(new ListarObrasPendientes());
 		main2 = new Scene(new PaneInteraccion(usu,op,new Administrador()),600,600);
 		pantalla.setScene(main2);
 		pantalla.setTitle(usu);

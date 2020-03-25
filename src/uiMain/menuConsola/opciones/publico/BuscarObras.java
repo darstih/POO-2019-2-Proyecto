@@ -1,4 +1,4 @@
-package uiMain.menuConsola.opciones.invitado;
+package uiMain.menuConsola.opciones.publico;
 
 import Excepciones.CantBeNull;
 import Excepciones.ExcepcionFueraRango;
@@ -11,7 +11,7 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.Pane;
 import uiMain.menuConsola.OpcionDeMenu;
 
-public class OpcionBuscarObras extends OpcionDeMenu {
+public class BuscarObras extends OpcionDeMenu {
 	
 	public String toString() {
 		return "Buscar Obras";

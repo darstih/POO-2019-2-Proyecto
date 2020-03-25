@@ -18,15 +18,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import uiMain.menuConsola.opciones.OpcionAgregarComentario;
-import uiMain.menuConsola.opciones.OpcionAgregarEtiqueta;
-import uiMain.menuConsola.opciones.administrador.OpcionAgregarObra;
-import uiMain.menuConsola.opciones.administrador.OpcionListarObrasPendientes;
-import uiMain.menuConsola.opciones.invitado.OpcionAgregarReporte;
+import uiMain.menuConsola.opciones.AgregarComentario;
+import uiMain.menuConsola.opciones.AgregarEtiqueta;
+import uiMain.menuConsola.opciones.administrador.ActualizarObra;
+import uiMain.menuConsola.opciones.administrador.AgregarObra;
+import uiMain.menuConsola.opciones.administrador.ListarObrasPendientes;
+import uiMain.menuConsola.opciones.publico.AgregarReporte;
 import gestorAplicacion.Interacciones.Comentario;
 
 //Autor de clase y estructura Darwin Herrera
@@ -177,16 +179,17 @@ public class Obra extends ObjetoReporte{
 			descripcion.getChildren().add(new Label(obr.tecnica.getNombre()));
 			a.setCenter(descripcion);
 			
-			HBox etiq = new HBox();
+			FlowPane etiq = new FlowPane();
 			for(Etiqueta i:etiquetas) {
 				etiq.getChildren().add(i.graficar());
 			}
 			
 			
-			Button com = new OpcionAgregarComentario().graficar();
-			Button rep = new OpcionAgregarReporte().graficar();
-			Button eti = new OpcionAgregarEtiqueta().graficar();
-			HBox botones = new HBox(20);
+			Button com = new AgregarComentario().graficar();
+			Button rep = new AgregarReporte().graficar();
+			Button eti = new AgregarEtiqueta().graficar();
+			
+			FlowPane botones = new FlowPane();
 			botones.setPadding(new Insets(20,20,20,20));
 			AgregarReporteHandler handlerReporte = new AgregarReporteHandler();
 			AgregarComentarioHandler handlerComentario = new AgregarComentarioHandler();
@@ -201,8 +204,12 @@ public class Obra extends ObjetoReporte{
 			botones.getChildren().add(eti);
 			if(!(PaneInteraccion.getTipoUsuario()==new Invitado().descripcion() )) {
 				rep= new Button("Borrar");
+				Button act = new ActualizarObra().graficar();
+				ActualizarHandler handlerActualizar = new ActualizarHandler();
 				BorrarObraHandler handlerBorrarObra = new BorrarObraHandler();
 				rep.setOnAction(handlerBorrarObra);
+				act.setOnAction(handlerActualizar);
+				botones.getChildren().add(act);
 			}
 			
 			VBox contenedor = new VBox();
@@ -224,7 +231,21 @@ public class Obra extends ObjetoReporte{
 			
 			FieldPanel.setAux(Obra.this);
 			try {
-				new OpcionAgregarReporte().ejecutar();
+				new AgregarReporte().ejecutar();
+			} catch (NoCoincideTamano | CantBeNull e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	class ActualizarHandler implements EventHandler<ActionEvent>{
+		@Override
+		public void handle(ActionEvent arg0) {
+			
+			FieldPanel.setAux(Obra.this);
+			try {
+				new ActualizarObra().ejecutar();
 			} catch (NoCoincideTamano | CantBeNull e) {
 				e.printStackTrace();
 			}
@@ -248,7 +269,7 @@ public class Obra extends ObjetoReporte{
 			
 			FieldPanel.setAux(Obra.this);
 			try {
-				new OpcionAgregarComentario().ejecutar();
+				new AgregarComentario().ejecutar();
 			} catch (NoCoincideTamano | CantBeNull e) {
 				e.printStackTrace();
 			}
@@ -263,7 +284,7 @@ public class Obra extends ObjetoReporte{
 			
 			FieldPanel.setAux(Obra.this);
 			try {
-				new OpcionAgregarEtiqueta().ejecutar();
+				new AgregarEtiqueta().ejecutar();
 			} catch (NoCoincideTamano | CantBeNull e) {
 				e.printStackTrace();
 			}

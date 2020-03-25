@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 
-import gestorAplicacion.Excepciones.ExcepcionFueraRango;
+import Excepciones.ExcepcionFueraRango;
 import gestorAplicacion.Obras.Obra;
 import gui.paneles.PaneInteraccion;
 import javafx.scene.layout.BorderPane;

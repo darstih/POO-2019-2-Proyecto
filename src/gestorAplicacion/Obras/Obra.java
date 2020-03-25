@@ -173,7 +173,7 @@ public class Obra extends ObjetoReporte{
 				
 				Button com = new OpcionAgregarComentario().graficar();
 				Button br= new Button("Borrar");
-				Button eti = new OpcionAgregarComentario().graficar();
+				Button eti = new OpcionAgregarEtiqueta().graficar();
 				HBox botones = new HBox(20);
 				BorrarObraHandler handlerBorrarObra = new BorrarObraHandler();
 				AgregarComentarioHandler handlerComentario = new AgregarComentarioHandler();

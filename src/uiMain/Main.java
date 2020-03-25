@@ -20,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uiMain.menuConsola.OpcionDeMenu;
 import uiMain.menuConsola.opciones.OpcionAgregarComentario;
-import uiMain.menuConsola.opciones.OpcionSalir;
 import uiMain.menuConsola.opciones.administrador.OpcionAgregarObra;
 import uiMain.menuConsola.opciones.administrador.OpcionListarObrasPendientes;
 import uiMain.menuConsola.opciones.invitado.OpcionBuscarObras;
@@ -50,7 +49,8 @@ public class Main  extends Application{
 		pantalla.show();
 	}
 	public void stop() throws JsonGenerationException, JsonMappingException, IOException {
-		new OpcionSalir().ejecutar();
+		DBObra.guardar();
+		DBUsuario.guardar();
 	}
 	public static void cambiarScene(String invitado) {
 		ArrayList<OpcionDeMenu> op = new ArrayList<OpcionDeMenu>();

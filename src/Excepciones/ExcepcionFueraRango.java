@@ -1,4 +1,4 @@
-package gestorAplicacion.Excepciones;
+package Excepciones;
 //Autor Darwin Herrera
 public class ExcepcionFueraRango extends Exception{
 	public ExcepcionFueraRango() {

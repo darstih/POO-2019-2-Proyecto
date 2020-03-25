@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.StageStyle;
 import uiMain.menuConsola.OpcionDeMenu;
 
@@ -28,6 +29,12 @@ public class OpcionAgregarEtiqueta extends OpcionDeMenu {
 		PaneInteraccion.setPaneActual(form);
 		
 	}
+	
+	public Button graficar() {
+		return new Button(new OpcionAgregarEtiqueta().toString());
+	}
+	
+	
 	class CrearEtiquetaHandler implements EventHandler<ActionEvent>{
 
 		@Override

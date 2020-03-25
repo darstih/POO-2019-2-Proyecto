@@ -53,7 +53,7 @@ public abstract class OpcionDeMenu{ // La clase abstracta obligatoria
 	class CrearObraHandlerClass implements EventHandler<ActionEvent>{
 		@Override
 		public void handle(ActionEvent arg0) {
-			new Obra(auxiliar.getValue("Titulo"), auxiliar.getValue("Descripcion"), Double.parseDouble(auxiliar.getValue("Altura")), Double.parseDouble(auxiliar.getValue("Ancho")), Calendar.getInstance(), new ArrayList<Etiqueta>(),new Tecnica( auxiliar.getValue("tecnica")), auxiliar.getValue("autor"));
+			new Obra(auxiliar.getValue("Titulo"), auxiliar.getValue("Descripcion"), Double.parseDouble(auxiliar.getValue("Altura")), Double.parseDouble(auxiliar.getValue("Ancho")), Calendar.getInstance(), new ArrayList<Etiqueta>(),new Tecnica( auxiliar.getValue("tecnica")), auxiliar.getValue("autor"),true);
 		}
 	}
 	

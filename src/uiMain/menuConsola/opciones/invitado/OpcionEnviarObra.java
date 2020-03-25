@@ -41,7 +41,7 @@ public class OpcionEnviarObra extends OpcionDeMenu {
 		public void handle(ActionEvent arg0) {//Si este handler se activa es porque se está mostrando por lo tanto es el actual
 			try {
 				FieldPanel pane = (FieldPanel) PaneInteraccion.getPaneActual();
-				Invitado.postularObra(new Obra(pane.getValue("Titulo"), pane.getValue("Descripcion") ,Double.parseDouble(pane.getValue("Altura")), Double.parseDouble( pane.getValue("Ancho")),Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica( pane.getValue("Tecnica")), pane.getValue("Autor")));
+				Invitado.postularObra(new Obra(pane.getValue("Titulo"), pane.getValue("Descripcion") ,Double.parseDouble(pane.getValue("Altura")), Double.parseDouble( pane.getValue("Ancho")),Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica( pane.getValue("Tecnica")), pane.getValue("Autor"),false));
 				Alert dialogo = new Alert(AlertType.INFORMATION);
 				dialogo.setTitle("Obra agregada correctamente");
 				dialogo.setContentText("Cuando la apruebe un administrador será exitosamente agregada.");

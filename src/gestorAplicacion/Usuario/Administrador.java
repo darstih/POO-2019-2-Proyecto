@@ -1,10 +1,15 @@
 package gestorAplicacion.Usuario;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Interacciones.Reporte;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
+import gui.paneles.PaneInteraccion;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 //Autor clase y estructura Darwin Herrera
 public class Administrador extends Usuario {
 	//Atributos
@@ -100,6 +105,24 @@ public class Administrador extends Usuario {
 		public static void setAdministradores(ArrayList<Administrador> la) {
 			Administrador.usuarios = la;
 		}
-	
+		
+		
+		
+		
+		
+		public static FlowPane listarObraGraficaPendiente() {
+			FlowPane pane = new FlowPane();
+			pane.setVgap(10);
+			pane.setHgap(10);
+			Hashtable<BorderPane,Obra> tabla = new Hashtable<BorderPane,Obra>(); 
+			for(Obra i:obrasPendientes) {
+				BorderPane a = i.graficar(2);
+				tabla.put(a, i);
+				pane.getChildren().add(a);
+				
+			}
+			PaneInteraccion.setAux(tabla);
+			return pane;
+		}
     //Constructores
 }

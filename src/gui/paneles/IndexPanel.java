@@ -70,11 +70,6 @@ public class IndexPanel extends GridPane{
 		this.getRowConstraints().addAll(a,b);
 		this.getColumnConstraints().addAll(c1,c2);
 		
-		
-		VBox P5 = new VBox(p1,p2);
-		
-		VBox P6 = new VBox(p3,p4);
-		
 		this.add(p1,0,0);this.add(p3,1,0);
 		this.add(p2,0,1);this.add(p4,1,1);
 		
@@ -156,9 +151,10 @@ public class IndexPanel extends GridPane{
 		p4.add(btnAceptar,0,3,2,1);
 		p4.add(lbli,0,4,2,1);	
 		p4.add(btnInvitado,0,5,2,1);
-
+	
 		p4.setPadding(new Insets(10,10,10,10));
 		p4.setVgap(30);
+		p4.setAlignment(Pos.CENTER);
 		
 		//ESCUCHADORES
 		LblHandlerClassH lblHandlerClass = new LblHandlerClassH();
@@ -173,6 +169,7 @@ public class IndexPanel extends GridPane{
 		msalir.setOnAction(salir);
 		btnAceptar.setOnMouseClicked(validar);
 		btnInvitado.setOnMouseClicked(invitado);
+		
 	}
 	
 	private class LblHandlerClassH implements EventHandler<Event>{

@@ -105,10 +105,15 @@ public class Administrador extends Usuario {
 		public static void setAdministradores(ArrayList<Administrador> la) {
 			Administrador.usuarios = la;
 		}
-		
-		
-		
-		
+		public static void eliminarObra(Obra o) {
+			for(int i = 0; i<obrasPendientes.size();i++) {
+				if((o.getTitulo()+o.getAutor()).equals(obrasPendientes.get(i).getTitulo()+obrasPendientes.get(i).getAutor())) {
+					obrasPendientes.remove(i);
+					PaneInteraccion.setPaneActual(Administrador.listarObraGraficaPendiente());
+					break;
+				}
+			}
+		}
 		
 		public static FlowPane listarObraGraficaPendiente() {
 			FlowPane pane = new FlowPane();

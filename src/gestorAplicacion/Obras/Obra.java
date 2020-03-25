@@ -24,6 +24,7 @@ import javafx.scene.text.Text;
 import uiMain.menuConsola.opciones.OpcionAgregarComentario;
 import uiMain.menuConsola.opciones.OpcionAgregarEtiqueta;
 import uiMain.menuConsola.opciones.administrador.OpcionAgregarObra;
+import uiMain.menuConsola.opciones.administrador.OpcionListarObrasPendientes;
 import gestorAplicacion.Interacciones.Comentario;
 
 //Autor de clase y estructura Darwin Herrera
@@ -112,11 +113,11 @@ public class Obra extends ObjetoReporte{
 			Button addObra = new Button("Aprobar");
 			AprobarObraHandler ap = new AprobarObraHandler();
 			addObra.setOnAction(ap);
-			AgregarEtiquetaHandler et = new AgregarEtiquetaHandler();
-			Button addEti = new Button("Eliminar");
-			addEti.setOnAction(et);
+			EliminarObraHandler elimiarObra = new EliminarObraHandler();
+			Button removeObra = new Button("Eliminar");
+			removeObra.setOnAction(elimiarObra);
 			botones.getChildren().add(addObra);
-			botones.getChildren().add(addEti);
+			botones.getChildren().add(removeObra);
 		}
 		nuevo.getChildren().add(autor);
 		nuevo.getChildren().add(botones);
@@ -131,6 +132,16 @@ public class Obra extends ObjetoReporte{
 		public void handle(ActionEvent event) {
 			Obra.addObra(Obra.this);
 			Obra.this.setVisible(true);
+			Administrador.eliminarObra(Obra.this);
+			
+		}
+	
+	}
+	class EliminarObraHandler implements EventHandler<ActionEvent>{
+
+		@Override
+		public void handle(ActionEvent event) {
+			Administrador.eliminarObra(Obra.this);
 		}
 	
 	}

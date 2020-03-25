@@ -149,128 +149,82 @@ public class Obra extends ObjetoReporte{
 	class AbrirObraHandler implements EventHandler<MouseEvent>{
 		@Override
 		public void handle(MouseEvent arg0) {
-			if(!(PaneInteraccion.getTipoUsuario()=="Invitado")) {
-				BorderPane a = new BorderPane();
-				a.setStyle("-fx-background-color: #F94978");
-				BorderPane graf = (BorderPane) arg0.getSource(); 
-				a.setPadding(new Insets(20,20,20,20));
-				Obra obr = PaneInteraccion.getAux().get(graf);
-				Label titulo = new Label(obr.titulo);
-				a.setTop(titulo);
-				Label image = new Label(obr.imagen);
-				image.setPrefWidth(300);
-				a.setLeft(image);
-				VBox descripcion = new VBox(10);
-				
-				descripcion.getChildren().add(new Label("Descripción:"));
-				descripcion.getChildren().add(new Label(obr.descripcion));
-				descripcion.getChildren().add(new Label("Altura:"));
-				descripcion.getChildren().add(new Label(Double.toString(obr.altura)));
-				descripcion.getChildren().add(new Label("Ancho:"));
-				descripcion.getChildren().add(new Label(Double.toString(obr.ancho)));
-				descripcion.getChildren().add(new Label("Autor:"));
-				descripcion.getChildren().add(new Label(obr.autor.toString()));
-				descripcion.getChildren().add(new Label("Fecha creación:"));
-				descripcion.getChildren().add(new Label(obr.fechaCreacion.toString()));
-				descripcion.getChildren().add(new Label("Tecnica:"));
-				descripcion.getChildren().add(new Label(obr.tecnica.getNombre()));
-				a.setCenter(descripcion);
-				
-				HBox etiq = new HBox();
-				for(Etiqueta i:etiquetas) {
-					etiq.getChildren().add(i.graficar());
-				}
-				
-				
-				Button com = new OpcionAgregarComentario().graficar();
-				Button br= new Button("Borrar");
-				Button eti = new OpcionAgregarEtiqueta().graficar();
-				HBox botones = new HBox(20);
+			BorderPane a = new BorderPane();
+			a.setStyle("-fx-background-color: #F94978");
+			BorderPane graf = (BorderPane) arg0.getSource(); 
+			a.setPadding(new Insets(20,20,20,20));
+			Obra obr = PaneInteraccion.getAux().get(graf);
+			Label titulo = new Label(obr.titulo);
+			a.setTop(titulo);
+			Label image = new Label(obr.imagen);
+			image.setPrefWidth(300);
+			a.setLeft(image);
+			VBox descripcion = new VBox(10);
+			
+			descripcion.getChildren().add(new Label("Descripción:"));
+			descripcion.getChildren().add(new Label(obr.descripcion));
+			descripcion.getChildren().add(new Label("Altura:"));
+			descripcion.getChildren().add(new Label(Double.toString(obr.altura)));
+			descripcion.getChildren().add(new Label("Ancho:"));
+			descripcion.getChildren().add(new Label(Double.toString(obr.ancho)));
+			descripcion.getChildren().add(new Label("Autor:"));
+			descripcion.getChildren().add(new Label(obr.autor.toString()));
+			descripcion.getChildren().add(new Label("Fecha creación:"));
+			descripcion.getChildren().add(new Label(obr.fechaCreacion.toString()));
+			descripcion.getChildren().add(new Label("Tecnica:"));
+			descripcion.getChildren().add(new Label(obr.tecnica.getNombre()));
+			a.setCenter(descripcion);
+			
+			HBox etiq = new HBox();
+			for(Etiqueta i:etiquetas) {
+				etiq.getChildren().add(i.graficar());
+			}
+			
+			
+			Button com = new OpcionAgregarComentario().graficar();
+			Button rep = new OpcionAgregarReporte().graficar();
+			Button eti = new OpcionAgregarEtiqueta().graficar();
+			HBox botones = new HBox(20);
+			botones.setPadding(new Insets(20,20,20,20));
+			AgregarReporteHandler handlerReporte = new AgregarReporteHandler();
+			AgregarComentarioHandler handlerComentario = new AgregarComentarioHandler();
+			AgregarEtiquetaHandler handlerEtiqueta = new AgregarEtiquetaHandler();
+			
+			eti.setOnAction(handlerEtiqueta);
+			com.setOnAction(handlerComentario);
+			rep.setOnAction(handlerReporte);
+			
+			botones.getChildren().add(com);
+			botones.getChildren().add(rep);
+			botones.getChildren().add(eti);
+			if(!(PaneInteraccion.getTipoUsuario()==new Invitado().descripcion() )) {
+				rep= new Button("Borrar");
 				BorrarObraHandler handlerBorrarObra = new BorrarObraHandler();
-				AgregarComentarioHandler handlerComentario = new AgregarComentarioHandler();
-				AgregarEtiquetaHandler handlerEtiqueta = new AgregarEtiquetaHandler();
-				eti.setOnAction(handlerEtiqueta);
-				com.setOnAction(handlerComentario);
-				br.setOnAction(handlerBorrarObra);
-				botones.getChildren().add(com);
-				
-				botones.getChildren().add(eti);
-				
-				
-				VBox contenedor = new VBox();
-				contenedor.getChildren().add(botones);
-				contenedor.getChildren().add(etiq);
-				for(Comentario i: obr.comentarios) {
-					contenedor.getChildren().add(i.graficar());
-				}
-				
-				
-				
-				a.setBottom(contenedor);
-				
-				PaneInteraccion.setPaneActual(a);
-			}else {
-				BorderPane a = new BorderPane();
-				a.setStyle("-fx-background-color: #F94978");
-				BorderPane graf = (BorderPane) arg0.getSource(); 
-				a.setPadding(new Insets(20,20,20,20));
-				Obra obr = PaneInteraccion.getAux().get(graf);
-				Label titulo = new Label(obr.titulo);
-				a.setTop(titulo);
-				Label image = new Label(obr.imagen);
-				image.setPrefWidth(300);
-				a.setLeft(image);
-				VBox descripcion = new VBox(10);
-				
-				descripcion.getChildren().add(new Label("Descripción:"));
-				descripcion.getChildren().add(new Label(obr.descripcion));
-				descripcion.getChildren().add(new Label("Altura:"));
-				descripcion.getChildren().add(new Label(Double.toString(obr.altura)));
-				descripcion.getChildren().add(new Label("Ancho:"));
-				descripcion.getChildren().add(new Label(Double.toString(obr.ancho)));
-				descripcion.getChildren().add(new Label("Autor:"));
-				descripcion.getChildren().add(new Label(obr.autor.toString()));
-				descripcion.getChildren().add(new Label("Fecha creación:"));
-				descripcion.getChildren().add(new Label(obr.fechaCreacion.toString()));
-				descripcion.getChildren().add(new Label("Tecnica:"));
-				descripcion.getChildren().add(new Label(obr.tecnica.getNombre()));
-				a.setCenter(descripcion);
-				
-				HBox etiq = new HBox();
-				for(Etiqueta i:etiquetas) {
-					etiq.getChildren().add(i.graficar());
-				}
-				
-				
-				Button com = new OpcionAgregarComentario().graficar();
-				
-				Button eti = new OpcionAgregarComentario().graficar();
-				HBox botones = new HBox(20);
-				botones.setPadding(new Insets(20,20,20,20));
-				
-				AgregarComentarioHandler handlerComentario = new AgregarComentarioHandler();
-				AgregarEtiquetaHandler handlerEtiqueta = new AgregarEtiquetaHandler();
-				Button borrar = new Button("Borrar");
-				
-				eti.setOnAction(handlerEtiqueta);
-				com.setOnAction(handlerComentario);
-				botones.getChildren().add(com);
-				
-				botones.getChildren().add(eti);
-				
-				
-				VBox contenedor = new VBox();
-				contenedor.getChildren().add(botones);
-				contenedor.getChildren().add(etiq);
-				for(Comentario i: obr.comentarios) {
-					contenedor.getChildren().add(i.graficar());
-				}
-				
-				
-				
-				a.setBottom(contenedor);
-				
-				PaneInteraccion.setPaneActual(a);
+				rep.setOnAction(handlerBorrarObra);
+			}
+			
+			VBox contenedor = new VBox();
+			contenedor.getChildren().add(botones);
+			contenedor.getChildren().add(etiq);
+			for(Comentario i: obr.comentarios) {
+				contenedor.getChildren().add(i.graficar());
+			}
+			a.setBottom(contenedor);
+			PaneInteraccion.setPaneActual(a);
+			
+			
+		}
+		
+	}
+	class AgregarReporteHandler implements EventHandler<ActionEvent>{
+		@Override
+		public void handle(ActionEvent arg0) {
+			
+			FieldPanel.setAux(Obra.this);
+			try {
+				new OpcionAgregarReporte().ejecutar();
+			} catch (NoCoincideTamano | CantBeNull e) {
+				e.printStackTrace();
 			}
 			
 		}

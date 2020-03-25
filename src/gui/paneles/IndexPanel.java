@@ -16,7 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import uiMain.Main;
@@ -41,7 +43,7 @@ public class IndexPanel extends GridPane{
 	private static int cntI = 0;
 	private static int cntD = 0;
 	
-	public IndexPanel() throws Exception {
+	public IndexPanel()  {
 		GridPane p1 = new GridPane();
 		GridPane p2 = new GridPane();
 		BorderPane p3 = new BorderPane();
@@ -57,22 +59,24 @@ public class IndexPanel extends GridPane{
 		
 		barraMenu.getMenus().add(inicio);
 		
-		p1.setMinSize(300, 200);
-		p1.setMaxSize(300, 200);
-		p2.setMinSize(300, 400);;
-		p2.setMaxSize(300, 400);
-		p3.setMinSize(300, 200);
-		p3.setMaxSize(300, 200);
-		p4.setMinSize(300, 400);
-		p4.setMaxSize(300, 400);
+		RowConstraints a = new RowConstraints();
+		a.setPercentHeight(100/3);
+		RowConstraints b = new RowConstraints();
+		b.setPercentHeight(100*2/3);
+		ColumnConstraints c1 = new ColumnConstraints();
+		c1.setPercentWidth(50);
+		ColumnConstraints c2 = new ColumnConstraints();
+		c2.setPercentWidth(50);
+		this.getRowConstraints().addAll(a,b);
+		this.getColumnConstraints().addAll(c1,c2);
 		
 		
 		VBox P5 = new VBox(p1,p2);
 		
 		VBox P6 = new VBox(p3,p4);
 		
-		this.add(P5,0,0);
-		this.add(P6,1,0);
+		this.add(p1,0,0);this.add(p3,1,0);
+		this.add(p2,0,1);this.add(p4,1,1);
 		
 		//ELEMENTOS VALIDACION
 		Label lblLogin = new Label("Iniciar sesión ");

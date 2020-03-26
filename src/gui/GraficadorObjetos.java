@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -30,7 +31,7 @@ import javafx.scene.layout.VBox;
 public class GraficadorObjetos {
 	private static Obra obra;
 	
-	public static BorderPane graficar(Obra a,int opcion) {
+	public static BorderPane graficar(Obra a,int opcion,String indice) {
 		obra = a;
 		GraficadorObjetos graficador = new GraficadorObjetos();
 		AbrirObraHandler eve = graficador.new AbrirObraHandler();
@@ -38,6 +39,7 @@ public class GraficadorObjetos {
 		obraGrafica.setStyle("-fx-background-color: #F94978");
 		Label imagen = new Label(obra.rutaImagen());
 		obraGrafica.setOnMouseClicked(eve);
+		obraGrafica.setId(indice);
 		Label titulo = new Label(obra.getTitulo());
 		Label autor = new Label(obra.getAutor());
 		obraGrafica.setPadding(new Insets(10,10,10,10));
@@ -55,8 +57,10 @@ public class GraficadorObjetos {
 			AgregarComentarioHandler co = graficador.new AgregarComentarioHandler();
 			Button addCom = new Button("+Comentario");
 			addCom.setOnAction(co);
+			addCom.setId(indice);
 			AgregarEtiquetaHandler et = graficador.new AgregarEtiquetaHandler();
 			Button addEti = new Button("+Etiqueta");
+			addEti.setId(indice);
 			addEti.setOnAction(et);
 			botones.getChildren().add(addCom);
 			botones.getChildren().add(addEti);
@@ -118,10 +122,12 @@ public class GraficadorObjetos {
 		FlowPane pane = new FlowPane();
 		pane.setVgap(10);
 		pane.setHgap(10);
-		Hashtable<BorderPane,Obra> tabla = new Hashtable<BorderPane,Obra>(); 
+		int cont = 0;
+		Hashtable<String,Obra> tabla = new Hashtable<String,Obra>(); 
 		for(Obra i:Administrador.getObrasPendientes()) {
-			BorderPane a = graficar(i,2);
-			tabla.put(a, i);
+			BorderPane a = graficar(i,2,""+cont);
+			tabla.put(""+cont, i);
+			cont++;
 			pane.getChildren().add(a);
 			
 		}
@@ -138,7 +144,7 @@ public class GraficadorObjetos {
 			a.setStyle("-fx-background-color: #F94978");
 			BorderPane graf = (BorderPane) arg0.getSource(); 
 			a.setPadding(new Insets(20,20,20,20));
-			Obra obr = PaneInteraccion.getAux().get(graf);
+			Obra obr = PaneInteraccion.getAux().get(graf.getId());
 			Label titulo = new Label(obr.getTitulo());
 			a.setTop(titulo);
 			Label image = new Label(obr.rutaImagen());
@@ -273,8 +279,9 @@ public class GraficadorObjetos {
 
 		@Override
 		public void handle(ActionEvent arg0) {
-			
-			FieldPanel.setAux(obra);
+			Button graf = (Button)arg0.getSource();
+			Obra obr = PaneInteraccion.getAux().get(graf.getId());
+			FieldPanel.setAux(obr);
 			try {
 				new AgregarEtiqueta().ejecutar();
 			} catch (NoCoincideTamano | CantBeNull e) {

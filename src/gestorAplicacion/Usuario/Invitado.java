@@ -1,5 +1,6 @@
 package gestorAplicacion.Usuario;
 
+import Excepciones.ErrorComentarioRepetido;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
@@ -11,7 +12,7 @@ public class Invitado extends Usuario{
     //Atributos
     
     //Metodos
-	public static void addComentario(Obra o, Comentario c) {
+	public static void addComentario(Obra o, Comentario c)throws ErrorComentarioRepetido {
 		Administrador.addComentario(o,c);
 	}
     public static void reporte(Reporte r){

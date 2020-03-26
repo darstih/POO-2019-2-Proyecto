@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import Excepciones.ErrorComentarioRepetido;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.ObjetoReporte;
@@ -34,6 +35,18 @@ public class Obra extends ObjetoReporte{
 	private static ArrayList<Obra> obras= new ArrayList<Obra>();
 	private ArrayList<Comentario> comentarios; 
 	//Metodos
+	
+	public boolean comentarioRepetido(Comentario comentario)throws ErrorComentarioRepetido {
+		boolean answer = false;
+		for(int i = 0; i<comentarios.size();i++) {
+			if(comentarios.get(i).getContenido().equalsIgnoreCase(comentario.getContenido())) {
+				answer = true;
+				throw new ErrorComentarioRepetido();
+			}
+		}
+		return answer;
+	}
+	
 	
 	public static boolean existeObra(Obra obra)throws ErrorObraRepetida {
 		boolean answer = false;
@@ -126,8 +139,10 @@ public class Obra extends ObjetoReporte{
 		return listaTecnicas;
 	}
 	
-	public void agregarComentario(Comentario c) {
-	    this.comentarios.add(c);
+	public void agregarComentario(Comentario c)throws ErrorComentarioRepetido {
+		if(!comentarioRepetido(c)) {
+			this.comentarios.add(c);
+		}
 	}
 	public static void addObra(Obra o) {
 	    Obra.obras.add(o);

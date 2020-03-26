@@ -3,6 +3,7 @@ package gestorAplicacion.Usuario;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import Excepciones.ErrorComentarioRepetido;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
@@ -31,7 +32,7 @@ public class Administrador extends Usuario {
 		
   	}
 	//autor Darwin Herrera
-	public static void addComentario(Obra o,Comentario c) {
+	public static void addComentario(Obra o,Comentario c)throws ErrorComentarioRepetido {
 		o.agregarComentario(c);
 	}
 

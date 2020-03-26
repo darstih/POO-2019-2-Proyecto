@@ -20,17 +20,17 @@ public class Comentario extends ObjetoReporte{
     //Getters y setters
 
     public String getAutor(){
-	return autor;
+    	return autor;
     }
     public boolean getVisible(){
-	return this.visible;
+    	return this.visible;
     }
     public void setVisible(boolean v){
-	this.visible = v;//se oculta comentario por reporte
+    	this.visible = v;//se oculta comentario por reporte
     }   
     
     public String getContenido(){
-	return contenido;
+    	return contenido;
     }
 ////    public boolean getVisible(){
 ////	return this.visible;

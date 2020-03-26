@@ -146,6 +146,15 @@ public class Obra extends ObjetoReporte{
 	
 	
 	//Getters y setters
+	
+	public static ArrayList<Tecnica> getListaTecnicas(){
+		return listaTecnicas;
+	}
+	
+	public static ArrayList<Etiqueta> getListaEtiquetas(){
+		return listaEtiquetas;
+	}
+	
 	public void agregarComentario(Comentario c) {
 	    this.comentarios.add(c);
 	}

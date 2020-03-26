@@ -35,17 +35,17 @@ public class PaneInteraccion extends VBox{
 	private static BorderPane actual; 
 	private static ArrayList<OpcionDeMenu> opciones;
 	private static String tipousuario;
-	private static Hashtable<BorderPane,Obra> auxiliar; 
+	private static Hashtable<String,Obra> auxiliar; 
 	//Metodos
 	
 	
 	//Getter y setter
 	
 	
-	public static Hashtable<BorderPane,Obra> getAux() {
+	public static Hashtable<String,Obra> getAux() {
 		return auxiliar;
 	}
-	public static void setAux(Hashtable<BorderPane,Obra> a) {
+	public static void setAux(Hashtable<String,Obra> a) {
 		auxiliar = a;
 	}
 	
@@ -185,7 +185,7 @@ public class PaneInteraccion extends VBox{
 		@Override
 		public void handle(ActionEvent arg0) {
 			Alert a = new Alert(AlertType.INFORMATION);
-			a.setTitle("Informaci�n sobre usuario: ");
+			a.setTitle("Informacion sobre usuario: ");
 			a.setContentText(tipousuario);
 			a.initStyle(StageStyle.UTILITY);
 			a.showAndWait();

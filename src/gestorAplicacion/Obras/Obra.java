@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Excepciones.CantBeNull;
+import Excepciones.ErrorEtiquetaRepetida;
+import Excepciones.ErrorObraRepetida;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;
 import gestorAplicacion.Usuario.Administrador;
@@ -40,7 +42,7 @@ public class Obra extends ObjetoReporte{
 	private String imagen= "Ruta de imagen";
 	private Double altura;
 	private Double ancho;
-	private static ArrayList<Etiqueta> listaEtiquetas = new ArrayList<Etiqueta>();
+	
 	private ArrayList<Etiqueta> etiquetas = new ArrayList<Etiqueta>();
 	private Calendar fechaCreacion;
 	private Calendar fechaIngreso;
@@ -50,23 +52,10 @@ public class Obra extends ObjetoReporte{
 	private static ArrayList<Obra> obras= new ArrayList<Obra>();
 	private ArrayList<Comentario> comentarios; 
 	//Metodos
-	public boolean verificarEtiqueta(Etiqueta etiqueta){
-		boolean retornar = false;
-		if(listaEtiquetas.isEmpty()){
-			for (int i=0;i<listaEtiquetas.size();i++){
-				if(etiqueta.getLabel().equalsIgnoreCase(listaEtiquetas.get(i).getLabel())){
-					retornar=true;
-					break;
-				}
-			}
-		}
-		
-		return retornar;
-	}
 	//Cree este método nuevo para verificar si una etiqueta existente ya está agregada en la obra
 	public boolean verificarEtiquetaEnObra(Etiqueta etiqueta){//Retornará true si ya está creada
 		boolean retornar = false;
-		if(etiquetas.isEmpty()){
+		if(!etiquetas.isEmpty()){
 			for (int i=0;i<etiquetas.size();i++){
 				if(etiqueta.getLabel().equalsIgnoreCase(etiquetas.get(i).getLabel())){
 					retornar=true;
@@ -74,30 +63,21 @@ public class Obra extends ObjetoReporte{
 				}
 			}
 		}
-		
 		return retornar;
 	}
 	
 	
 	
-	public void crearEtiqueta(Etiqueta etiqueta){
-		if(!verificarEtiqueta(etiqueta)){
-			listaEtiquetas.add(etiqueta);
-			System.out.println(etiqueta.getLabel());
+	public void crearEtiqueta(Etiqueta etiqueta)throws ErrorEtiquetaRepetida{
+		if(!Etiqueta.verificarEtiqueta(etiqueta)){
+			Etiqueta.setEtiqueta(etiqueta);
+			etiqueta.aumentarCantObras();
 			etiquetas.add(etiqueta);
-			etiqueta.cantObras++;
-		}
-		else if (!verificarEtiquetaEnObra(etiqueta)){
-			for (int i=0;i<listaEtiquetas.size();i++){
-				if(etiqueta.getLabel().equalsIgnoreCase(listaEtiquetas.get(i).getLabel())){
-					etiquetas.add(listaEtiquetas.get(i));
-					listaEtiquetas.get(i).cantObras++;
-					break;
-				}
-			}
-		}
-		else{
-			System.out.println("La etiqueta "+etiqueta.getLabel()+" ya esta creada y esta en la obra.");
+		}else if (!verificarEtiquetaEnObra(etiqueta)){
+			Etiqueta.aumentarContador(etiqueta);
+			etiquetas.add(etiqueta);
+		}else{
+			throw new ErrorEtiquetaRepetida();
 		}
 		
 	}
@@ -222,7 +202,7 @@ public class Obra extends ObjetoReporte{
 		Obra.obras = a;
 	}
 	//constructores
-	public Obra(String titulo, String descripcion, Double altura, Double ancho, Calendar fecCreacion,  ArrayList<Etiqueta> etiquetas,Tecnica tecnica, String autor,boolean visible){
+	public Obra(String titulo, String descripcion, Double altura, Double ancho, Calendar fecCreacion,  ArrayList<Etiqueta> etiquetas,Tecnica tecnica, String autor,boolean visible)throws ErrorEtiquetaRepetida{
 		
 		this.titulo = titulo;
 		this.descripcion = descripcion;
@@ -233,9 +213,7 @@ public class Obra extends ObjetoReporte{
 		this.fechaIngreso = Calendar.getInstance();
 		this.autor = autor;
 		this.comentarios = new ArrayList<Comentario>();
-		for(int i=0;i<etiquetas.size();i++){
-			crearEtiqueta(etiquetas.get(i));
-		}
+		this.etiquetas = etiquetas;
 		crearTecnica(tecnica);
 	}
 	public static ArrayList<Obra> getObras() {

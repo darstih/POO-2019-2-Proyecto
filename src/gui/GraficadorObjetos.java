@@ -282,8 +282,9 @@ public class GraficadorObjetos {
 	class AgregarComentarioHandler implements EventHandler<ActionEvent>{
 		@Override
 		public void handle(ActionEvent arg0) {
-			
-			FieldPanel.setAux(obra);
+			Button graf = (Button)arg0.getSource();
+			Obra obr = PaneInteraccion.getAux().get(graf.getId());
+			FieldPanel.setAux(obr);
 			try {
 				new AgregarComentario().ejecutar();
 			} catch (NoCoincideTamano | CantBeNull e) {

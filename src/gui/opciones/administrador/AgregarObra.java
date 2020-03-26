@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.StageStyle;
 import gui.opciones.Independiente;
@@ -47,20 +48,22 @@ public class AgregarObra extends OpcionDeMenu implements Independiente{
 	class CrearObraHandler implements EventHandler<ActionEvent>{
 		@Override
 		public void handle(ActionEvent arg0){//Si este handler se activa es porque se está mostrando por lo tanto es el actual
-			String respuesta = "";
 			String titulo = "";
+			Label respuesta = new Label();
+			respuesta.setWrapText(true);
 			Alert dialogo = new Alert(AlertType.INFORMATION);
 			try {
 				Pane pane = PaneInteraccion.getPaneActual();
 				Administrador.agregarObra(new Obra(((FieldPanel) pane).getValue("Titulo"), ((FieldPanel) pane).getValue("Descripcion") ,Double.parseDouble(((FieldPanel) pane).getValue("Altura")), Double.parseDouble(((FieldPanel) pane).getValue("Ancho")),Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica(((FieldPanel) pane).getValue("Tecnica")), ((FieldPanel) pane).getValue("Autor"),true));
 				titulo = "Obra agregada correctamente";
-				respuesta = "La obra se agrego correctamente";
-			} catch (NumberFormatException | ErrorEtiquetaRepetida e) {
+				respuesta.setText("La obra se agrego correctamente");
+			} catch (NumberFormatException | ErrorEtiquetaRepetida | ErrorObraRepetida e) {
 				titulo = "ERROR";
-				respuesta = e.getMessage();
+				respuesta.setText(e.getMessage());
+				dialogo.setAlertType(AlertType.ERROR);
 			}finally {
 				dialogo.setTitle(titulo);
-				dialogo.setContentText(respuesta);
+				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
 				PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(), 1));

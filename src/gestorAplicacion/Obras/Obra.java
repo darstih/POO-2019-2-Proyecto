@@ -54,6 +54,19 @@ public class Obra extends ObjetoReporte{
 	private static ArrayList<Obra> obras= new ArrayList<Obra>();
 	private ArrayList<Comentario> comentarios; 
 	//Metodos
+	
+	public static boolean existeObra(Obra obra)throws ErrorObraRepetida {
+		boolean answer = false;
+		for(int i = 0; i<obras.size();i++) {
+			if(obras.get(i).IdUnico().equals(obra.IdUnico())) {
+				answer = false;
+				throw new ErrorObraRepetida();
+			}
+		}
+		return answer;
+	}
+	
+	
 	//Cree este método nuevo para verificar si una etiqueta existente ya está agregada en la obra
 	public boolean verificarEtiquetaEnObra(Etiqueta etiqueta){//Retornará true si ya está creada
 		boolean retornar = false;

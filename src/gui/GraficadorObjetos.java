@@ -3,6 +3,7 @@ package gui;
 import java.util.Hashtable;
 
 import Excepciones.CantBeNull;
+import Excepciones.ErrorObraRepetida;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Etiqueta;
@@ -18,15 +19,18 @@ import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.StageStyle;
 
 public class GraficadorObjetos {
 	private static Obra obra;
@@ -66,10 +70,12 @@ public class GraficadorObjetos {
 			botones.getChildren().add(addEti);
 		}else if(opcion==2) {
 			Button addObra = new Button("Aprobar");
+			addObra.setId(indice);
 			AprobarObraHandler ap = graficador.new AprobarObraHandler();
 			addObra.setOnAction(ap);
 			EliminarObraHandler elimiarObra = graficador.new EliminarObraHandler();
 			Button removeObra = new Button("Eliminar");
+			removeObra.setId(indice);
 			removeObra.setOnAction(elimiarObra);
 			botones.getChildren().add(addObra);
 			botones.getChildren().add(removeObra);
@@ -85,10 +91,29 @@ public class GraficadorObjetos {
 
 		@Override
 		public void handle(ActionEvent event) {
-			Obra.addObra(obra);
-			obra.setVisible(true);
-			eliminarObra(obra);
-			
+			String titulo = "";
+			Label respuesta = new Label();
+			respuesta.setWrapText(true);
+			Alert dialogo = new Alert(AlertType.INFORMATION);
+			Button graf = (Button)event.getSource();
+			Obra obr = PaneInteraccion.getAux().get(graf.getId());
+			try {
+				Administrador.agregarObra(obr);
+				titulo = "Obra agregada correctamente";
+				respuesta.setText("La obra se agrego correctamente");
+				Administrador.eliminarObraPendiente(obr);
+				obr.setVisible(true);
+			} catch (ErrorObraRepetida e) {
+				titulo = "ERROR";
+				respuesta.setText(e.getMessage());
+				dialogo.setAlertType(AlertType.ERROR);
+			}finally {
+				dialogo.setTitle(titulo);
+				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+				dialogo.initStyle(StageStyle.UTILITY);
+				dialogo.showAndWait();
+				PaneInteraccion.setPaneActual(listarObraGraficaPendiente());
+			}
 		}
 	
 	}
@@ -96,7 +121,10 @@ public class GraficadorObjetos {
 
 		@Override
 		public void handle(ActionEvent event) {
-			eliminarObra(obra);
+			Button graf = (Button)event.getSource();
+			Obra obr = PaneInteraccion.getAux().get(graf.getId());
+			Administrador.eliminarObraPendiente(obr);
+			PaneInteraccion.setPaneActual(listarObraGraficaPendiente());
 		}
 	
 	}
@@ -108,16 +136,6 @@ public class GraficadorObjetos {
     	return cont;
     }
     
-	public static void eliminarObra(Obra o) {
-		for(int i = 0; i<Administrador.getObrasPendientes().size();i++) {
-			if((o.getTitulo()+o.getAutor()).equals(Administrador.getObrasPendientes().get(i).getTitulo()+Administrador.getObrasPendientes().get(i).getAutor())) {
-				Administrador.getObrasPendientes().remove(i);
-				PaneInteraccion.setPaneActual(listarObraGraficaPendiente());
-				break;
-			}
-		}
-	}
-	
 	public static FlowPane listarObraGraficaPendiente() {
 		FlowPane pane = new FlowPane();
 		pane.setVgap(10);

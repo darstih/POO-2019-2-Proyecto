@@ -1,6 +1,7 @@
 package gestorAplicacion.Usuario;
 
 import Excepciones.ErrorEtiquetaRepetida;
+import Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Interacciones.Reporte;
 import gestorAplicacion.Obras.Etiqueta;
@@ -26,8 +27,8 @@ public class Invitado extends Usuario{
     public static void borrarEtiqueta(Obra o,Etiqueta e) {
     	Administrador.borrarEtiqueta(o, e);
     }
-    public static void postularObra(Obra o){
-	Administrador.addObraPendiente(o);
+    public static void postularObra(Obra o)throws ErrorObraRepetida{
+	  Administrador.addObraPendiente(o);
     }
     //Getters y setters
 	@Override

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import Excepciones.ErrorEtiquetaRepetida;
+import Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Interacciones.Reporte;
 import gestorAplicacion.Obras.Etiqueta;
@@ -23,8 +24,11 @@ public class Administrador extends Usuario {
 	
 	//Metodos
 	//autor Darwin Herrera
-	public static void agregarObra(Obra a) {
-		Obra.addObra(a);
+	public static void agregarObra(Obra a)throws ErrorObraRepetida{
+		if(!Obra.existeObra(a)) {
+			Obra.addObra(a);
+		}
+		
   	}
 	//autor Darwin Herrera
 	public static void addComentario(Obra o,Comentario c) {
@@ -61,14 +65,25 @@ public class Administrador extends Usuario {
 	public static void borrarEtiqueta(Obra a, Etiqueta e) {
 		a.borrarEtiqueta(e);
 	}
-        public static void addObraPendiente(Obra o){
-	    obrasPendientes.add(o);
-        }
+    public static void addObraPendiente(Obra o)throws ErrorObraRepetida{
+    	if(!Obra.existeObra(o)) {
+    		obrasPendientes.add(o);
+    	}
     
-        public static void aprobarObra(Obra o) {
-	        agregarObra(o);
-	        obrasPendientes.remove(o);
 	}
+    public static void eliminarObraPendiente(Obra o) {
+		for(int i = 0; i<obrasPendientes.size();i++) {
+			if((o.IdUnico()).equals(obrasPendientes.get(i).IdUnico())) {
+				obrasPendientes.remove(i);
+				break;
+			}
+		}
+	}
+    public static void aprobarObra(Obra o)throws ErrorObraRepetida {
+    	agregarObra(o);
+    	o.setVisible(true);
+    	obrasPendientes.remove(o);
+	}	
     //Getters y setters
 		public static ArrayList<Obra> getObrasPendientes() {
 			return obrasPendientes;

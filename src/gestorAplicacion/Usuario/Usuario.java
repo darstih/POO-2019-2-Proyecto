@@ -127,7 +127,7 @@ public abstract class Usuario{
 		String titulo;
 		int numerodeuso=0;
 		for(int i=0;i<Administrador.getReportesObra().size();i++) {
-			String[] id=Administrador.getReportesObra().get(i).getObjetoReporte().getIdUnico().split(" ");
+			String[] id=Administrador.getReportesObra().get(i).getObjetoReporte().IdUnico().split(" ");
 			artista=id[0];
 			titulo=id[1];
 			int uso=0;

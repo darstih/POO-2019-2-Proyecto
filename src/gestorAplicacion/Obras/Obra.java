@@ -3,6 +3,8 @@ package gestorAplicacion.Obras;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import Excepciones.CantBeNull;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;
@@ -29,7 +31,7 @@ import gestorAplicacion.Interacciones.Comentario;
 
 //Autor de clase y estructura Darwin Herrera
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Obra extends ObjetoReporte{
 	public Obra() {Obra.obras.add(this);}
 
@@ -272,7 +274,7 @@ public class Obra extends ObjetoReporte{
 		this.comentarios = comentarios;
 	}
 	@Override
-	public String getIdUnico() {
+	public String IdUnico() {
 		// TODO Auto-generated method stub
 		return autor+" "+titulo;
 	}

@@ -50,10 +50,12 @@ public abstract class Usuario{
 		pane.setVgap(10);
 		pane.setHgap(10);
 		obras= listarObra(obras,listado);
-		Hashtable<BorderPane,Obra> tabla = new Hashtable<BorderPane,Obra>(); 
+		Hashtable<String,Obra> tabla = new Hashtable<String,Obra>();
+		int cont = 0;
 		for(Obra i:obras) {
-			BorderPane a = GraficadorObjetos.graficar(i,1);
-			tabla.put(a, i);
+			BorderPane a = GraficadorObjetos.graficar(i,1,""+cont);
+			tabla.put(""+cont, i);
+			cont++;
 			pane.getChildren().add(a);
 			
 		}

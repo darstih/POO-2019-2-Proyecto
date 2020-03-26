@@ -170,7 +170,7 @@ public abstract class Usuario{
 		ArrayList<Obra> a = Obra.getObras();
 		ArrayList<Obra> res=new ArrayList<Obra>();
 		for(int i=0;i<a.size();i++) {
-			if(a.get(i).getTecnica().getNombre()==var) {
+			if(a.get(i).getTecnica().getNombre().equalsIgnoreCase(var)) {
 				res.add(a.get(i));
 			}
 		}
@@ -180,7 +180,7 @@ public abstract class Usuario{
 		ArrayList<Obra> a = Obra.getObras();
 		ArrayList<Obra> res=new ArrayList<Obra>();
 		for(int i=0;i<a.size();i++) {
-			if(a.get(i).getTitulo()==var) {
+			if(a.get(i).getTitulo().equalsIgnoreCase(var)) {
 				res.add(a.get(i));
 			}
 		}

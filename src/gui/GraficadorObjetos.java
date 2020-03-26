@@ -19,6 +19,7 @@ import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
@@ -27,6 +28,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -153,7 +155,36 @@ public class GraficadorObjetos {
 		return pane;
 	}
 	
-	
+	public static VBox panelBienvenida(String user) {
+		Label titulo = new Label("Bienvenido "+user+" a Művezárt");
+		titulo.setPadding(new Insets(40,40,40,40));
+		titulo.setStyle("-fx-font-size: 15pt;");
+		titulo.setAlignment(Pos.CENTER);
+		Label descripcion;
+		if(user=="Invitado") {
+			descripcion = new Label("Esta es una simulación virtual de una galeria de arte\n"
+					+ "por lo tanto podrás ver, buscar, comentar y etiquetar las obras que \n"
+					+ "están dentro de nuestra base de datos\n\n"
+					+ "Dentro del menú de procesos y consultas podrá encontrar las siguientes opciones\n" + 
+					"-Buscar Obras\n" + 
+					"-Listar Obras\n" + 
+					"-Enviar sugerencias de Obras: que aparece como 'Enviar obra'\n");
+		}else {
+			descripcion = new Label(user+" usted es un usuario administrador\n"
+					+ "Dentro del menú de procesos y consultas podrá encontrar las siguientes opciones\n"
+					+ "-Buscar Obras\n"
+					+ "-Listar Obras\n"
+					+ "-Agregar Obras\n"
+					+ "-Listar Obras pendientes por aprobación\n");
+		}
+		descripcion.setAlignment(Pos.TOP_LEFT);
+		VBox pane = new VBox();
+		pane.setAlignment(Pos.CENTER);
+		pane.getChildren().add(titulo);
+		pane.getChildren().add(descripcion);
+		return pane;
+		
+	}
 	
 	class AbrirObraHandler implements EventHandler<MouseEvent>{
 		@Override
@@ -283,7 +314,7 @@ public class GraficadorObjetos {
 		@Override
 		public void handle(ActionEvent arg0) {
 			Button graf = (Button)arg0.getSource();
-			Obra obr = PaneInteraccion.getAux().get(graf.getId());
+			Obra obr = PaneInteraccion.getAux().get(graf);
 			FieldPanel.setAux(obr);
 			try {
 				new AgregarComentario().ejecutar();

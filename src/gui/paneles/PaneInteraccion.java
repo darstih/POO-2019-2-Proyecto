@@ -22,6 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.StageStyle;
+import gui.GraficadorObjetos;
 import gui.opciones.OpcionDeMenu;
 import gui.opciones.publico.Salir;
 
@@ -131,7 +132,7 @@ public class PaneInteraccion extends VBox{
 		
 		
 		
-		actual.setCenter(Usuario.listarObraGrafica(Obra.getObras(), 1));
+		actual.setCenter(GraficadorObjetos.panelBienvenida(user));
 		this.getChildren().add(actual);
 		
 		

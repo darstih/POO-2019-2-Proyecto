@@ -133,10 +133,6 @@ public class Obra extends ObjetoReporte{
 		return listaTecnicas;
 	}
 	
-	public static ArrayList<Etiqueta> getListaEtiquetas(){
-		return listaEtiquetas;
-	}
-	
 	public void agregarComentario(Comentario c) {
 	    this.comentarios.add(c);
 	}

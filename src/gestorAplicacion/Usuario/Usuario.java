@@ -74,8 +74,8 @@ public abstract class Usuario{
 		Etiqueta etiquetamasusada = null;
 		Etiqueta etiqueta;
 		int numerodeuso=0;
-		for(int i=0;i<Obra.getListaEtiquetas().size();i++) {
-			etiqueta=Obra.getListaEtiquetas().get(i);
+		for(int i=0;i<Etiqueta.getEtiquetas().size();i++) {
+			etiqueta=Etiqueta.getEtiquetas().get(i);
 			if(etiqueta.getCantObras()>numerodeuso) {
 				etiquetamasusada=etiqueta;
 				numerodeuso=etiqueta.getCantObras();

@@ -54,7 +54,7 @@ public class AgregarComentario extends OpcionDeMenu implements Dependiente{
 			}
 			dialogo.initStyle(StageStyle.UTILITY);
 			dialogo.showAndWait();
-			PaneInteraccion.setPaneActual(GraficadorObjetos.graficar(obr,1));
+			PaneInteraccion.setPaneActual(GraficadorObjetos.graficar(obr,1,"0"));
 		}
 		
 	}

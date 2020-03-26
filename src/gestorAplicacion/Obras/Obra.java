@@ -271,4 +271,9 @@ public class Obra extends ObjetoReporte{
 	public void setComentarios(ArrayList<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
+	@Override
+	public String getIdUnico() {
+		// TODO Auto-generated method stub
+		return autor+" "+titulo;
+	}
 }

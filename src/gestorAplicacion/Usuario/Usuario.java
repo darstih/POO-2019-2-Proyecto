@@ -83,7 +83,7 @@ public abstract class Usuario{
 		}
 		for(int i=0;i<Obra.getCantObras();i++) {
 			Obra obra=Obra.getObras().get(i);
-			for(int l=0; l<obra.getEtiquetas().size();i++) {
+			for(int l=0; l<obra.getEtiquetas().size();l++) {
 				if(etiquetamasusada.getLabel().equalsIgnoreCase(obra.getEtiquetas().get(l).getLabel())) {
 					obras.add(obra);
 				}
@@ -101,7 +101,7 @@ public abstract class Usuario{
 		for(int i=0;i<Obra.getCantObras();i++) {
 			int uso=0;
 			artista=Obra.getObras().get(i).getAutor();
-			for(int l=0;i<Obra.getCantObras();i++) {
+			for(int l=0;l<Obra.getCantObras();l++) {
 				if(artista.equalsIgnoreCase(Obra.getObras().get(l).getAutor())) {
 					uso++;
 				}
@@ -118,7 +118,38 @@ public abstract class Usuario{
 		}
 		return obras;
 	}
-
+	
+	public static ArrayList<Obra> obraConMasReportes(){
+		ArrayList<Obra> obras=new ArrayList<>();
+		String artistamasusado = null;
+		String artista;
+		String titulomasusado = null;
+		String titulo;
+		int numerodeuso=0;
+		for(int i=0;i<Administrador.getReportesObra().size();i++) {
+			String[] id=Administrador.getReportesObra().get(i).getObjetoReporte().getIdUnico().split(" ");
+			artista=id[0];
+			titulo=id[1];
+			int uso=0;
+			for(int l=0;l<Obra.getCantObras();l++) {
+				if(artista.equalsIgnoreCase(Obra.getObras().get(l).getAutor()) && titulo.equalsIgnoreCase(Obra.getObras().get(l).getTitulo())) {
+					uso++;
+				}
+			
+			}
+			if(uso>numerodeuso) {
+				artistamasusado=artista;
+				titulomasusado=titulo;
+			}
+		}
+		for(int l=0;l<Obra.getCantObras();l++) {
+			if(artistamasusado.equalsIgnoreCase(Obra.getObras().get(l).getAutor()) && titulomasusado.equalsIgnoreCase(Obra.getObras().get(l).getTitulo())) {
+				obras.add(Obra.getObras().get(l));
+			}
+		
+		}
+		return obras;
+	}
 	public static FlowPane listarObraGrafica(ArrayList<Obra> obras,int listado) {
 		FlowPane pane = new FlowPane();
 		pane.setVgap(10);

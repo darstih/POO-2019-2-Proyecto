@@ -49,5 +49,10 @@ public class Comentario extends ObjetoReporte{
 	public Comentario( String contenido) {
 		this("Desconocido",contenido);
 	}
+	@Override
+	public String getIdUnico() {
+		// TODO Auto-generated method stub
+		return autor+" "+contenido;
+	}
 
 }

@@ -19,7 +19,7 @@ import gui.opciones.OpcionDeMenu;
 
 public class AgregarReporte extends OpcionDeMenu implements Independiente{
 	//Atributos
-	String[] criterios = new String[] {"Contenido"};
+	String[] criterios = new String[] {"Motivo"};
 	
 	
 	//Metodos
@@ -30,7 +30,11 @@ public class AgregarReporte extends OpcionDeMenu implements Independiente{
 	public Button graficar() {
 		return new Button(new AgregarReporte().toString());
 	}
-	
+	public AgregarReporte() {
+		this.descripcion= "Este proceso crea un reporte acerca de una obra o un\n"
+						+ "comentario que afecte de algún modo al usuario, \n"
+						+ "claramente con un motivo";
+	}
 	
 	@Override
 	public void ejecutar() throws NoCoincideTamano, CantBeNull {

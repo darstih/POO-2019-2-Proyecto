@@ -24,7 +24,9 @@ public class ActualizarObra extends OpcionDeMenu implements Dependiente{
 	public String toString() {
 		return "Actualizar Obra";
 	}
-
+	public  ActualizarObra() {
+		this.descripcion= "Este proceso actualiza una obra directamente y \n";
+	}
 	@Override
 	public void ejecutar() throws NoCoincideTamano, CantBeNull {
 		String[] criterios = new String[] {"Titulo","Descripcion","Altura","Ancho","Tecnica","Autor"};

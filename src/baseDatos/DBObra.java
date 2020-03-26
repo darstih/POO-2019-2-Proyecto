@@ -27,7 +27,6 @@ public class DBObra {
 	
 	
 	public static void inicializar() throws JsonParseException, JsonMappingException, IOException {
-		DBObra dbObra = new DBObra();
 		FileReader lector = new FileReader (archivo);
 		BufferedReader br = new BufferedReader(lector);
 		// Lectura del fichero

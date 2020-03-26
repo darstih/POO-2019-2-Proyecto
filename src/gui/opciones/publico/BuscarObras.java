@@ -25,6 +25,9 @@ public class BuscarObras extends OpcionDeMenu implements Independiente{
 			FieldPanel buscar = new FieldPanel(this,"criterios",criterios,"valores",new String[] {"Titulo","","1"},null,handler);
 			PaneInteraccion.setPaneActual(buscar);
 	}
+	public BuscarObras() {
+		this.descripcion= "Esta consulta busca obra por titulo exacto o por tecnica";
+	}
 	
 	class BuscarObra implements EventHandler<ActionEvent>{
 		@Override

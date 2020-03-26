@@ -43,8 +43,20 @@ public class FieldPanel extends VBox {
 		this.setPadding(new Insets(20,20,20,20));
 		this.setStyle("-fx-background-color: #E0EE97");
 		Label titulo = new Label(opcion.toString());
+		Label descripcion ;
+		if(opcion.getDescripcion()== null) {
+			descripcion = new Label("");
+		}else {
+			descripcion= new Label(opcion.getDescripcion());
+		}
+		
+		
 		titulo.setPadding(new Insets(10,10,10,10));
+		titulo.setAlignment(Pos.CENTER);
+		descripcion.setPadding(new Insets(10,10,10,10));
+		descripcion.setAlignment(Pos.CENTER);
 		this.getChildren().add(titulo);
+		this.getChildren().add(descripcion);
 		this.setAlignment(Pos.CENTER);
 		if(criterios == null) {
 			throw new CantBeNull("criterios");

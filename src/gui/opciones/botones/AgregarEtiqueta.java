@@ -37,7 +37,12 @@ public class AgregarEtiqueta extends OpcionDeMenu implements Dependiente{
 	public Button graficar() {
 		return new Button(new AgregarEtiqueta().toString());
 	}
-	
+	public AgregarEtiqueta() {
+		this.descripcion= "Este proceso proviene de un usuario invitado \n "
+				+ "crea (si no existe) o agrega si existe\n"
+				+ "verifica que no esté en la obra y luego la agrega a una \n"
+				+ "lista de aprobación del administrador\n";
+	}
 	
 	class CrearEtiquetaHandler implements EventHandler<ActionEvent>{
 

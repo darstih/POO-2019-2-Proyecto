@@ -37,7 +37,9 @@ public class EnviarObra extends OpcionDeMenu implements Independiente{
 		PaneInteraccion.setPaneActual(a);
 	}
 	
-	
+	public EnviarObra() {
+		this.descripcion= "Este proceso crea una sugerencia de obra\n para la administración de la galeria";
+	}
 	
 	class CrearObraHandler implements EventHandler<ActionEvent>{
 		@Override

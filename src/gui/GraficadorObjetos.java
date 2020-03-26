@@ -124,7 +124,7 @@ public class GraficadorObjetos {
 		@Override
 		public void handle(ActionEvent event) {
 			Button graf = (Button)event.getSource();
-			Obra obr = PaneInteraccion.getAux().get(graf.getId());
+			Obra obr = PaneInteraccion.getAux().get(graf);
 			Administrador.eliminarObraPendiente(obr);
 			PaneInteraccion.setPaneActual(listarObraGraficaPendiente());
 		}
@@ -330,7 +330,7 @@ public class GraficadorObjetos {
 		@Override
 		public void handle(ActionEvent arg0) {
 			Button graf = (Button)arg0.getSource();
-			Obra obr = PaneInteraccion.getAux().get(graf.getId());
+			Obra obr = PaneInteraccion.getAux().get(graf);
 			FieldPanel.setAux(obr);
 			try {
 				new AgregarEtiqueta().ejecutar();

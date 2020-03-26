@@ -23,7 +23,7 @@ import javafx.scene.layout.FlowPane;
 public abstract class OpcionDeMenu{ // La clase abstracta obligatoria
 	
 	private FieldPanel auxiliar;
-	private String descripcion;
+	protected String descripcion;
 	
 	public String getDescripcion() {
 		return descripcion;

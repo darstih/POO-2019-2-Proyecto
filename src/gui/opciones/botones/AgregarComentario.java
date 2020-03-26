@@ -29,7 +29,10 @@ public class AgregarComentario extends OpcionDeMenu implements Dependiente{
 	public Button graficar() {
 		return new Button(new AgregarComentario().toString());
 	}
-	
+	public AgregarComentario() {
+		this.descripcion= "Este proceso crea un nuevo comentario que luego\n"
+				+ "será aprobado o rechazado por un administrador";
+	}
 	
 	@Override
 	public void ejecutar() throws NoCoincideTamano, CantBeNull {

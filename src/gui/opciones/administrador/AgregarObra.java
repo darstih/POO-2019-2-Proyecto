@@ -42,6 +42,10 @@ public class AgregarObra extends OpcionDeMenu implements Independiente{
 		FieldPanel a = new FieldPanel(this,"criterios",criterios,"valores",null,null,hand);
 		PaneInteraccion.setPaneActual(a);
 	}
+	public AgregarObra() {
+		this.descripcion= "Este proceso crea una obra directamente y \n"
+				+ 		  "la agrega a las obras que pueden ver los invitados";
+	}
 	
 	
 	

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Excepciones.CantBeNull;
+import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
@@ -39,18 +40,23 @@ public class EnviarObra extends OpcionDeMenu implements Independiente{
 	class CrearObraHandler implements EventHandler<ActionEvent>{
 		@Override
 		public void handle(ActionEvent arg0) {//Si este handler se activa es porque se está mostrando por lo tanto es el actual
+			String titulo = "";
+			String respuesta = "";
+			Alert dialogo = new Alert(AlertType.INFORMATION);
 			try {
 				FieldPanel pane = (FieldPanel) PaneInteraccion.getPaneActual();
 				Invitado.postularObra(new Obra(pane.getValue("Titulo"), pane.getValue("Descripcion") ,Double.parseDouble(pane.getValue("Altura")), Double.parseDouble( pane.getValue("Ancho")),Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica( pane.getValue("Tecnica")), pane.getValue("Autor"),false));
-				Alert dialogo = new Alert(AlertType.INFORMATION);
-				dialogo.setTitle("Obra agregada correctamente");
-				dialogo.setContentText("Cuando la apruebe un administrador será exitosamente agregada.");
+				titulo = "Obra agregada correctamente";
+				respuesta = "Cuando la apruebe un administrador será exitosamente agregada.";
+			} catch (NumberFormatException | ErrorEtiquetaRepetida e) {
+				titulo = "ERROR";
+				respuesta = e.getMessage();
+			}finally {
+				dialogo.setTitle(titulo);
+				dialogo.setContentText(respuesta);
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
 				PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(), 1));
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-				System.out.println("Error por formato del número");
 			}
 		}
 	}

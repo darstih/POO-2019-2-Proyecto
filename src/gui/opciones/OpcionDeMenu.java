@@ -8,6 +8,7 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 import Excepciones.CantBeNull;
+import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
@@ -57,7 +58,15 @@ public abstract class OpcionDeMenu{ // La clase abstracta obligatoria
 	class CrearObraHandlerClass implements EventHandler<ActionEvent>{
 		@Override
 		public void handle(ActionEvent arg0) {
-			new Obra(auxiliar.getValue("Titulo"), auxiliar.getValue("Descripcion"), Double.parseDouble(auxiliar.getValue("Altura")), Double.parseDouble(auxiliar.getValue("Ancho")), Calendar.getInstance(), new ArrayList<Etiqueta>(),new Tecnica( auxiliar.getValue("tecnica")), auxiliar.getValue("autor"),true);
+			try {
+				new Obra(auxiliar.getValue("Titulo"), auxiliar.getValue("Descripcion"), Double.parseDouble(auxiliar.getValue("Altura")), Double.parseDouble(auxiliar.getValue("Ancho")), Calendar.getInstance(), new ArrayList<Etiqueta>(),new Tecnica( auxiliar.getValue("tecnica")), auxiliar.getValue("autor"),true);
+			} catch (ErrorEtiquetaRepetida e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

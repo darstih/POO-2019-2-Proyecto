@@ -3,6 +3,7 @@ package gestorAplicacion.Usuario;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import Excepciones.ErrorEtiquetaRepetida;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Interacciones.Reporte;
 import gestorAplicacion.Obras.Etiqueta;
@@ -54,7 +55,7 @@ public class Administrador extends Usuario {
 	public static void aprobarReporte(Obra a){
 		a.setVisible(false);
 	}
-	public static void agregarEtiqueta(Obra a, Etiqueta e) {
+	public static void agregarEtiqueta(Obra a, Etiqueta e)throws ErrorEtiquetaRepetida {
 		a.crearEtiqueta(e);
 	}
 	public static void borrarEtiqueta(Obra a, Etiqueta e) {

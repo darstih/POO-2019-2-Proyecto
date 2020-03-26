@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
+
+import baseDatos.DBEtiqueta;
 import baseDatos.DBObra;
 import baseDatos.DBUsuario;
 import gestorAplicacion.Usuario.Administrador;
@@ -43,8 +45,9 @@ public class Main  extends Application{
 		launch(args);
 	}
 	public void init() throws JsonParseException, JsonMappingException, IOException {
-		DBObra.inicializar();
-		DBUsuario.inicializar();
+		DBObra.inicializar();//Todas las obras que hay en el sistema
+		DBUsuario.inicializar();//Todos los administradores del sistema
+		DBEtiqueta.inicializar();//Todas las etiquetas que hay en las obras (sin repeticion)
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception,JsonParseException, JsonMappingException, IOException {
@@ -90,6 +93,7 @@ public class Main  extends Application{
 	public void stop() throws JsonGenerationException, JsonMappingException, IOException {
 		DBObra.guardar();
 		DBUsuario.guardar();
+		DBEtiqueta.guardar();
 	}
 	
 }

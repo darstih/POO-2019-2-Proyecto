@@ -5,29 +5,9 @@ import java.util.Calendar;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import Excepciones.CantBeNull;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;
-import gestorAplicacion.Usuario.Administrador;
-import gestorAplicacion.Usuario.Invitado;
-import gui.paneles.FieldPanel;
-import gui.paneles.PaneInteraccion;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import gui.opciones.botones.ActualizarObra;
-import gui.opciones.botones.AgregarComentario;
-import gui.opciones.botones.AgregarEtiqueta;
-import gui.opciones.publico.AgregarReporte;
 import gestorAplicacion.Interacciones.Comentario;
 
 

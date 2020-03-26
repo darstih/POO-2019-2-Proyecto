@@ -1,5 +1,6 @@
 package gui.opciones.botones;
-import Excepciones.CantBeNull;
+
+import Excepciones.ErrorCampoVacio;
 import Excepciones.ErrorComentarioRepetido;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.Comentario;
@@ -35,7 +36,7 @@ public class AgregarComentario extends OpcionDeMenu implements Dependiente{
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamano, CantBeNull {
+	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
 		CrearComentarioHandler handler = new CrearComentarioHandler();
 		FieldPanel form = new FieldPanel(this,"Criterio",new String[] {"Comentario"},"Valores",null,null,handler);
 		PaneInteraccion.setPaneActual(form);
@@ -52,14 +53,21 @@ public class AgregarComentario extends OpcionDeMenu implements Dependiente{
 			Label respuesta = new Label();
 			if(!(PaneInteraccion.getTipoUsuario()=="Invitado")) {
 				try {
+					if(pane.getValue("Comentario").trim().isEmpty()) {
+						throw new ErrorCampoVacio("Comentario");
+					}
 					Administrador.addComentario(obr,new Comentario( pane.getValue("Comentario")));
 					titulo = "Comentario agregado";
 					respuesta.setText("Comentario agregado");
-				} catch (ErrorComentarioRepetido e) {
+					dialogo.setTitle(titulo);
+					dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+					dialogo.initStyle(StageStyle.UTILITY);
+					dialogo.showAndWait();
+					PaneInteraccion.setPaneActual(GraficadorObjetos.graficar(obr,1,"0"));
+				} catch (ErrorComentarioRepetido | ErrorCampoVacio e) {
 					titulo = "ERROR";
 					dialogo.setAlertType(AlertType.ERROR);
 					respuesta.setText(e.getMessage());
-				}finally {
 					dialogo.setTitle(titulo);
 					dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
 					dialogo.initStyle(StageStyle.UTILITY);
@@ -67,21 +75,28 @@ public class AgregarComentario extends OpcionDeMenu implements Dependiente{
 				}
 			}else {
 				try {
+					if(pane.getValue("Comentario").trim().isEmpty()) {
+						throw new ErrorCampoVacio("Comentario");
+					}
 					Invitado.addComentario(obr,new Comentario(pane.getValue("Comentario")));
 					titulo = "Comentario agregado";
 					respuesta.setText("Comentario agregado");
-				} catch (ErrorComentarioRepetido e) {
+					dialogo.setTitle(titulo);
+					dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+					dialogo.initStyle(StageStyle.UTILITY);
+					dialogo.showAndWait();
+					PaneInteraccion.setPaneActual(GraficadorObjetos.graficar(obr,1,"0"));
+				} catch (ErrorComentarioRepetido | ErrorCampoVacio e) {
 					titulo = "ERROR";
 					dialogo.setAlertType(AlertType.ERROR);
 					respuesta.setText(e.getMessage());
-				}finally {
 					dialogo.setTitle(titulo);
 					dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
 					dialogo.initStyle(StageStyle.UTILITY);
 					dialogo.showAndWait();
 				}
 			}
-			PaneInteraccion.setPaneActual(GraficadorObjetos.graficar(obr,1,"0"));
+			
 		}
 		
 	}

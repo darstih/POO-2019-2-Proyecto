@@ -6,7 +6,7 @@ public class Tecnica {
 	static int cantObras = 0;// cantidad de obras con esta tecnica
 	private String descripcion;
 	// Metodos
-
+	
 	// Getters y setters
 	public String getNombre() {
 		return this.nombre;

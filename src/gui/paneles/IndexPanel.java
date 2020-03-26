@@ -2,6 +2,7 @@ package gui.paneles;
 
 import java.util.ArrayList;
 
+import Excepciones.ErrorCampoVacio;
 import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Invitado;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -17,6 +19,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -24,6 +27,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Font;
+import javafx.stage.StageStyle;
 import gui.Main;
 import gui.opciones.OpcionDeMenu;
 import gui.opciones.administrador.AgregarObra;
@@ -223,10 +227,23 @@ public class IndexPanel extends GridPane{
     private class validarHandler implements  EventHandler<Event>{
 		@Override
 		public void handle(Event event) {
+			try {
+				if(txtUsu.getText().trim().isEmpty()) {
+					throw new ErrorCampoVacio("Usuario");
+				}else if(pssfUsu.getText().trim().isEmpty()) {
+					throw new ErrorCampoVacio("Contraseña");
+				}
+			}catch(ErrorCampoVacio e) {
+				Label respuesta = new Label();
+				Alert dialogo = new Alert(AlertType.ERROR);
+				respuesta.setText(e.getMessage());
+				dialogo.setTitle("ERROR");
+				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+				dialogo.initStyle(StageStyle.UTILITY);
+				dialogo.showAndWait();
+			}
 			if(Administrador.verificarAdmin(txtUsu.getText(),pssfUsu.getText())) {
 				cambiarScene(txtUsu.getText(),pssfUsu.getText());
-			}else {
-				txtUsu.setStyle("-fx-border-color: #b71c1c;");
 			}
 		}
     }

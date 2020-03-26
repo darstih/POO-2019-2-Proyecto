@@ -1,6 +1,6 @@
 package gui.opciones.botones;
 
-import Excepciones.CantBeNull;
+import Excepciones.ErrorCampoVacio;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
@@ -27,7 +27,7 @@ public class AgregarEtiqueta extends OpcionDeMenu implements Dependiente{
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamano, CantBeNull {
+	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
 		CrearEtiquetaHandler handler = new CrearEtiquetaHandler();
 		FieldPanel form = new FieldPanel(this,"Criterio",criterios,"Valores",null,null,handler);
 		PaneInteraccion.setPaneActual(form);
@@ -50,9 +50,13 @@ public class AgregarEtiqueta extends OpcionDeMenu implements Dependiente{
 		public void handle(ActionEvent arg0) {
 			FieldPanel pane = (FieldPanel) PaneInteraccion.getPaneActual();
 			Obra obr = (Obra) FieldPanel.getAux();
-			System.out.println(obr.getTitulo());
 			Etiqueta e=new Etiqueta(pane.getValue(criterios[0]),pane.getValue(criterios[1]),pane.getValue(criterios[2]));
 			try {
+				for(int i = 0; i<=2;i++) {
+					if(pane.getValue(criterios[i]).trim().isEmpty()) {
+						throw new ErrorCampoVacio(criterios[i]);
+					}
+				}
 				obr.crearEtiqueta(e);
 				Alert dialogo = new Alert(AlertType.INFORMATION);
 				dialogo.setTitle("Etiqueta agregada");
@@ -60,13 +64,12 @@ public class AgregarEtiqueta extends OpcionDeMenu implements Dependiente{
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
 				PaneInteraccion.setPaneActual(GraficadorObjetos.graficar(obr,1,""+0));
-			} catch (ErrorEtiquetaRepetida e1) {
+			} catch (ErrorEtiquetaRepetida |ErrorCampoVacio e1) {
 				Alert dialogo = new Alert(AlertType.ERROR);
 				dialogo.setTitle("Error");
 				dialogo.getDialogPane().setContent(new Label(e1.getMessage()));//se hace asi para que muestre todo el texto
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
-				PaneInteraccion.setPaneActual(GraficadorObjetos.graficar(obr,1,""+0));
 			}
 			
 		}

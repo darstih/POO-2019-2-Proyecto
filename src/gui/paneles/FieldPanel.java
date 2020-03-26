@@ -2,7 +2,7 @@ package gui.paneles;
 import gui.opciones.OpcionDeMenu;
 
 import java.util.Hashtable;
-import Excepciones.CantBeNull;
+import Excepciones.ErrorCampoVacio;
 import Excepciones.NoCoincideTamano;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -39,7 +39,7 @@ public class FieldPanel extends VBox {
 
 
 	//Constructores
-	public FieldPanel(OpcionDeMenu opcion,String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado, EventHandler<ActionEvent> hand) throws NoCoincideTamano, CantBeNull{
+	public FieldPanel(OpcionDeMenu opcion,String tituloCriterios, String[] criterios, String tituloValores, String[] valores, boolean[] habilitado, EventHandler<ActionEvent> hand) throws NoCoincideTamano,ErrorCampoVacio{
 		this.setPadding(new Insets(20,20,20,20));
 		this.setStyle("-fx-background-color: #E0EE97");
 		Label titulo = new Label(opcion.toString());
@@ -59,7 +59,7 @@ public class FieldPanel extends VBox {
 		this.getChildren().add(descripcion);
 		this.setAlignment(Pos.CENTER);
 		if(criterios == null) {
-			throw new CantBeNull("criterios");
+			throw new ErrorCampoVacio("criterios");
 		}else {
 			if(habilitado == null) {
 				habilitado = new boolean[criterios.length];

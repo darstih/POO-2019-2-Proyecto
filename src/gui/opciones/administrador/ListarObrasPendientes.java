@@ -3,7 +3,8 @@ package gui.opciones.administrador;
 import java.io.IOException;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
-import Excepciones.CantBeNull;
+
+import Excepciones.ErrorCampoVacio;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Usuario.Administrador;
 import gui.paneles.PaneInteraccion;
@@ -20,7 +21,7 @@ public class ListarObrasPendientes extends OpcionDeMenu implements Independiente
 
 	@Override
 	public void ejecutar()
-			throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamano, CantBeNull {
+			throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamano, ErrorCampoVacio {
 		PaneInteraccion.setPaneActual(GraficadorObjetos.listarObraGraficaPendiente());
 		
 	}

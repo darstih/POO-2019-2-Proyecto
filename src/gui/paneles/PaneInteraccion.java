@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import Excepciones.CantBeNull;
+import Excepciones.ErrorCampoVacio;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Usuario;
@@ -151,7 +151,7 @@ public class PaneInteraccion extends VBox{
 					} catch (NoCoincideTamano e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					} catch (CantBeNull e) {
+					} catch (ErrorCampoVacio e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}

@@ -29,6 +29,7 @@ public class Invitado extends Usuario{
     	Administrador.borrarEtiqueta(o, e);
     }
     public static void postularObra(Obra o)throws ErrorObraRepetida{
+    	
 	  Administrador.addObraPendiente(o);
     }
     //Getters y setters

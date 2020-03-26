@@ -2,7 +2,8 @@ package gui.opciones.publico;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import Excepciones.CantBeNull;
+import Excepciones.ErrorCampoVacio;
+import Excepciones.ErrorDimensionReal;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
 import Excepciones.NoCoincideTamano;
@@ -30,7 +31,7 @@ public class EnviarObra extends OpcionDeMenu implements Independiente{
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamano, CantBeNull {
+	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
 		String[] criterios = new String[] {"Titulo","Descripcion","Altura","Ancho","Tecnica","Autor"};
 		CrearObraHandler hand = new CrearObraHandler();
 		FieldPanel a = new FieldPanel(this,"criterios",criterios,"valores",null,null,hand);
@@ -49,19 +50,33 @@ public class EnviarObra extends OpcionDeMenu implements Independiente{
 			Alert dialogo = new Alert(AlertType.INFORMATION);
 			try {
 				FieldPanel pane = (FieldPanel) PaneInteraccion.getPaneActual();
-				Invitado.postularObra(new Obra(pane.getValue("Titulo"), pane.getValue("Descripcion") ,Double.parseDouble(pane.getValue("Altura")), Double.parseDouble( pane.getValue("Ancho")),Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica( pane.getValue("Tecnica")), pane.getValue("Autor"),false));
-				titulo = "Obra agregada correctamente";
+				String camposVal[] = {pane.getValue("Titulo"),pane.getValue("Descripcion"),pane.getValue("Tecnica"),
+						pane.getValue("Autor"),((FieldPanel) pane).getValue("Ancho"),((FieldPanel) pane).getValue("Altura")};
+				String campos[] = {"Titulo","Descripcion","Tecnica","Autor","Ancho","Alto"};
+				for(int i = 0; i<=5;i++) {
+					if(camposVal[i].trim().isEmpty()) {
+						throw new ErrorCampoVacio(campos[i]);
+					}
+				}
+				double a =  Double.parseDouble(camposVal[4]);
+				double h = Double.parseDouble(camposVal[5]);
+				Invitado.postularObra(new Obra(camposVal[0],camposVal[1],h, a,Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica(camposVal[2]),camposVal[3],false));
+				if(a<=0 || h<=0) {
+					throw new ErrorDimensionReal();
+				}
 				respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
-			} catch (NumberFormatException | ErrorEtiquetaRepetida |ErrorObraRepetida e) {
-				titulo = "ERROR";
-				respuesta.setText(e.getMessage());
-				dialogo.setAlertType(AlertType.ERROR);
-			}finally {
-				dialogo.setTitle(titulo);
+				dialogo.setTitle("Obra agregada correctamente");
 				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
 				PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(), 1));
+			} catch (NumberFormatException | ErrorEtiquetaRepetida |ErrorObraRepetida | ErrorDimensionReal | ErrorCampoVacio e) {
+				titulo = "ERROR";
+				respuesta.setText(e.getMessage());
+				dialogo.setAlertType(AlertType.ERROR);
+				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+				dialogo.initStyle(StageStyle.UTILITY);
+				dialogo.showAndWait();
 			}
 		}
 	}

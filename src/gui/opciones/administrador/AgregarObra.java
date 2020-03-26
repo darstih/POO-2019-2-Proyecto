@@ -3,7 +3,8 @@ package gui.opciones.administrador;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import Excepciones.CantBeNull;
+import Excepciones.ErrorCampoVacio;
+import Excepciones.ErrorDimensionReal;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
 import Excepciones.NoCoincideTamano;
@@ -36,7 +37,7 @@ public class AgregarObra extends OpcionDeMenu implements Independiente{
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamano, CantBeNull {
+	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
 		String[] criterios = new String[] {"Titulo","Descripcion","Altura","Ancho","Tecnica","Autor"};
 		CrearObraHandler hand = new CrearObraHandler();
 		FieldPanel a = new FieldPanel(this,"criterios",criterios,"valores",null,null,hand);
@@ -58,10 +59,26 @@ public class AgregarObra extends OpcionDeMenu implements Independiente{
 			Alert dialogo = new Alert(AlertType.INFORMATION);
 			try {
 				Pane pane = PaneInteraccion.getPaneActual();
-				Administrador.agregarObra(new Obra(((FieldPanel) pane).getValue("Titulo"), ((FieldPanel) pane).getValue("Descripcion") ,Double.parseDouble(((FieldPanel) pane).getValue("Altura")), Double.parseDouble(((FieldPanel) pane).getValue("Ancho")),Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica(((FieldPanel) pane).getValue("Tecnica")), ((FieldPanel) pane).getValue("Autor"),true));
+				String camposVal[] = {((FieldPanel) pane).getValue("Titulo"),((FieldPanel) pane).getValue("Descripcion"),
+						((FieldPanel) pane).getValue("Tecnica"),
+						((FieldPanel) pane).getValue("Autor"),((FieldPanel) pane).getValue("Ancho"),((FieldPanel) pane).getValue("Altura")};
+				String campos[] = {"Titulo","Descripcion","Tecnica","Autor","Ancho","Alto"};
+				for(int i = 0; i<=5;i++) {
+					if(camposVal[i].trim().isEmpty()) {
+						throw new ErrorCampoVacio(campos[i]);
+					}
+				}
+				double a =  Double.parseDouble(camposVal[4]);
+				double h = Double.parseDouble(camposVal[5]);
+				Administrador.agregarObra(new Obra(camposVal[0],camposVal[1],h,a,Calendar.getInstance(),new ArrayList<Etiqueta>(),
+						new Tecnica(camposVal[2]), camposVal[3],true));
 				titulo = "Obra agregada correctamente";
 				respuesta.setText("La obra se agrego correctamente");
-			} catch (NumberFormatException | ErrorEtiquetaRepetida | ErrorObraRepetida e) {
+				if(a<=0 || h<=0) {
+					throw new ErrorDimensionReal();
+				}
+				PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(), 1));
+			} catch (NumberFormatException | ErrorEtiquetaRepetida | ErrorObraRepetida | ErrorDimensionReal | ErrorCampoVacio e) {
 				titulo = "ERROR";
 				respuesta.setText(e.getMessage());
 				dialogo.setAlertType(AlertType.ERROR);
@@ -70,7 +87,6 @@ public class AgregarObra extends OpcionDeMenu implements Independiente{
 				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
-				PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(), 1));
 			}
 		}
 	}

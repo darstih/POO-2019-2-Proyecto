@@ -2,7 +2,7 @@ package gui;
 
 import java.util.Hashtable;
 
-import Excepciones.CantBeNull;
+import Excepciones.ErrorCampoVacio;
 import Excepciones.ErrorObraRepetida;
 import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.Comentario;
@@ -222,9 +222,10 @@ public class GraficadorObjetos {
 			
 			
 			Button com = new AgregarComentario().graficar();
+			com.setId(graf.getId());
 			Button rep = new AgregarReporte().graficar();
 			Button eti = new AgregarEtiqueta().graficar();
-			
+			eti.setId(graf.getId());
 			FlowPane botones = new FlowPane();
 			botones.setPadding(new Insets(20,20,20,20));
 			AgregarReporteHandler handlerReporte = new AgregarReporteHandler();
@@ -245,6 +246,8 @@ public class GraficadorObjetos {
 				BorrarObraHandler handlerBorrarObra = new BorrarObraHandler();
 				rep.setOnAction(handlerBorrarObra);
 				act.setOnAction(handlerActualizar);
+				act.setId(graf.getId());
+				rep.setId(graf.getId());
 				botones.getChildren().add(act);
 			}
 			
@@ -275,12 +278,23 @@ public class GraficadorObjetos {
 	class AgregarReporteHandler implements EventHandler<ActionEvent>{
 		@Override
 		public void handle(ActionEvent arg0) {
-			
+			String titulo = "";
+			Label respuesta = new Label();
+			Alert dialogo = new Alert(AlertType.INFORMATION);
 			FieldPanel.setAux(obra);
 			try {
 				new AgregarReporte().ejecutar();
-			} catch (NoCoincideTamano | CantBeNull e) {
-				e.printStackTrace();
+				//titulo = "Obra agregada correctamente";
+				//respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
+			} catch (NoCoincideTamano | ErrorCampoVacio e) {
+				titulo = "ERROR";
+				respuesta.setText(e.getMessage());
+				dialogo.setAlertType(AlertType.ERROR);
+			}finally {
+				dialogo.setTitle(titulo);
+				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+				dialogo.initStyle(StageStyle.UTILITY);
+				dialogo.showAndWait();
 			}
 			
 		}
@@ -289,14 +303,26 @@ public class GraficadorObjetos {
 	class ActualizarHandler implements EventHandler<ActionEvent>{
 		@Override
 		public void handle(ActionEvent arg0) {
-			
-			FieldPanel.setAux(obra);
+			Button btn = (Button)arg0.getSource();
+			String titulo = "";
+			Label respuesta = new Label();
+			Alert dialogo = new Alert(AlertType.INFORMATION);
+			Obra obr = PaneInteraccion.getAux().get(btn.getId());
+			FieldPanel.setAux(obr);
 			try {
 				new ActualizarObra().ejecutar();
-			} catch (NoCoincideTamano | CantBeNull e) {
-				e.printStackTrace();
+				//titulo = "Obra agregada correctamente";
+				//respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
+			} catch (NoCoincideTamano | ErrorCampoVacio e) {
+				titulo = "ERROR";
+				respuesta.setText(e.getMessage());
+				dialogo.setAlertType(AlertType.ERROR);
+				dialogo.setTitle(titulo);
+				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+				dialogo.initStyle(StageStyle.UTILITY);
+				dialogo.showAndWait();
+				
 			}
-			
 		}
 		
 	}
@@ -314,12 +340,19 @@ public class GraficadorObjetos {
 		@Override
 		public void handle(ActionEvent arg0) {
 			Button graf = (Button)arg0.getSource();
-			Obra obr = PaneInteraccion.getAux().get(graf);
+			Obra obr = PaneInteraccion.getAux().get(graf.getId());
 			FieldPanel.setAux(obr);
+			String titulo = "";
+			Label respuesta = new Label();
+			Alert dialogo = new Alert(AlertType.INFORMATION);
 			try {
 				new AgregarComentario().ejecutar();
-			} catch (NoCoincideTamano | CantBeNull e) {
-				e.printStackTrace();
+				//titulo = "Obra agregada correctamente";
+				//respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
+			} catch (NoCoincideTamano | ErrorCampoVacio e) {
+				titulo = "ERROR";
+				respuesta.setText(e.getMessage());
+				dialogo.setAlertType(AlertType.ERROR);
 			}
 			
 		}
@@ -330,12 +363,27 @@ public class GraficadorObjetos {
 		@Override
 		public void handle(ActionEvent arg0) {
 			Button graf = (Button)arg0.getSource();
-			Obra obr = PaneInteraccion.getAux().get(graf);
+			Obra obr = PaneInteraccion.getAux().get(graf.getId());
 			FieldPanel.setAux(obr);
+			String titulo = "";
+			Label respuesta = new Label();
+			Alert dialogo = new Alert(AlertType.INFORMATION);
 			try {
 				new AgregarEtiqueta().ejecutar();
-			} catch (NoCoincideTamano | CantBeNull e) {
-				e.printStackTrace();
+				//titulo = "Obra agregada correctamente";
+				//respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
+				//dialogo.setTitle(titulo);
+				//dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+				//dialogo.initStyle(StageStyle.UTILITY);
+				//dialogo.showAndWait();
+			} catch (NoCoincideTamano | ErrorCampoVacio e) {
+				titulo = "ERROR";
+				respuesta.setText(e.getMessage());
+				dialogo.setAlertType(AlertType.ERROR);
+				dialogo.setTitle(titulo);
+				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+				dialogo.initStyle(StageStyle.UTILITY);
+				dialogo.showAndWait();
 			}
 			
 		}

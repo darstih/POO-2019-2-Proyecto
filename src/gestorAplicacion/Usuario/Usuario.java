@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.Hashtable;
 
 import Excepciones.ExcepcionFueraRango;
+import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
+import gestorAplicacion.Obras.Tecnica;
 import gui.GraficadorObjetos;
 import gui.paneles.PaneInteraccion;
 import javafx.scene.layout.BorderPane;
@@ -42,9 +44,112 @@ public abstract class Usuario{
 	}
 
 	public abstract String descripcion(); 
+	
+	public static ArrayList<Obra> tecnicaMasUsada() {
+		ArrayList<Obra> obras=new ArrayList<>();
+		int numerodeuso=0;
+		Tecnica tecnicamasusada = null;
+		Tecnica tecnica;
+		ArrayList<Tecnica> listatecnicas= Obra.getListaTecnicas();
+		for(int i=0;i<listatecnicas.size();i++) {
+			tecnica=listatecnicas.get(i);
+			if(tecnica.getCantObras()>numerodeuso) {
+				tecnicamasusada=tecnica;
+				numerodeuso=tecnica.getCantObras();
+			}
+			
+		}
+		for(int i=0;i<Obra.getCantObras();i++) {
+			Obra obra=Obra.getObras().get(i);
+			if(tecnicamasusada.getNombre().equalsIgnoreCase(obra.getTecnica().getNombre())) {
+				obras.add(obra);
+			}
+		}
+		return obras;
+	}
 
 
-
+	public static ArrayList<Obra> etiquetaMasPopular(){
+		ArrayList<Obra> obras=new ArrayList<>();
+		Etiqueta etiquetamasusada = null;
+		Etiqueta etiqueta;
+		int numerodeuso=0;
+		for(int i=0;i<Obra.getListaEtiquetas().size();i++) {
+			etiqueta=Obra.getListaEtiquetas().get(i);
+			if(etiqueta.getCantObras()>numerodeuso) {
+				etiquetamasusada=etiqueta;
+				numerodeuso=etiqueta.getCantObras();
+			}
+		}
+		for(int i=0;i<Obra.getCantObras();i++) {
+			Obra obra=Obra.getObras().get(i);
+			for(int l=0; l<obra.getEtiquetas().size();l++) {
+				if(etiquetamasusada.getLabel().equalsIgnoreCase(obra.getEtiquetas().get(l).getLabel())) {
+					obras.add(obra);
+				}
+			}
+			
+		}
+		return obras;
+	}
+	
+	public static ArrayList<Obra> artistaMasPopular(){
+		ArrayList<Obra> obras=new ArrayList<>();
+		String artistamasusado = null;
+		String artista;
+		int numerodeuso=0;
+		for(int i=0;i<Obra.getCantObras();i++) {
+			int uso=0;
+			artista=Obra.getObras().get(i).getAutor();
+			for(int l=0;l<Obra.getCantObras();l++) {
+				if(artista.equalsIgnoreCase(Obra.getObras().get(l).getAutor())) {
+					uso++;
+				}
+			
+			}
+			if(uso<numerodeuso) {
+				artistamasusado=artista;
+			}
+		}
+		for(int i=0;i<Obra.getCantObras();i++) {
+			if(artistamasusado.equalsIgnoreCase(Obra.getObras().get(i).getAutor())) {
+				obras.add(Obra.getObras().get(i));
+			}
+		}
+		return obras;
+	}
+	
+	public static ArrayList<Obra> obraConMasReportes(){
+		ArrayList<Obra> obras=new ArrayList<>();
+		String artistamasusado = null;
+		String artista;
+		String titulomasusado = null;
+		String titulo;
+		int numerodeuso=0;
+		for(int i=0;i<Administrador.getReportesObra().size();i++) {
+			String[] id=Administrador.getReportesObra().get(i).getObjetoReporte().IdUnico().split(" ");
+			artista=id[0];
+			titulo=id[1];
+			int uso=0;
+			for(int l=0;l<Obra.getCantObras();l++) {
+				if(artista.equalsIgnoreCase(Obra.getObras().get(l).getAutor()) && titulo.equalsIgnoreCase(Obra.getObras().get(l).getTitulo())) {
+					uso++;
+				}
+			
+			}
+			if(uso>numerodeuso) {
+				artistamasusado=artista;
+				titulomasusado=titulo;
+			}
+		}
+		for(int l=0;l<Obra.getCantObras();l++) {
+			if(artistamasusado.equalsIgnoreCase(Obra.getObras().get(l).getAutor()) && titulomasusado.equalsIgnoreCase(Obra.getObras().get(l).getTitulo())) {
+				obras.add(Obra.getObras().get(l));
+			}
+		
+		}
+		return obras;
+	}
 	public static FlowPane listarObraGrafica(ArrayList<Obra> obras,int listado) {
 		FlowPane pane = new FlowPane();
 		pane.setVgap(10);
@@ -67,7 +172,7 @@ public abstract class Usuario{
 		ArrayList<Obra> a = Obra.getObras();
 		ArrayList<Obra> res=new ArrayList<Obra>();
 		for(int i=0;i<a.size();i++) {
-			if(a.get(i).getTecnica().getNombre()==var) {
+			if(a.get(i).getTecnica().getNombre().equalsIgnoreCase(var)) {
 				res.add(a.get(i));
 			}
 		}
@@ -77,7 +182,7 @@ public abstract class Usuario{
 		ArrayList<Obra> a = Obra.getObras();
 		ArrayList<Obra> res=new ArrayList<Obra>();
 		for(int i=0;i<a.size();i++) {
-			if(a.get(i).getTitulo()==var) {
+			if(a.get(i).getTitulo().equalsIgnoreCase(var)) {
 				res.add(a.get(i));
 			}
 		}

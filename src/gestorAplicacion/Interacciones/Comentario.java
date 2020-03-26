@@ -1,7 +1,10 @@
 package gestorAplicacion.Interacciones;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+@JsonIgnoreProperties(ignoreUnknown = true)
 //Autor Darwin Herrera
 public class Comentario extends ObjetoReporte{
     public Comentario() {}
@@ -48,6 +51,12 @@ public class Comentario extends ObjetoReporte{
 	}
 	public Comentario( String contenido) {
 		this("Desconocido",contenido);
+	}
+	@Override
+	
+	public String IdUnico() {
+		// TODO Auto-generated method stub
+		return autor+" "+contenido;
 	}
 
 }

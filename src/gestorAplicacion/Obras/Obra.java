@@ -3,6 +3,8 @@ package gestorAplicacion.Obras;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import Excepciones.CantBeNull;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
@@ -31,7 +33,7 @@ import gestorAplicacion.Interacciones.Comentario;
 
 //Autor de clase y estructura Darwin Herrera
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Obra extends ObjetoReporte{
 	public Obra() {Obra.obras.add(this);}
 
@@ -126,6 +128,15 @@ public class Obra extends ObjetoReporte{
 	
 	
 	//Getters y setters
+	
+	public static ArrayList<Tecnica> getListaTecnicas(){
+		return listaTecnicas;
+	}
+	
+	public static ArrayList<Etiqueta> getListaEtiquetas(){
+		return listaEtiquetas;
+	}
+	
 	public void agregarComentario(Comentario c) {
 	    this.comentarios.add(c);
 	}
@@ -239,5 +250,10 @@ public class Obra extends ObjetoReporte{
 	}
 	public void setComentarios(ArrayList<Comentario> comentarios) {
 		this.comentarios = comentarios;
+	}
+	@Override
+	public String IdUnico() {
+		// TODO Auto-generated method stub
+		return autor+" "+titulo;
 	}
 }

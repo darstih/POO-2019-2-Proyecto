@@ -1,7 +1,7 @@
 package Excepciones;
 //Autor Darwin Herrera
-public class ExcepcionFueraRango extends Exception{
+public class ExcepcionFueraRango extends ErrorExistencia{
 	public ExcepcionFueraRango() {
-        super("Error: Elegiste una opción que no está establecida");
+        super("El campo que tratas de buscar no exite");
     }
 }

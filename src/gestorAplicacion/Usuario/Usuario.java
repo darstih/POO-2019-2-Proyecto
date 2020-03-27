@@ -57,7 +57,8 @@ public abstract class Usuario{
 	}
 
 	public abstract String descripcion(); 
-	
+	//Funciones interesantes
+	//Autor: Alejandro Bedoya
 	public static ArrayList<Obra> tecnicaMasUsada() {
 		ArrayList<Obra> obras=new ArrayList<>();
 		int numerodeuso=0;
@@ -81,7 +82,8 @@ public abstract class Usuario{
 		return obras;
 	}
 
-
+	//Funciones interesantes
+	//Autor: Alejandro Bedoya
 	public static ArrayList<Obra> etiquetaMasPopular(){
 		ArrayList<Obra> obras=new ArrayList<>();
 		Etiqueta etiquetamasusada = null;
@@ -105,7 +107,8 @@ public abstract class Usuario{
 		}
 		return obras;
 	}
-	
+	//Funciones interesantes
+	//Autor: Alejandro Bedoya
 	public static ArrayList<Obra> artistaMasPopular(){
 		ArrayList<Obra> obras=new ArrayList<>();
 		String artistamasusado = "";

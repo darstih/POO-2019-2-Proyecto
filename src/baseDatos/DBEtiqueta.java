@@ -26,7 +26,6 @@ public class DBEtiqueta {
 	
 	
 	public static void inicializar() throws JsonParseException, JsonMappingException, IOException {
-		DBEtiqueta dbEtiqueta = new DBEtiqueta();
 		FileReader lector = new FileReader (archivo);
 		BufferedReader br = new BufferedReader(lector);
 		// Lectura del fichero
@@ -47,8 +46,6 @@ public class DBEtiqueta {
 		ArrayList<Etiqueta> etiquetas = Etiqueta.getEtiquetas();
 		String theJsonText = soyElMapa.writeValueAsString(etiquetas);
 		pw.println(theJsonText);
-		System.out.println(theJsonText);
-		System.out.println("Se guardaron todas las Etiquetas");
 		if (null != escritor)
             escritor.close();
 		}

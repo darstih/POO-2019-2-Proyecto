@@ -1,7 +1,6 @@
 package gestorAplicacion.Usuario;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import Excepciones.ErrorComentarioRepetido;
 import Excepciones.ErrorEtiquetaRepetida;
@@ -9,24 +8,17 @@ import Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
-import gui.paneles.PaneInteraccion;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
+
 //Autor clase y estructura Darwin Herrera
 public class Administrador extends Usuario {
 	//Atributos
     private static ArrayList<Obra> obrasPendientes = new ArrayList<Obra>();
-	private static ArrayList<Comentario> reportesComentario = new ArrayList<Comentario>();
-	private static ArrayList<Obra> reportesObra = new ArrayList<Obra>();
 	private static ArrayList<Administrador> usuarios= new ArrayList<Administrador>();
 	private String usuario;
 	private String password;
 	
 	//Metodos
 	//autor Darwin Herrera
-	
-	
-	
 	public static void agregarObra(Obra a)throws ErrorObraRepetida{
 		if(!Obra.existeObra(a)) {
 			Obra.addObra(a);
@@ -37,14 +29,6 @@ public class Administrador extends Usuario {
 	public static void addComentario(Obra o,Comentario c)throws ErrorComentarioRepetido {
 		o.agregarComentario(c);
 	}
-
-	public static void addReporteComentario(Comentario r ){
-		reportesComentario.add(r);
-	}
-	public static void addReporteObra(Obra r){
-		reportesObra.add(r);
-		r.setContenidoReporte("");
-	}
 	public static boolean verificarAdmin(String usuario,String password) {
 		boolean answer = false;
 		for(int i = 0; i<usuarios.size();i++) {
@@ -54,15 +38,8 @@ public class Administrador extends Usuario {
 			}
 		}
 		return answer;
-		
 	}
 	
-	public static void aprobarReporte(Comentario c){
-		c.setVisible(false);
-	}
-	public static void aprobarReporte(Obra a){
-		a.setVisible(false);
-	}
 	public static void agregarEtiqueta(Obra a, Etiqueta e)throws ErrorEtiquetaRepetida {
 		a.crearEtiqueta(e);
 	}
@@ -104,18 +81,6 @@ public class Administrador extends Usuario {
 		public static void setObrasPendientes(ArrayList<Obra> obrasPendientes) {
 			Administrador.obrasPendientes = obrasPendientes;
 		}
-		public static ArrayList<Comentario> getReportesComentario() {
-			return reportesComentario;
-		}
-		public static void setReportesComentario(ArrayList<Comentario> reportesComentario) {
-			Administrador.reportesComentario = reportesComentario;
-		}
-		public static ArrayList<Obra> getReportesObra() {
-			return reportesObra;
-		}
-		public static void setReportesObra(ArrayList<Obra> reportesObra) {
-			Administrador.reportesObra = reportesObra;
-		}
 		public void setUsuario(String usuario) {
 			this.usuario = usuario;
 		}
@@ -126,14 +91,20 @@ public class Administrador extends Usuario {
 			Administrador.usuarios = la;
 		}
 		
-    //Constructores
+        //Constructores
 		@Override
 		public String descripcion() {
 			// TODO Auto-generated method stub
 			return "Soy un administrador y puedo hacer lo siguiente:"
-					+ "\n -Agregar y aprobar obras."
-					+ "\n -Agregar y aprobar comentarios."
-					+ "\n -Agregar y aprobar reportes de obras y comentarios."
-					+ "\n -Agregar y borrar etiquetas.";
+			+ "\n -Agregar etiquetas de una obra."
+			+ "\n -Agregar comentarios de una obra."
+			+ "\n -Buscar una obra."
+			+ "\n -Agregar una obra."
+			+ "\n -Mostrar Obras pendientes."
+			+ "\n -Ver todas las obras."
+			+ "\n -Ver las obras con la tecnica mas popular."
+			+ "\n -Ver las obras con la etiqueta mas popular."
+			+ "\n -Ver las obras del artista mas popular."
+			+ "\n -Ver las obras mas populares.";
 		}
-}
+}	

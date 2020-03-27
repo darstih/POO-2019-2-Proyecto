@@ -2,6 +2,9 @@ package gui.paneles;
 import gui.opciones.OpcionDeMenu;
 
 import java.util.Hashtable;
+
+import javax.swing.JFileChooser;
+
 import Excepciones.ErrorCampoVacio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -100,6 +104,8 @@ public class FieldPanel extends VBox {
 				panel.add(aceptar, 0, i+1);
 				panel.add(borrar, 1, i+1);
 				panel.setAlignment(Pos.CENTER);
+				JFileChooser ima = new JFileChooser();
+				
 				this.borrar.setOnAction(listenerBorrar);
 
 

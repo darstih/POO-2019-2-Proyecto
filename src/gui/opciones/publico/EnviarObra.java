@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Excepciones.ErrorCampoVacio;
+import Excepciones.ErrorDimensionNoNum;
 import Excepciones.ErrorDimensionReal;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
@@ -26,7 +27,7 @@ public class EnviarObra extends OpcionDeMenu implements Independiente{
 
 	@Override
 	public String toString() {
-		return "Agregar Obra";
+		return "Postular Obra";
 	}
 	
 	@Override
@@ -57,8 +58,16 @@ public class EnviarObra extends OpcionDeMenu implements Independiente{
 						throw new ErrorCampoVacio(campos[i]);
 					}
 				}
-				double a =  Double.parseDouble(camposVal[4]);
-				double h = Double.parseDouble(camposVal[5]);
+				double a= 0,h= 0;
+				try{
+					a =  Double.parseDouble(camposVal[4]);
+				}catch(NumberFormatException e) {
+					throw new ErrorDimensionNoNum("Ancho");
+				}try{
+					h =  Double.parseDouble(camposVal[5]);
+				}catch(NumberFormatException e) {
+					throw new ErrorDimensionNoNum("Alto");
+				}
 				Invitado.postularObra(new Obra(camposVal[0],camposVal[1],h, a,Calendar.getInstance(),new ArrayList<Etiqueta>(), new Tecnica(camposVal[2]),camposVal[3],false));
 				if(a<=0 || h<=0) {
 					throw new ErrorDimensionReal();
@@ -69,7 +78,7 @@ public class EnviarObra extends OpcionDeMenu implements Independiente{
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
 				PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(), 1));
-			} catch (NumberFormatException | ErrorEtiquetaRepetida |ErrorObraRepetida | ErrorDimensionReal | ErrorCampoVacio e) {
+			} catch (ErrorDimensionNoNum | ErrorEtiquetaRepetida |ErrorObraRepetida | ErrorDimensionReal | ErrorCampoVacio e) {
 				titulo = "ERROR";
 				respuesta.setText(e.getMessage());
 				dialogo.setAlertType(AlertType.ERROR);

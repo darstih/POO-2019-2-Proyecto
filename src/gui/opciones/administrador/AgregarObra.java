@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import Excepciones.ErrorCampoVacio;
+import Excepciones.ErrorDimensionNoNum;
 import Excepciones.ErrorDimensionReal;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
@@ -66,9 +67,16 @@ public class AgregarObra extends OpcionDeMenu implements Independiente{
 					if(camposVal[i].trim().isEmpty()) {
 						throw new ErrorCampoVacio(campos[i]);
 					}
+				}double a= 0,h= 0;
+				try{
+					a =  Double.parseDouble(camposVal[4]);
+				}catch(NumberFormatException e) {
+					throw new ErrorDimensionNoNum("Ancho");
+				}try{
+					h =  Double.parseDouble(camposVal[5]);
+				}catch(NumberFormatException e) {
+					throw new ErrorDimensionNoNum("Alto");
 				}
-				double a =  Double.parseDouble(camposVal[4]);
-				double h = Double.parseDouble(camposVal[5]);
 				Administrador.agregarObra(new Obra(camposVal[0],camposVal[1],h,a,Calendar.getInstance(),new ArrayList<Etiqueta>(),
 						new Tecnica(camposVal[2]), camposVal[3],true));
 				titulo = "Obra agregada correctamente";
@@ -77,7 +85,7 @@ public class AgregarObra extends OpcionDeMenu implements Independiente{
 					throw new ErrorDimensionReal();
 				}
 				PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Obra.getObras(), 1));
-			} catch (ErrorEtiquetaRepetida | ErrorObraRepetida | ErrorDimensionReal | ErrorCampoVacio e) {
+			} catch (ErrorDimensionNoNum | ErrorEtiquetaRepetida | ErrorObraRepetida | ErrorDimensionReal | ErrorCampoVacio e) {
 				titulo = "ERROR";
 				respuesta.setText(e.getMessage());
 				dialogo.setAlertType(AlertType.ERROR);

@@ -8,7 +8,7 @@ import gui.opciones.OpcionDeMenu;
 public class TecnicaMasUsada extends OpcionDeMenu implements Independiente{
 	
 	public String toString() {
-		return "Tecnicas mas usadas";
+		return "Obras con la tecnica mas usada";
 	}
 	
 	@Override

@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
@@ -37,23 +36,17 @@ public class DBObra {
 		System.out.println(coso);
 		ArrayList<Obra> obrasVisible = new ArrayList<Obra>();
 		ArrayList<Obra> obrasNoVisible = new ArrayList<Obra>();
-		ArrayList<Obra> obrasR = new ArrayList<Obra>();
 		ArrayList<Obra> obras = (soyElMapa.readValue(coso, new TypeReference<ArrayList<Obra>>() {} ));
 		for(int i = 0;i<obras.size();i++) {
 			Obra temp = obras.get(i);
 			if(temp.getVisible()) {
 				obrasVisible.add(temp);
 			}else {
-				if(temp.getContenidoReporte().equals("")) {//La obra no esta reportada, no se muestra porque esta pendiente por algun invitado
-					obrasNoVisible.add(temp);
-				}else {
-					obrasR.add(temp);
-				}
+				obrasNoVisible.add(temp);
 			}
 		}
 		Obra.setObras(obrasVisible);
 		Administrador.setObrasPendientes(obrasNoVisible);
-		Administrador.setReportesObra(obrasR);
 		if( null != lector ){   
             lector.close();     
          }  
@@ -69,8 +62,6 @@ public class DBObra {
 		}
 		String theJsonText = soyElMapa.writeValueAsString(obras);
 		pw.println(theJsonText);
-		System.out.println(theJsonText);
-		System.out.println("Se guardaron todas las obras");
 		if (null != escritor)
             escritor.close();
 		}

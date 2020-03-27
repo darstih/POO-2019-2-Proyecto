@@ -26,7 +26,6 @@ public class DBUsuario {
 	
 	
 	public static void inicializar() throws JsonParseException, JsonMappingException, IOException {
-		
 		FileReader lector = new FileReader (archivo);
 		BufferedReader br = new BufferedReader(lector);
 		// Lectura del fichero

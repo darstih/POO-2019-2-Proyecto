@@ -26,7 +26,6 @@ public class DBTecnica {
 	
 	
 	public static void inicializar() throws JsonParseException, JsonMappingException, IOException {
-		DBTecnica dbTecnica = new DBTecnica();
 		FileReader lector = new FileReader (archivo);
 		BufferedReader br = new BufferedReader(lector);
 		// Lectura del fichero
@@ -47,7 +46,6 @@ public class DBTecnica {
 		ArrayList<Tecnica> tecnicas = Tecnica.getTecnicas();
 		String theJsonText = soyElMapa.writeValueAsString(tecnicas);
 		pw.println(theJsonText);
-		System.out.println(theJsonText);
 		if (null != escritor)
             escritor.close();
 		}

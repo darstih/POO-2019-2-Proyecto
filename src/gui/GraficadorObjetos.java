@@ -21,14 +21,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -43,7 +43,12 @@ public class GraficadorObjetos {
 		AbrirObraHandler eve = graficador.new AbrirObraHandler();
 		BorderPane obraGrafica = new BorderPane();
 		obraGrafica.setStyle("-fx-background-color: #F94978");
-		Label imagen = new Label(obra.rutaImagen());
+		Image imgFoto = new Image(Object.class.getResourceAsStream("../../Imagenes/404.png"));
+		ImageView imagen = new ImageView();
+		imagen.setImage(imgFoto);
+		imagen.setFitWidth(170);
+		imagen.setFitHeight(120);
+		//Label imagen = new Label(obra.rutaImagen())
 		obraGrafica.setOnMouseClicked(eve);
 		obraGrafica.setId(indice);
 		Label titulo = new Label(obra.getTitulo());
@@ -123,6 +128,14 @@ public class GraficadorObjetos {
 
 		@Override
 		public void handle(ActionEvent event) {
+			String titulo = "Obra agregada correctamente";
+			Label respuesta = new Label("La obra se agrego correctamente");
+			respuesta.setWrapText(true);
+			Alert dialogo = new Alert(AlertType.INFORMATION);
+			dialogo.setTitle(titulo);
+			dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
+			dialogo.initStyle(StageStyle.UTILITY);
+			dialogo.showAndWait();
 			Button graf = (Button)event.getSource();
 			Obra obr = PaneInteraccion.getAux().get(graf.getId());
 			Administrador.eliminarObraPendiente(obr);
@@ -167,17 +180,30 @@ public class GraficadorObjetos {
 			descripcion = new Label("Esta es una simulación virtual de una galeria de arte\n"
 					+ "por lo tanto podrás ver, buscar, comentar y etiquetar las obras que \n"
 					+ "están dentro de nuestra base de datos\n\n"
-					+ "Dentro del menú de procesos y consultas podrá encontrar las siguientes opciones\n" + 
-					"-Buscar Obras\n" + 
-					"-Listar Obras\n" + 
-					"-Enviar sugerencias de Obras: que aparece como 'Enviar obra'\n");
+					+ "Dentro del menú de procesos y consultas podrá encontrar las siguientes opciones" 
+					+ "\n -Buscar una obra."
+					+ "\n -Ver todas las obras."
+					+ "\n -Ver las obras con la tecnica mas popular."
+					+ "\n -Ver las obras con la etiqueta mas popular."
+					+ "\n -Ver las obras del artista mas popular."
+					+ "\n -Ver las obras mas populares."
+					+ "\n -Postular obra");
+			descripcion.setWrapText(true);
 		}else {
 			descripcion = new Label(user+" usted es un usuario administrador\n"
-					+ "Dentro del menú de procesos y consultas podrá encontrar las siguientes opciones\n"
-					+ "-Buscar Obras\n"
-					+ "-Listar Obras\n"
-					+ "-Agregar Obras\n"
-					+ "-Listar Obras pendientes por aprobación\n");
+					+ "Dentro del menú de procesos y consultas podrá encontrar las siguientes opciones"
+					+ "\n -Buscar una obra."
+					+ "\n -Agregar una obra."
+					+ "\n -Mostrar Obras pendientes."
+					+ "\n -Ver todas las obras."
+					+ "\n -Ver las obras con la tecnica mas popular."
+					+ "\n -Ver las obras con la etiqueta mas popular."
+					+ "\n -Ver las obras del artista mas popular."
+					+ "\n -Ver las obras mas populares."
+					+ "\n Ademas de las interacciones basicas: "
+					+ "\n -Agregar etiquetas de una obra."
+					+ "\n -Agregar comentarios de una obra.");
+			descripcion.setWrapText(true);
 		}
 		descripcion.setAlignment(Pos.TOP_LEFT);
 		VBox pane = new VBox();
@@ -198,8 +224,11 @@ public class GraficadorObjetos {
 			Obra obr = PaneInteraccion.getAux().get(graf.getId());
 			Label titulo = new Label(obr.getTitulo());
 			a.setTop(titulo);
-			Label image = new Label(obr.rutaImagen());
-			image.setPrefWidth(300);
+			Image imgFoto = new Image(Object.class.getResourceAsStream("../../Imagenes/404.png"));
+			ImageView image = new ImageView();
+			image.setImage(imgFoto);
+			image.setFitWidth(280);
+			image.setFitHeight(250);
 			a.setLeft(image);
 			VBox descripcion = new VBox(10);
 			
@@ -261,8 +290,6 @@ public class GraficadorObjetos {
 		a.setPadding(new Insets(2,2,2,2));
 		a.setSpacing(2);
 		a.getChildren().add(new Label(e.getLabel()));
-		a.getChildren().add(new Label(e.getTipo()));
-		a.getChildren().add(new Label(e.getDescripcion()));
 		return a;
 	}
 	class ActualizarHandler implements EventHandler<ActionEvent>{

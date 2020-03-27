@@ -31,12 +31,12 @@ import javafx.scene.text.Font;
 import javafx.stage.StageStyle;
 import gui.Main;
 import gui.opciones.OpcionDeMenu;
-import gui.opciones.administrador.AdministrarObrasReportadas;
 import gui.opciones.administrador.AgregarObra;
 import gui.opciones.administrador.ListarObrasPendientes;
 import gui.opciones.publico.BuscarObras;
 import gui.opciones.publico.EnviarObra;
 import gui.opciones.publico.ListarObras;
+import gui.opciones.publico.Novedades;
 import gui.opciones.publico.ObrasArtistaPopular;
 import gui.opciones.publico.ObrasEtiquetaPopular;
 import gui.opciones.publico.ObrasMasPopulares;
@@ -142,6 +142,7 @@ public class IndexPanel extends GridPane{
 		lblsaludo.setWrapText(true);
 		
 		
+		
 		p1.add(imga, 0, 0);
 		
 		//PANEL HOJA DE VIDA
@@ -222,7 +223,7 @@ public class IndexPanel extends GridPane{
     private class btnHandlerClassdesc implements  EventHandler<ActionEvent>{
     	@Override
 		public void handle(ActionEvent event) {
-    		lblsaludo.setFont(new Font(14));
+    		lblsaludo.setFont(new Font(16));
     		lblsaludo.setMaxHeight(200);
     		
     		lblsaludo.setText("Művezárt es un software que simula el funcionamiento de una galeria de arte,"
@@ -270,6 +271,7 @@ public class IndexPanel extends GridPane{
 		op.add(new ObrasEtiquetaPopular());
 		op.add(new ObrasArtistaPopular());
 		op.add(new ObrasMasPopulares());
+		op.add(new Novedades());
 		Scene main2 = new Scene(new PaneInteraccion("Invitado",op,new Invitado()),600,600);
 		Main.setScene(main2);
 	}
@@ -283,7 +285,7 @@ public class IndexPanel extends GridPane{
 		op.add(new ObrasEtiquetaPopular());
 		op.add(new ObrasArtistaPopular());
 		op.add(new ObrasMasPopulares());
-		op.add(new AdministrarObrasReportadas());
+		op.add(new Novedades());
 		Scene main2 = new Scene(new PaneInteraccion(usu,op,new Administrador()),600,600);
 		Main.setScene(main2);
 		

@@ -10,10 +10,7 @@ import baseDatos.DBEtiqueta;
 import baseDatos.DBObra;
 import baseDatos.DBTecnica;
 import baseDatos.DBUsuario;
-import gestorAplicacion.Usuario.Administrador;
-import gestorAplicacion.Usuario.Invitado;
 import gui.paneles.IndexPanel;
-import gui.paneles.PaneInteraccion;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -25,12 +22,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
-import gui.opciones.OpcionDeMenu;
-import gui.opciones.administrador.AgregarObra;
-import gui.opciones.administrador.ListarObrasPendientes;
-import gui.opciones.publico.BuscarObras;
-import gui.opciones.publico.EnviarObra;
-import gui.opciones.publico.ListarObras;
 
 public class Main  extends Application{
 	static Scene  main1,main2;

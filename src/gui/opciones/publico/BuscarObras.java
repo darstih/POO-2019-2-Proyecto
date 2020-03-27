@@ -19,7 +19,7 @@ import gui.opciones.OpcionDeMenu;
 public class BuscarObras extends OpcionDeMenu implements Independiente{
 	
 	public String toString() {
-		return "Buscar Obras";
+		return "Buscar Obra";
 	}
 	
 	@Override

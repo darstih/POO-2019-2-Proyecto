@@ -29,10 +29,16 @@ public class Invitado extends Usuario{
 	public String descripcion() {
 		
 		return "Soy un usuario invitado y puedo realizar sin autorizacion lo siguiente:"
-				+ "\n -Agregar y borrar etiquetas de una obra."
-				+ "\n Y puedo hacer los siguiente s�lo si un admistrador lo autoriza:"
-				+ "\n -Agregar y reportar obras."
-				+ "\n -Agregar y reportar comentario en una obra.";
+				+ "\n -Agregar etiquetas de una obra."
+				+ "\n -Agregar comentarios de una obra."
+				+ "\n -Buscar una obra."
+				+ "\n -Ver todas las obras."
+				+ "\n -Ver las obras con la tecnica mas popular."
+				+ "\n -Ver las obras con la etiqueta mas popular."
+				+ "\n -Ver las obras del artista mas popular."
+				+ "\n -Postular obra"
+				+ "\n -Ver las obras mas populares.";
+				
 		
 	}
 		

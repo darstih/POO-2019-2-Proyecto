@@ -31,7 +31,7 @@ public class Obra {
     private boolean visible = true;
 	private static ArrayList<Obra> obras= new ArrayList<Obra>();
 	private ArrayList<Comentario> comentarios; 
-	private String contenidoReporte = "";//aca solo hay algo cunado la visibilidad es false
+	
 	//Metodos
 	
 	public boolean comentarioRepetido(Comentario comentario)throws ErrorComentarioRepetido {
@@ -61,12 +61,10 @@ public class Obra {
 	//Cree este método nuevo para verificar si una etiqueta existente ya está agregada en la obra
 	public boolean verificarEtiquetaEnObra(Etiqueta etiqueta){//Retornará true si ya está creada
 		boolean retornar = false;
-		if(!etiquetas.isEmpty()){
-			for (int i=0;i<etiquetas.size();i++){
-				if(etiqueta.getLabel().equalsIgnoreCase(etiquetas.get(i).getLabel())){
-					retornar=true;
-					break;
-				}
+		for (int i=0;i<etiquetas.size();i++){
+			if(etiqueta.getLabel().equalsIgnoreCase(etiquetas.get(i).getLabel())){
+				retornar=true;
+				break;
 			}
 		}
 		return retornar;
@@ -248,12 +246,6 @@ public class Obra {
 	}
 	public void setComentarios(ArrayList<Comentario> comentarios) {
 		this.comentarios = comentarios;
-	}
-	public void setContenidoReporte(String contenido) {
-		this.contenidoReporte = contenido;
-	}
-	public String getContenidoReporte() {
-		return contenidoReporte;
 	}
 	public String IdUnico() {
 		// TODO Auto-generated method stub

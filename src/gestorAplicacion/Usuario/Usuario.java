@@ -23,7 +23,7 @@ public abstract class Usuario{
 	// listado = 1 | ordena las obras por su fecha de creacion, de mas antiguo a mas nuevo
 	// listado = 2 | ordena por relevancia, siendo comentarios su criterio de relevancia mas comentarios a menos
 	// listado = 3 | ordena las obras por su fecha de ingreso al sistema, de mas antiguo a mas nuevo
-	private static ArrayList<Obra> listarObra(ArrayList<Obra> listaO, int listado){
+	public static ArrayList<Obra> listarObra(ArrayList<Obra> listaO, int listado, int nove){
 		if(listado ==1){
 			Collections.sort(listaO,(o1,o2) -> {
 				return o1.getFechaCreacion().compareTo(o2.getFechaCreacion());
@@ -38,7 +38,19 @@ public abstract class Usuario{
 			Collections.sort(listaO,(o1,o2) -> {
 				return o1.getFechaIngreso().compareTo(o2.getFechaIngreso());
 			});
-			return listaO;
+			ArrayList<Obra> obraf = new ArrayList<Obra>();
+			int top = listaO.size();
+			if(nove==-1) {
+				top = 3;
+			}
+			
+			for(int i = listaO.size()-1;i>=0;i--) {
+				obraf.add(listaO.get(i));
+				if(nove==-1 && obraf.size()==3) {
+					break;
+				}
+			}
+			return obraf;
 		}
 		return listaO;
 	}
@@ -124,7 +136,7 @@ public abstract class Usuario{
 		FlowPane pane = new FlowPane();
 		pane.setVgap(10);
 		pane.setHgap(10);
-		obras= listarObra(obras,listado);
+		obras= listarObra(obras,listado,1);
 		Hashtable<String,Obra> tabla = new Hashtable<String,Obra>();
 		int cont = 0;
 		for(Obra i:obras) {
@@ -175,13 +187,6 @@ public abstract class Usuario{
 		}
 		return listarObraGrafica(res,listado);
 	}
-
-
-
-
-
-
-
 
 	// listado = 1 | ordena las obras por su fecha de creacion, de mas antiguo a mas nuevo
 	// listado = 2 | ordena por relevancia, siendo comentarios su criterio de relevancia mas comentarios a menos

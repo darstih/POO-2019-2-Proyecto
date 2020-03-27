@@ -5,7 +5,6 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 import Excepciones.ErrorCampoVacio;
-import gestorAplicacion.Usuario.Administrador;
 import gui.paneles.PaneInteraccion;
 import gui.GraficadorObjetos;
 import gui.opciones.Independiente;
@@ -24,16 +23,4 @@ public class ListarObrasPendientes extends OpcionDeMenu implements Independiente
 		PaneInteraccion.setPaneActual(GraficadorObjetos.listarObraGraficaPendiente());
 		
 	}
-	
-	
-	/*public MenuDeConsola ejecutar() {
-		MenuDeConsola.getMenuActual().setAux(Administrador.getObrasPendientes()); 
-		obraSelec(MenuDeConsola.getMenuActual().getAux());
-		return null;
-		
-	}
-	public void asignar(MenuDeConsola atras,MenuDeConsola actual) {
-		atras.setAtras(atras);
-		atras.setSiguiente(atras);
-	}*/
 }

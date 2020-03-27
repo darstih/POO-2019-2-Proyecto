@@ -1,1 +1,1 @@
-[{"usuario":"david","password":"123"},{"usuario":"Darwin","password":"12345"}]
+[{"usuario":"david","password":"123"},{"usuario":"Darwin","password":"12345"},{"usuario":"Alejo","password":"1234"},{"usuario":"Andor","password":"123456"},{"usuario":"Guzman","password":"jaigulu"},{"usuario":"AlejoMon","password":"helpus"}]

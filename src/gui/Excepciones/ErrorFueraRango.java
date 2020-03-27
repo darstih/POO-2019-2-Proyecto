@@ -1,4 +1,4 @@
-package Excepciones;
+package gui.Excepciones;
 //Autor Darwin Herrera
 public class ErrorFueraRango extends ErrorExistencia{
 	public ErrorFueraRango(String campo) {

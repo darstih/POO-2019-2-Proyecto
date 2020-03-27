@@ -1,4 +1,4 @@
-package Excepciones;
+package gui.Excepciones;
 
 public class ErrorCampoVacio extends ErrorLogico{
 	public ErrorCampoVacio(String var){

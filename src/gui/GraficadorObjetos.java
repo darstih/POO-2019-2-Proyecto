@@ -5,8 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Hashtable;
 
-import Excepciones.ErrorCampoVacio;
-import Excepciones.ErrorObraRepetida;
+import gui.Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;

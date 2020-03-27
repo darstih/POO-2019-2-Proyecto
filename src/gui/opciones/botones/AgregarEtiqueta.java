@@ -1,7 +1,7 @@
 package gui.opciones.botones;
 
-import Excepciones.ErrorCampoVacio;
-import Excepciones.ErrorEtiquetaRepetida;
+import gui.Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorEtiquetaRepetida;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gui.paneles.FieldPanel;

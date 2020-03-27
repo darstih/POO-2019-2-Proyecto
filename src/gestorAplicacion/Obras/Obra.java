@@ -5,9 +5,9 @@ import java.util.Calendar;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import Excepciones.ErrorComentarioRepetido;
-import Excepciones.ErrorEtiquetaRepetida;
-import Excepciones.ErrorObraRepetida;
+import gui.Excepciones.ErrorComentarioRepetido;
+import gui.Excepciones.ErrorEtiquetaRepetida;
+import gui.Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
 
 

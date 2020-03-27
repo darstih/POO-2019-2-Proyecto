@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
-import Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorCampoVacio;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Usuario;
 import gui.opciones.Independiente;

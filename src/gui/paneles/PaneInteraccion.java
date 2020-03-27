@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorCampoVacio;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Usuario;
 import javafx.event.ActionEvent;

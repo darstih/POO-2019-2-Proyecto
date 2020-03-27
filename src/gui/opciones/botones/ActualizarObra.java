@@ -1,7 +1,7 @@
 package gui.opciones.botones;
 
-import Excepciones.ErrorCampoVacio;
-import Excepciones.ErrorDimensionReal;
+import gui.Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorDimensionReal;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
 import gestorAplicacion.Usuario.Usuario;

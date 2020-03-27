@@ -2,11 +2,11 @@ package gui.opciones.publico;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import Excepciones.ErrorCampoVacio;
-import Excepciones.ErrorDimensionNoNum;
-import Excepciones.ErrorDimensionReal;
-import Excepciones.ErrorEtiquetaRepetida;
-import Excepciones.ErrorObraRepetida;
+import gui.Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorDimensionNoNum;
+import gui.Excepciones.ErrorDimensionReal;
+import gui.Excepciones.ErrorEtiquetaRepetida;
+import gui.Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;

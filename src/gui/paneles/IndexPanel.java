@@ -4,8 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import Excepciones.ErrorCampoVacio;
-import Excepciones.ErrorFueraRango;
+import gui.Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorFueraRango;
 import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Invitado;
 import javafx.event.ActionEvent;

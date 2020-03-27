@@ -1,8 +1,8 @@
 package gui.opciones.publico;
 
 
-import Excepciones.ErrorCampoVacio;
-import Excepciones.ErrorFueraRango;
+import gui.Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorFueraRango;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
 import gui.paneles.FieldPanel;

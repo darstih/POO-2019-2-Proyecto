@@ -1,7 +1,7 @@
 package gui.opciones.botones;
 
-import Excepciones.ErrorCampoVacio;
-import Excepciones.ErrorComentarioRepetido;
+import gui.Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorComentarioRepetido;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Administrador;

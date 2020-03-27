@@ -1,8 +1,8 @@
 package gestorAplicacion.Usuario;
 
-import Excepciones.ErrorComentarioRepetido;
-import Excepciones.ErrorEtiquetaRepetida;
-import Excepciones.ErrorObraRepetida;
+import gui.Excepciones.ErrorComentarioRepetido;
+import gui.Excepciones.ErrorEtiquetaRepetida;
+import gui.Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;

@@ -5,7 +5,7 @@ import java.util.Hashtable;
 
 import javax.swing.JFileChooser;
 
-import Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorCampoVacio;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

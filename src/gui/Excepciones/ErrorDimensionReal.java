@@ -1,4 +1,4 @@
-package Excepciones;
+package gui.Excepciones;
 
 public class ErrorDimensionReal extends ErrorLogico{
 	public ErrorDimensionReal() {

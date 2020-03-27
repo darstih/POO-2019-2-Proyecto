@@ -7,8 +7,8 @@ import java.util.Calendar;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
-import Excepciones.ErrorCampoVacio;
-import Excepciones.ErrorEtiquetaRepetida;
+import gui.Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorEtiquetaRepetida;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;

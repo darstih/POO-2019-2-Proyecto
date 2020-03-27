@@ -4,7 +4,7 @@ import java.io.IOException;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
-import Excepciones.ErrorCampoVacio;
+import gui.Excepciones.ErrorCampoVacio;
 import gui.paneles.PaneInteraccion;
 import gui.GraficadorObjetos;
 import gui.opciones.Independiente;

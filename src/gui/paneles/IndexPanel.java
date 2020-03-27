@@ -36,6 +36,7 @@ import gui.opciones.administrador.ListarObrasPendientes;
 import gui.opciones.publico.BuscarObras;
 import gui.opciones.publico.EnviarObra;
 import gui.opciones.publico.ListarObras;
+import gui.opciones.publico.ObrasArtistaPopular;
 import gui.opciones.publico.ObrasEtiquetaPopular;
 import gui.opciones.publico.TecnicaMasUsada;
 
@@ -265,6 +266,7 @@ public class IndexPanel extends GridPane{
 		op.add(new EnviarObra());
 		op.add(new TecnicaMasUsada());
 		op.add(new ObrasEtiquetaPopular());
+		op.add(new ObrasArtistaPopular());
 		Scene main2 = new Scene(new PaneInteraccion("Invitado",op,new Invitado()),600,600);
 		Main.setScene(main2);
 	}
@@ -276,6 +278,7 @@ public class IndexPanel extends GridPane{
 		op.add(new ListarObrasPendientes());
 		op.add(new TecnicaMasUsada());
 		op.add(new ObrasEtiquetaPopular());
+		op.add(new ObrasArtistaPopular());
 		Scene main2 = new Scene(new PaneInteraccion(usu,op,new Administrador()),600,600);
 		Main.setScene(main2);
 		

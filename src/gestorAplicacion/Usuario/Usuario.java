@@ -19,7 +19,6 @@ public abstract class Usuario{
 
 	//Atributos
 
-
 	// listado = 1 | ordena las obras por su fecha de creacion, de mas antiguo a mas nuevo
 	// listado = 2 | ordena por relevancia, siendo comentarios su criterio de relevancia mas comentarios a menos
 	// listado = 3 | ordena las obras por su fecha de ingreso al sistema, de mas antiguo a mas nuevo
@@ -95,7 +94,7 @@ public abstract class Usuario{
 	
 	public static ArrayList<Obra> artistaMasPopular(){
 		ArrayList<Obra> obras=new ArrayList<>();
-		String artistamasusado = null;
+		String artistamasusado = "";
 		String artista;
 		int numerodeuso=0;
 		for(int i=0;i<Obra.getCantObras();i++) {
@@ -105,10 +104,10 @@ public abstract class Usuario{
 				if(artista.equalsIgnoreCase(Obra.getObras().get(l).getAutor())) {
 					uso++;
 				}
-			
 			}
-			if(uso<numerodeuso) {
+			if(uso>numerodeuso) {
 				artistamasusado=artista;
+				numerodeuso = uso;
 			}
 		}
 		for(int i=0;i<Obra.getCantObras();i++) {
@@ -167,6 +166,7 @@ public abstract class Usuario{
 		PaneInteraccion.setAux(tabla);
 		return pane;
 	}
+	
 	//Autor Darwin Herrera
 	private static FlowPane buscarObraPorTecnica(String var,int listado){//eficiencia O(n)
 		ArrayList<Obra> a = Obra.getObras();

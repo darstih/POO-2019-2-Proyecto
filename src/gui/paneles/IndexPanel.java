@@ -36,6 +36,7 @@ import gui.opciones.administrador.ListarObrasPendientes;
 import gui.opciones.publico.BuscarObras;
 import gui.opciones.publico.EnviarObra;
 import gui.opciones.publico.ListarObras;
+import gui.opciones.publico.TecnicaMasUsada;
 
 public class IndexPanel extends GridPane{
 		
@@ -261,6 +262,7 @@ public class IndexPanel extends GridPane{
 		op.add(new BuscarObras());
 		op.add(new ListarObras());
 		op.add(new EnviarObra());
+		op.add(new TecnicaMasUsada());
 		Scene main2 = new Scene(new PaneInteraccion("Invitado",op,new Invitado()),600,600);
 		Main.setScene(main2);
 	}
@@ -270,6 +272,7 @@ public class IndexPanel extends GridPane{
 		op.add(new ListarObras());
 		op.add(new AgregarObra());
 		op.add(new ListarObrasPendientes());
+		op.add(new TecnicaMasUsada());
 		Scene main2 = new Scene(new PaneInteraccion(usu,op,new Administrador()),600,600);
 		Main.setScene(main2);
 		

@@ -6,7 +6,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 @JsonIgnoreProperties(ignoreUnknown = true)
 //Autor Darwin Herrera
-public class Comentario extends ObjetoReporte{
+public class Comentario{
     public Comentario() {}
     //Atributos
     private String autor;
@@ -52,8 +52,6 @@ public class Comentario extends ObjetoReporte{
 	public Comentario( String contenido) {
 		this("Desconocido",contenido);
 	}
-	@Override
-	
 	public String IdUnico() {
 		// TODO Auto-generated method stub
 		return autor+" "+contenido;

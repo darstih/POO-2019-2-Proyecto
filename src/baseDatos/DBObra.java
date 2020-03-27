@@ -37,17 +37,23 @@ public class DBObra {
 		System.out.println(coso);
 		ArrayList<Obra> obrasVisible = new ArrayList<Obra>();
 		ArrayList<Obra> obrasNoVisible = new ArrayList<Obra>();
+		ArrayList<Obra> obrasR = new ArrayList<Obra>();
 		ArrayList<Obra> obras = (soyElMapa.readValue(coso, new TypeReference<ArrayList<Obra>>() {} ));
 		for(int i = 0;i<obras.size();i++) {
 			Obra temp = obras.get(i);
 			if(temp.getVisible()) {
 				obrasVisible.add(temp);
 			}else {
-				obrasNoVisible.add(temp);
+				if(temp.getContenidoReporte().equals("")) {//La obra no esta reportada, no se muestra porque esta pendiente por algun invitado
+					obrasNoVisible.add(temp);
+				}else {
+					obrasR.add(temp);
+				}
 			}
 		}
 		Obra.setObras(obrasVisible);
 		Administrador.setObrasPendientes(obrasNoVisible);
+		Administrador.setReportesObra(obrasR);
 		if( null != lector ){   
             lector.close();     
          }  

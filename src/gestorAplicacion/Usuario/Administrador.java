@@ -7,7 +7,6 @@ import Excepciones.ErrorComentarioRepetido;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
 import gestorAplicacion.Interacciones.Comentario;
-import gestorAplicacion.Interacciones.Reporte;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gui.paneles.PaneInteraccion;
@@ -17,14 +16,17 @@ import javafx.scene.layout.FlowPane;
 public class Administrador extends Usuario {
 	//Atributos
     private static ArrayList<Obra> obrasPendientes = new ArrayList<Obra>();
-	private static ArrayList<Reporte> reportesComentario = new ArrayList<Reporte>();
-	private static ArrayList<Reporte> reportesObra = new ArrayList<Reporte>();
+	private static ArrayList<Comentario> reportesComentario = new ArrayList<Comentario>();
+	private static ArrayList<Obra> reportesObra = new ArrayList<Obra>();
 	private static ArrayList<Administrador> usuarios= new ArrayList<Administrador>();
 	private String usuario;
 	private String password;
 	
 	//Metodos
 	//autor Darwin Herrera
+	
+	
+	
 	public static void agregarObra(Obra a)throws ErrorObraRepetida{
 		if(!Obra.existeObra(a)) {
 			Obra.addObra(a);
@@ -36,11 +38,12 @@ public class Administrador extends Usuario {
 		o.agregarComentario(c);
 	}
 
-	public static void addReporteComentario(Reporte r ){
+	public static void addReporteComentario(Comentario r ){
 		reportesComentario.add(r);
 	}
-	public static void addReporteObra(Reporte r){
+	public static void addReporteObra(Obra r){
 		reportesObra.add(r);
+		r.setContenidoReporte("");
 	}
 	public static boolean verificarAdmin(String usuario,String password) {
 		boolean answer = false;
@@ -101,16 +104,16 @@ public class Administrador extends Usuario {
 		public static void setObrasPendientes(ArrayList<Obra> obrasPendientes) {
 			Administrador.obrasPendientes = obrasPendientes;
 		}
-		public static ArrayList<Reporte> getReportesComentario() {
+		public static ArrayList<Comentario> getReportesComentario() {
 			return reportesComentario;
 		}
-		public static void setReportesComentario(ArrayList<Reporte> reportesComentario) {
+		public static void setReportesComentario(ArrayList<Comentario> reportesComentario) {
 			Administrador.reportesComentario = reportesComentario;
 		}
-		public static ArrayList<Reporte> getReportesObra() {
+		public static ArrayList<Obra> getReportesObra() {
 			return reportesObra;
 		}
-		public static void setReportesObra(ArrayList<Reporte> reportesObra) {
+		public static void setReportesObra(ArrayList<Obra> reportesObra) {
 			Administrador.reportesObra = reportesObra;
 		}
 		public void setUsuario(String usuario) {

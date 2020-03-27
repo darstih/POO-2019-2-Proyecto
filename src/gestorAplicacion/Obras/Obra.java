@@ -8,14 +8,13 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import Excepciones.ErrorComentarioRepetido;
 import Excepciones.ErrorEtiquetaRepetida;
 import Excepciones.ErrorObraRepetida;
-import gestorAplicacion.Interacciones.ObjetoReporte;
 import gestorAplicacion.Interacciones.Comentario;
 
 
 //Autor de clase y estructura Darwin Herrera
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Obra extends ObjetoReporte{
+public class Obra {
 	public Obra() {Obra.obras.add(this);}
 
 	//Atributos
@@ -32,6 +31,7 @@ public class Obra extends ObjetoReporte{
     private boolean visible = true;
 	private static ArrayList<Obra> obras= new ArrayList<Obra>();
 	private ArrayList<Comentario> comentarios; 
+	private String contenidoReporte = "";//aca solo hay algo cunado la visibilidad es false
 	//Metodos
 	
 	public boolean comentarioRepetido(Comentario comentario)throws ErrorComentarioRepetido {
@@ -249,7 +249,12 @@ public class Obra extends ObjetoReporte{
 	public void setComentarios(ArrayList<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
-	@Override
+	public void setContenidoReporte(String contenido) {
+		this.contenidoReporte = contenido;
+	}
+	public String getContenidoReporte() {
+		return contenidoReporte;
+	}
 	public String IdUnico() {
 		// TODO Auto-generated method stub
 		return autor+" "+titulo;

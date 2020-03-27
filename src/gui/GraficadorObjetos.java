@@ -12,7 +12,6 @@ import gestorAplicacion.Usuario.Invitado;
 import gui.opciones.botones.ActualizarObra;
 import gui.opciones.botones.AgregarComentario;
 import gui.opciones.botones.AgregarEtiqueta;
-import gui.opciones.publico.AgregarReporte;
 import gui.paneles.FieldPanel;
 import gui.paneles.PaneInteraccion;
 import javafx.event.ActionEvent;
@@ -222,31 +221,24 @@ public class GraficadorObjetos {
 			
 			Button com = new AgregarComentario().graficar();
 			com.setId(graf.getId());
-			Button rep = new AgregarReporte().graficar();
 			Button eti = new AgregarEtiqueta().graficar();
 			eti.setId(graf.getId());
 			FlowPane botones = new FlowPane();
 			botones.setPadding(new Insets(20,20,20,20));
-			AgregarReporteHandler handlerReporte = new AgregarReporteHandler();
 			AgregarComentarioHandler handlerComentario = new AgregarComentarioHandler();
 			AgregarEtiquetaHandler handlerEtiqueta = new AgregarEtiquetaHandler();
 			
 			eti.setOnAction(handlerEtiqueta);
 			com.setOnAction(handlerComentario);
-			rep.setOnAction(handlerReporte);
 			
 			botones.getChildren().add(com);
-			botones.getChildren().add(rep);
 			botones.getChildren().add(eti);
 			if(!(PaneInteraccion.getTipoUsuario()==new Invitado().descripcion() )) {
-				rep= new Button("Borrar");
 				Button act = new ActualizarObra().graficar();
 				ActualizarHandler handlerActualizar = new ActualizarHandler();
 				BorrarObraHandler handlerBorrarObra = new BorrarObraHandler();
-				rep.setOnAction(handlerBorrarObra);
 				act.setOnAction(handlerActualizar);
 				act.setId(graf.getId());
-				rep.setId(graf.getId());
 				botones.getChildren().add(act);
 			}
 			
@@ -261,9 +253,6 @@ public class GraficadorObjetos {
 			
 			
 		}
-		
-		
-		
 	}
 	public static Pane graficar(Etiqueta e) {
 		VBox a = new VBox();
@@ -273,31 +262,6 @@ public class GraficadorObjetos {
 		a.getChildren().add(new Label(e.getTipo()));
 		a.getChildren().add(new Label(e.getDescripcion()));
 		return a;
-	}
-	class AgregarReporteHandler implements EventHandler<ActionEvent>{
-		@Override
-		public void handle(ActionEvent arg0) {
-			String titulo = "";
-			Label respuesta = new Label();
-			Alert dialogo = new Alert(AlertType.INFORMATION);
-			FieldPanel.setAux(obra);
-			try {
-				new AgregarReporte().ejecutar();
-				//titulo = "Obra agregada correctamente";
-				//respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
-			} catch ( ErrorCampoVacio e) {
-				titulo = "ERROR";
-				respuesta.setText(e.getMessage());
-				dialogo.setAlertType(AlertType.ERROR);
-			}finally {
-				dialogo.setTitle(titulo);
-				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
-				dialogo.initStyle(StageStyle.UTILITY);
-				dialogo.showAndWait();
-			}
-			
-		}
-		
 	}
 	class ActualizarHandler implements EventHandler<ActionEvent>{
 		@Override

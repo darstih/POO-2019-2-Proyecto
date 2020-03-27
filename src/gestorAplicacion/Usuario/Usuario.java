@@ -126,7 +126,7 @@ public abstract class Usuario{
 		String titulo;
 		int numerodeuso=0;
 		for(int i=0;i<Administrador.getReportesObra().size();i++) {
-			String[] id=Administrador.getReportesObra().get(i).getObjetoReporte().IdUnico().split(" ");
+			String[] id=Administrador.getReportesObra().get(i).IdUnico().split(" ");
 			artista=id[0];
 			titulo=id[1];
 			int uso=0;
@@ -162,6 +162,21 @@ public abstract class Usuario{
 			cont++;
 			pane.getChildren().add(a);
 			
+		}
+		PaneInteraccion.setAux(tabla);
+		return pane;
+	}
+	public static FlowPane listarObraGraficaReportes(ArrayList<Obra> obras) {
+		FlowPane pane = new FlowPane();
+		pane.setVgap(10);
+		pane.setHgap(10);
+		Hashtable<String,Obra> tabla = new Hashtable<String,Obra>();
+		int cont = 0;
+		for(Obra i:obras) {
+			BorderPane a = GraficadorObjetos.graficar(i,2,""+cont);
+			tabla.put(""+cont, i);
+			cont++;
+			pane.getChildren().add(a);
 		}
 		PaneInteraccion.setAux(tabla);
 		return pane;

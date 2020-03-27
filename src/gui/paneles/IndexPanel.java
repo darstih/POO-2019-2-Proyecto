@@ -1,5 +1,7 @@
 package gui.paneles;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import Excepciones.ErrorCampoVacio;
@@ -44,15 +46,16 @@ import gui.opciones.publico.TecnicaMasUsada;
 
 public class IndexPanel extends GridPane{
 		
-	private static String[] pathImagenes = {"../../Imagenes/imagen1.jpg","../../Imagenes/imagen2.jpg",
-			"../../Imagenes/imagen3.jpg","../../Imagenes/imagen4.jpg","../../Imagenes/imagen5.jpg"};
+	private static String[] pathImagenes = { System.getProperty("user.dir") + "//src//Imagenes//imagen1.jpg", System.getProperty("user.dir") + "//src//Imagenes//imagen2.jpg",
+			System.getProperty("user.dir") + "//src//Imagenes//imagen3.jpg",
+			System.getProperty("user.dir") + "//src//Imagenes//imagen4.jpg",System.getProperty("user.dir") + "//src//Imagenes//imagen5.jpg"};
 	private static String[] nombres = {"Darwin Stiven Herrera Cartagena",
 			"Alejandro Bedoya Taborda    ","David Antonio Aristizabal Giraldo"}; 
 	private static String[] edades = {"20","20","19"};
 	private static String[] correos = {"dsherrerac@unal.edu.co","albedoyat@unal.edu.co","daaristizabalg@unal.edu.co"};
 	private static String[] fechas = {"15/08/1999","24/09/1999","24/01/2001"};
-	private static String[] pathFotos = {"../../Imagenes/fotoDarwin.jpeg",
-			"../../Imagenes/fotoAlejandro.jpeg","../../Imagenes/fotoDavid.jpeg"};
+	private static String[] pathFotos = {System.getProperty("user.dir") + "//src//Imagenes//fotoDarwin.jpeg",
+			System.getProperty("user.dir") + "//src//Imagenes//fotoAlejandro.jpeg",System.getProperty("user.dir") + "//src//Imagenes//fotoDavid.jpeg"};
 	private static Label ltxtNombre,ltxtEdad,ltxtCorreo,ltxtFecha;
 	private Image imgFoto,imagen; 
 	private ImageView imgF,imga;
@@ -62,7 +65,7 @@ public class IndexPanel extends GridPane{
 	private static int cntI = 0;
 	private static int cntD = 0;
 	
-	public IndexPanel()  {
+	public IndexPanel() throws FileNotFoundException  {
 		GridPane p1 = new GridPane();
 		GridPane p2 = new GridPane();
 		BorderPane p3 = new BorderPane();
@@ -105,7 +108,7 @@ public class IndexPanel extends GridPane{
 		lblLogin.setFont(new Font(15));
 		
 		//ELEMENTOS HOJA DE VIDA
-		imgFoto = new Image(getClass().getResourceAsStream(pathFotos[cntD%3]));
+		imgFoto = new Image(new FileInputStream(pathFotos[cntD%3]));
 		imgF = new ImageView(imgFoto);
 		Label lblCambiar = new Label("");
 		Label lblNombre = new Label("Nombre");
@@ -126,7 +129,7 @@ public class IndexPanel extends GridPane{
 		//p1.setStyle("-fx-background-color: #795548;");
 		
 		//ELEMENTOS IMAGENES ASOCIADAS
-		imagen = new Image(getClass().getResourceAsStream(pathImagenes[cntI%5]));
+		imagen = new Image(new FileInputStream(pathImagenes[cntI%5]));
 		imga = new ImageView(imagen);
 		imga.setFitWidth(250);
 		imga.setFitHeight(200);
@@ -196,7 +199,12 @@ public class IndexPanel extends GridPane{
     	@Override
 		public void handle(Event event) {
 			cntD++;
-			imgFoto = new Image(getClass().getResourceAsStream(pathFotos[cntD%3]));
+			try {
+				imgFoto = new Image(new FileInputStream(pathFotos[cntD%3]));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			imgF.setImage(imgFoto);
 			ltxtNombre.setText(nombres[cntD%3]);
 			ltxtEdad.setText(edades[cntD%3]);
@@ -209,7 +217,12 @@ public class IndexPanel extends GridPane{
     	@Override
 		public void handle(Event event) {
     		cntI++;
-    		imagen = new Image(getClass().getResourceAsStream(pathImagenes[cntI%5]));
+    		try {
+				imagen = new Image(new FileInputStream(pathImagenes[cntI%5]));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     		imga.setImage(imagen);
     	}
     }

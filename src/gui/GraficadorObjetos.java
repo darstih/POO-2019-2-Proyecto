@@ -1,6 +1,8 @@
 package gui;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Hashtable;
 
 import Excepciones.ErrorCampoVacio;
@@ -43,7 +45,13 @@ public class GraficadorObjetos {
 		AbrirObraHandler eve = graficador.new AbrirObraHandler();
 		BorderPane obraGrafica = new BorderPane();
 		obraGrafica.setStyle("-fx-background-color: #F94978");
-		Image imgFoto = new Image(Object.class.getResourceAsStream("../../Imagenes/404.png"));
+		Image imgFoto=null;
+		try {
+			imgFoto = new Image(new FileInputStream("../../Imagenes/404.png"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ImageView imagen = new ImageView();
 		imagen.setImage(imgFoto);
 		imagen.setFitWidth(170);
@@ -224,7 +232,13 @@ public class GraficadorObjetos {
 			Obra obr = PaneInteraccion.getAux().get(graf.getId());
 			Label titulo = new Label(obr.getTitulo());
 			a.setTop(titulo);
-			Image imgFoto = new Image(Object.class.getResourceAsStream("../../Imagenes/404.png"));
+			Image imgFoto=null;
+			try {
+				imgFoto = new Image(new FileInputStream("../../Imagenes/404.png"));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			ImageView image = new ImageView();
 			image.setImage(imgFoto);
 			image.setFitWidth(280);

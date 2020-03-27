@@ -1,4 +1,5 @@
 package gui;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -76,7 +77,12 @@ public class Main  extends Application{
         sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
             public void handle(WorkerStateEvent event) {
-                main1 = new Scene(new IndexPanel(),600,600);
+                try {
+					main1 = new Scene(new IndexPanel(),600,600);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                 pantalla.setScene(main1);
             }
         });

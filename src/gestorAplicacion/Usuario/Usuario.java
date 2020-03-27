@@ -118,37 +118,6 @@ public abstract class Usuario{
 		return obras;
 	}
 	
-	public static ArrayList<Obra> obraConMasReportes(){
-		ArrayList<Obra> obras=new ArrayList<>();
-		String artistamasusado = null;
-		String artista;
-		String titulomasusado = null;
-		String titulo;
-		int numerodeuso=0;
-		for(int i=0;i<Administrador.getReportesObra().size();i++) {
-			String[] id=Administrador.getReportesObra().get(i).IdUnico().split(" ");
-			artista=id[0];
-			titulo=id[1];
-			int uso=0;
-			for(int l=0;l<Obra.getCantObras();l++) {
-				if(artista.equalsIgnoreCase(Obra.getObras().get(l).getAutor()) && titulo.equalsIgnoreCase(Obra.getObras().get(l).getTitulo())) {
-					uso++;
-				}
-			
-			}
-			if(uso>numerodeuso) {
-				artistamasusado=artista;
-				titulomasusado=titulo;
-			}
-		}
-		for(int l=0;l<Obra.getCantObras();l++) {
-			if(artistamasusado.equalsIgnoreCase(Obra.getObras().get(l).getAutor()) && titulomasusado.equalsIgnoreCase(Obra.getObras().get(l).getTitulo())) {
-				obras.add(Obra.getObras().get(l));
-			}
-		
-		}
-		return obras;
-	}
 	public static FlowPane listarObraGrafica(ArrayList<Obra> obras,int listado) {
 		FlowPane pane = new FlowPane();
 		pane.setVgap(10);

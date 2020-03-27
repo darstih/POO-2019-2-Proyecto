@@ -47,7 +47,7 @@ public class GraficadorObjetos {
 		obraGrafica.setStyle("-fx-background-color: #F94978");
 		Image imgFoto=null;
 		try {
-			imgFoto = new Image(new FileInputStream("../../Imagenes/404.png"));
+			imgFoto = new Image(new FileInputStream(System.getProperty("user.dir") + "//src//Imagenes//404.png"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -233,12 +233,12 @@ public class GraficadorObjetos {
 			Label titulo = new Label(obr.getTitulo());
 			a.setTop(titulo);
 			Image imgFoto=null;
-			try {
-				imgFoto = new Image(new FileInputStream("../../Imagenes/404.png"));
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			imgFoto = new Image(new FileInputStream(System.getProperty("user.dir") + "//src//Imagenes//404.png"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			ImageView image = new ImageView();
 			image.setImage(imgFoto);
 			image.setFitWidth(280);

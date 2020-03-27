@@ -123,7 +123,7 @@ public class GraficadorObjetos {
 		@Override
 		public void handle(ActionEvent event) {
 			Button graf = (Button)event.getSource();
-			Obra obr = PaneInteraccion.getAux().get(graf);
+			Obra obr = PaneInteraccion.getAux().get(graf.getId());
 			Administrador.eliminarObraPendiente(obr);
 			PaneInteraccion.setPaneActual(listarObraGraficaPendiente());
 		}

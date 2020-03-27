@@ -19,13 +19,11 @@ public class Obra extends ObjetoReporte{
 	public Obra() {Obra.obras.add(this);}
 
 	//Atributos
-	private static ArrayList<Tecnica> listaTecnicas = new ArrayList<Tecnica>();
 	private Tecnica tecnica;
 	private String descripcion;
 	private String imagen= "Ruta de imagen";
 	private Double altura;
 	private Double ancho;
-	
 	private ArrayList<Etiqueta> etiquetas = new ArrayList<Etiqueta>();
 	private Calendar fechaCreacion;
 	private Calendar fechaIngreso;
@@ -103,9 +101,9 @@ public class Obra extends ObjetoReporte{
 
 	public boolean verificarTecnica(Tecnica tecnica){//Retornará true si ya está creada
 		boolean retornar = false;
-		if(listaTecnicas.isEmpty()){
-			for (int i=0;i<listaTecnicas.size();i++){
-				if(tecnica.getNombre().equalsIgnoreCase(listaTecnicas.get(i).getNombre())){
+		if(!Tecnica.getTecnicas().isEmpty()){
+			for (int i=0;i<Tecnica.getTecnicas().size();i++){
+				if(tecnica.getNombre().equalsIgnoreCase(Tecnica.getTecnicas().get(i).getNombre())){
 					retornar=true;
 					break;
 				}
@@ -117,15 +115,15 @@ public class Obra extends ObjetoReporte{
 	@SuppressWarnings("static-access")
 	public void crearTecnica(Tecnica tecnica){
 		if(!verificarTecnica(tecnica)){
-			listaTecnicas.add(tecnica);
-			this.tecnica=listaTecnicas.get(listaTecnicas.size()-1);
-			listaTecnicas.get(listaTecnicas.size()-1).cantObras++;
+			Tecnica.getTecnicas().add(tecnica);
+			this.tecnica=Tecnica.getTecnicas().get(Tecnica.getTecnicas().size()-1);
+			Tecnica.getTecnicas().get(Tecnica.getTecnicas().size()-1).aumentarObras();
 		}
 		else{
-			for (int i=0;i<listaTecnicas.size();i++){
-				if(tecnica.getNombre().equalsIgnoreCase(listaTecnicas.get(i).getNombre())){
-					this.tecnica=listaTecnicas.get(i);
-					listaTecnicas.get(i).cantObras++;
+			for (int i=0;i<Tecnica.getTecnicas().size();i++){
+				if(tecnica.getNombre().equalsIgnoreCase(Tecnica.getTecnicas().get(i).getNombre())){
+					this.tecnica=Tecnica.getTecnicas().get(i);
+					Tecnica.getTecnicas().get(i).aumentarObras();
 					break;
 				}
 			}
@@ -134,10 +132,6 @@ public class Obra extends ObjetoReporte{
 	
 	
 	//Getters y setters
-	
-	public static ArrayList<Tecnica> getListaTecnicas(){
-		return listaTecnicas;
-	}
 	
 	public void agregarComentario(Comentario c)throws ErrorComentarioRepetido {
 		if(!comentarioRepetido(c)) {

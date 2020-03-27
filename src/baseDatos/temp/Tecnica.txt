@@ -1,0 +1,1 @@
+[{"nombre":"inicial","cantObras":0,"descripcion":"inicial"},{"nombre":"lapicito","cantObras":2,"descripcion":"Sin descripción"},{"nombre":"oleo","cantObras":4,"descripcion":"Sin descripción"}]

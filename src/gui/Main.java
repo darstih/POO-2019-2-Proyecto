@@ -8,6 +8,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 
 import baseDatos.DBEtiqueta;
 import baseDatos.DBObra;
+import baseDatos.DBTecnica;
 import baseDatos.DBUsuario;
 import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Invitado;
@@ -48,6 +49,7 @@ public class Main  extends Application{
 		DBObra.inicializar();//Todas las obras que hay en el sistema
 		DBUsuario.inicializar();//Todos los administradores del sistema
 		DBEtiqueta.inicializar();//Todas las etiquetas que hay en las obras (sin repeticion)
+		DBTecnica.inicializar();
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception,JsonParseException, JsonMappingException, IOException {
@@ -94,6 +96,7 @@ public class Main  extends Application{
 		DBObra.guardar();
 		DBUsuario.guardar();
 		DBEtiqueta.guardar();
+		DBTecnica.guardar();
 	}
 	
 }

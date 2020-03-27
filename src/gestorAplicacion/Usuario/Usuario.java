@@ -49,7 +49,7 @@ public abstract class Usuario{
 		int numerodeuso=0;
 		Tecnica tecnicamasusada = null;
 		Tecnica tecnica;
-		ArrayList<Tecnica> listatecnicas= Obra.getListaTecnicas();
+		ArrayList<Tecnica> listatecnicas= Tecnica.getTecnicas();
 		for(int i=0;i<listatecnicas.size();i++) {
 			tecnica=listatecnicas.get(i);
 			if(tecnica.getCantObras()>numerodeuso) {

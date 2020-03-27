@@ -3,6 +3,8 @@ package gui;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Hashtable;
 
 import gui.Excepciones.ErrorCampoVacio;
@@ -246,6 +248,11 @@ public class GraficadorObjetos {
 			a.setLeft(image);
 			VBox descripcion = new VBox(10);
 			
+			
+			Date date = obr.getFechaCreacion().getTime();
+			SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+			String date1 = format1.format(date);
+			
 			descripcion.getChildren().add(new Label("Descripción:"));
 			descripcion.getChildren().add(new Label(obr.getDescripcion()));
 			descripcion.getChildren().add(new Label("Altura:"));
@@ -255,7 +262,7 @@ public class GraficadorObjetos {
 			descripcion.getChildren().add(new Label("Autor:"));
 			descripcion.getChildren().add(new Label(obr.getAutor().toString()));
 			descripcion.getChildren().add(new Label("Fecha creación:"));
-			descripcion.getChildren().add(new Label(obr.getFechaCreacion().toString()));
+			descripcion.getChildren().add(new Label(date1));
 			descripcion.getChildren().add(new Label("Tecnica:"));
 			descripcion.getChildren().add(new Label(obr.getTecnica().getNombre()));
 			a.setCenter(descripcion);

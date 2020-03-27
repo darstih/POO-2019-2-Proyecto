@@ -1,5 +1,6 @@
 package gui;
 
+
 import java.util.Hashtable;
 
 import Excepciones.ErrorCampoVacio;
@@ -22,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -136,7 +138,8 @@ public class GraficadorObjetos {
     	return cont;
     }
     
-	public static FlowPane listarObraGraficaPendiente() {
+	public static ScrollPane listarObraGraficaPendiente() {
+		ScrollPane panef = new ScrollPane();
 		FlowPane pane = new FlowPane();
 		pane.setVgap(10);
 		pane.setHgap(10);
@@ -150,7 +153,8 @@ public class GraficadorObjetos {
 			
 		}
 		PaneInteraccion.setAux(tabla);
-		return pane;
+		panef.setContent(pane);
+		return panef;
 	}
 	
 	public static VBox panelBienvenida(String user) {
@@ -250,8 +254,6 @@ public class GraficadorObjetos {
 			}
 			a.setBottom(contenedor);
 			PaneInteraccion.setPaneActual(a);
-			
-			
 		}
 	}
 	public static Pane graficar(Etiqueta e) {

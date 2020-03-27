@@ -10,6 +10,7 @@ import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
 import gui.GraficadorObjetos;
 import gui.paneles.PaneInteraccion;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 
@@ -118,7 +119,8 @@ public abstract class Usuario{
 		return obras;
 	}
 	
-	public static FlowPane listarObraGrafica(ArrayList<Obra> obras,int listado) {
+	public static ScrollPane listarObraGrafica(ArrayList<Obra> obras,int listado) {
+		ScrollPane panef = new ScrollPane();
 		FlowPane pane = new FlowPane();
 		pane.setVgap(10);
 		pane.setHgap(10);
@@ -133,7 +135,8 @@ public abstract class Usuario{
 			
 		}
 		PaneInteraccion.setAux(tabla);
-		return pane;
+		panef.setContent(pane);
+		return panef;
 	}
 	public static FlowPane listarObraGraficaReportes(ArrayList<Obra> obras) {
 		FlowPane pane = new FlowPane();
@@ -152,7 +155,7 @@ public abstract class Usuario{
 	}
 	
 	//Autor Darwin Herrera
-	private static FlowPane buscarObraPorTecnica(String var,int listado){//eficiencia O(n)
+	private static ScrollPane buscarObraPorTecnica(String var,int listado){//eficiencia O(n)
 		ArrayList<Obra> a = Obra.getObras();
 		ArrayList<Obra> res=new ArrayList<Obra>();
 		for(int i=0;i<a.size();i++) {
@@ -162,7 +165,7 @@ public abstract class Usuario{
 		}
 		return listarObraGrafica(res,listado);
 	}
-	private static FlowPane buscarObraPorTitulo(String var,int listado){//eficiencia O(n)
+	private static ScrollPane buscarObraPorTitulo(String var,int listado){//eficiencia O(n)
 		ArrayList<Obra> a = Obra.getObras();
 		ArrayList<Obra> res=new ArrayList<Obra>();
 		for(int i=0;i<a.size();i++) {
@@ -185,7 +188,7 @@ public abstract class Usuario{
 	// listado = 3 | ordena las obras por su fecha de ingreso al sistema, de mas antiguo a mas nuevo
 
 	//Autor Darwin Herrera
-	public static FlowPane buscarObra(String var,int i,int listado) throws ErrorFueraRango{
+	public static ScrollPane buscarObra(String var,int i,int listado) throws ErrorFueraRango{
 		try {
 			if(i==0) {
 				return buscarObraPorTecnica(var,listado);

@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
@@ -48,6 +49,9 @@ public class PaneInteraccion extends VBox{
 	
 	public static Pane getPaneActual() {
 		return (Pane) actual.getCenter();
+	}
+	public static void setPaneActual(ScrollPane panel) {
+		actual.setCenter(panel);
 	}
 	public static void setPaneActual(Pane panel) {
 		actual.setCenter(panel);

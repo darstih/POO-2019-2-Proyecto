@@ -4,7 +4,6 @@ import java.util.Hashtable;
 
 import Excepciones.ErrorCampoVacio;
 import Excepciones.ErrorObraRepetida;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
@@ -286,7 +285,7 @@ public class GraficadorObjetos {
 				new AgregarReporte().ejecutar();
 				//titulo = "Obra agregada correctamente";
 				//respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
-			} catch (NoCoincideTamano | ErrorCampoVacio e) {
+			} catch ( ErrorCampoVacio e) {
 				titulo = "ERROR";
 				respuesta.setText(e.getMessage());
 				dialogo.setAlertType(AlertType.ERROR);
@@ -313,7 +312,7 @@ public class GraficadorObjetos {
 				new ActualizarObra().ejecutar();
 				//titulo = "Obra agregada correctamente";
 				//respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
-			} catch (NoCoincideTamano | ErrorCampoVacio e) {
+			} catch ( ErrorCampoVacio e) {
 				titulo = "ERROR";
 				respuesta.setText(e.getMessage());
 				dialogo.setAlertType(AlertType.ERROR);
@@ -349,7 +348,7 @@ public class GraficadorObjetos {
 				new AgregarComentario().ejecutar();
 				//titulo = "Obra agregada correctamente";
 				//respuesta.setText("Cuando la apruebe un administrador será exitosamente agregada.");
-			} catch (NoCoincideTamano | ErrorCampoVacio e) {
+			} catch (ErrorCampoVacio e) {
 				titulo = "ERROR";
 				respuesta.setText(e.getMessage());
 				dialogo.setAlertType(AlertType.ERROR);
@@ -376,7 +375,7 @@ public class GraficadorObjetos {
 				//dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
 				//dialogo.initStyle(StageStyle.UTILITY);
 				//dialogo.showAndWait();
-			} catch (NoCoincideTamano | ErrorCampoVacio e) {
+			} catch ( ErrorCampoVacio e) {
 				titulo = "ERROR";
 				respuesta.setText(e.getMessage());
 				dialogo.setAlertType(AlertType.ERROR);

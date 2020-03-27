@@ -1,7 +1,6 @@
 package gui.opciones.publico;
 
 import Excepciones.ErrorCampoVacio;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.ObjetoReporte;
 import gestorAplicacion.Interacciones.Reporte;
 import gestorAplicacion.Obras.Obra;
@@ -38,7 +37,7 @@ public class AgregarReporte extends OpcionDeMenu implements Independiente{
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
+	public void ejecutar() throws ErrorCampoVacio {
 		CrearReporteHandler handler = new CrearReporteHandler();
 		FieldPanel form = new FieldPanel(this,"Criterio",criterios,"Valores",null,null,handler);
 		PaneInteraccion.setPaneActual(form);

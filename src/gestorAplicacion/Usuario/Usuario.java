@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 
-import Excepciones.ExcepcionFueraRango;
+import Excepciones.ErrorFueraRango;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
@@ -201,16 +201,16 @@ public abstract class Usuario{
 	// listado = 3 | ordena las obras por su fecha de ingreso al sistema, de mas antiguo a mas nuevo
 
 	//Autor Darwin Herrera
-	public static FlowPane buscarObra(String var,int i,int listado) throws ExcepcionFueraRango{
+	public static FlowPane buscarObra(String var,int i,int listado) throws ErrorFueraRango{
 		try {
 			if(i==0) {
 				return buscarObraPorTecnica(var,listado);
 			}else if(i==1) {
 				return buscarObraPorTitulo(var,listado);
 			}else {
-				throw new ExcepcionFueraRango();
+				throw new ErrorFueraRango("Parametro");
 			}
-		}catch(ExcepcionFueraRango e) {
+		}catch(ErrorFueraRango e) {
 			return null;
 		}
 	}

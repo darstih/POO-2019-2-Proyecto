@@ -3,6 +3,7 @@ package gui.paneles;
 import java.util.ArrayList;
 
 import Excepciones.ErrorCampoVacio;
+import Excepciones.ErrorFueraRango;
 import gestorAplicacion.Usuario.Administrador;
 import gestorAplicacion.Usuario.Invitado;
 import javafx.event.ActionEvent;
@@ -233,7 +234,12 @@ public class IndexPanel extends GridPane{
 				}else if(pssfUsu.getText().trim().isEmpty()) {
 					throw new ErrorCampoVacio("Contraseña");
 				}
-			}catch(ErrorCampoVacio e) {
+				if(Administrador.verificarAdmin(txtUsu.getText(),pssfUsu.getText())) {
+					cambiarScene(txtUsu.getText(),pssfUsu.getText());
+				}else {
+					throw new ErrorFueraRango("Usuario");
+				}
+			}catch(ErrorCampoVacio | ErrorFueraRango e) {
 				Label respuesta = new Label();
 				Alert dialogo = new Alert(AlertType.ERROR);
 				respuesta.setText(e.getMessage());
@@ -241,9 +247,6 @@ public class IndexPanel extends GridPane{
 				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
-			}
-			if(Administrador.verificarAdmin(txtUsu.getText(),pssfUsu.getText())) {
-				cambiarScene(txtUsu.getText(),pssfUsu.getText());
 			}
 		}
     }

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import Excepciones.ErrorCampoVacio;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Usuario;
 import javafx.event.ActionEvent;
@@ -27,9 +26,6 @@ import gui.opciones.OpcionDeMenu;
 import gui.opciones.publico.Salir;
 
 
-
-
-
 public class PaneInteraccion extends VBox{
 	
 	//Atributo
@@ -49,12 +45,6 @@ public class PaneInteraccion extends VBox{
 	public static void setAux(Hashtable<String,Obra> a) {
 		auxiliar = a;
 	}
-	
-	
-	
-	
-	
-	
 	
 	public static Pane getPaneActual() {
 		return (Pane) actual.getCenter();
@@ -122,20 +112,11 @@ public class PaneInteraccion extends VBox{
 		barra.getMenus().add(ayuda);		
 		
 		
-		
-		
-		
-		
 		actual = new BorderPane();
 		actual.setTop(barra);
 		
-		
-		
-		
 		actual.setCenter(GraficadorObjetos.panelBienvenida(user));
 		this.getChildren().add(actual);
-		
-		
 	}
 	class EjecutarOpcion implements EventHandler<ActionEvent>{
 		@Override
@@ -146,9 +127,6 @@ public class PaneInteraccion extends VBox{
 					try {
 						i.ejecutar();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (NoCoincideTamano e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (ErrorCampoVacio e) {

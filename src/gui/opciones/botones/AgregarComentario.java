@@ -2,7 +2,6 @@ package gui.opciones.botones;
 
 import Excepciones.ErrorCampoVacio;
 import Excepciones.ErrorComentarioRepetido;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Interacciones.Comentario;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Usuario.Administrador;
@@ -36,7 +35,7 @@ public class AgregarComentario extends OpcionDeMenu implements Dependiente{
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
+	public void ejecutar() throws ErrorCampoVacio {
 		CrearComentarioHandler handler = new CrearComentarioHandler();
 		FieldPanel form = new FieldPanel(this,"Criterio",new String[] {"Comentario"},"Valores",null,null,handler);
 		PaneInteraccion.setPaneActual(form);

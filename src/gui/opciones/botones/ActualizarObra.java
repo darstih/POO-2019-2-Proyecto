@@ -2,7 +2,6 @@ package gui.opciones.botones;
 
 import Excepciones.ErrorCampoVacio;
 import Excepciones.ErrorDimensionReal;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
 import gestorAplicacion.Usuario.Usuario;
@@ -30,7 +29,7 @@ public class ActualizarObra extends OpcionDeMenu implements Dependiente{
 		this.descripcion= "Este proceso actualiza una obra directamente y \n";
 	}
 	@Override
-	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
+	public void ejecutar() throws ErrorCampoVacio {
 		String[] criterios = new String[] {"Titulo","Descripcion","Altura","Ancho","Tecnica","Autor"};
 		ActualizarObraHandler hand = new ActualizarObraHandler();
 		Obra obra = (Obra) FieldPanel.getAux();

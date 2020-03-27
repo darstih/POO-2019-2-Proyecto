@@ -2,8 +2,7 @@ package gui.opciones.publico;
 
 
 import Excepciones.ErrorCampoVacio;
-import Excepciones.ExcepcionFueraRango;
-import Excepciones.NoCoincideTamano;
+import Excepciones.ErrorFueraRango;
 import gestorAplicacion.Usuario.Usuario;
 import gui.paneles.PaneInteraccion;
 import gui.paneles.FieldPanel;
@@ -24,7 +23,7 @@ public class BuscarObras extends OpcionDeMenu implements Independiente{
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
+	public void ejecutar() throws ErrorCampoVacio {
 			String[] criterios = new String[] {"Tipo","Busqueda","Listado"};
 			BuscarObra handler = new BuscarObra();
 			FieldPanel buscar = new FieldPanel(this,"criterios",criterios,"valores",new String[] {"Titulo","","1"},null,handler);
@@ -61,7 +60,7 @@ public class BuscarObras extends OpcionDeMenu implements Independiente{
 				dialogo.getDialogPane().setContent(respuesta);//se hace asi para que muestre todo el texto
 				dialogo.initStyle(StageStyle.UTILITY);
 				dialogo.showAndWait();
-			} catch (ExcepcionFueraRango e) {
+			} catch (ErrorFueraRango e) {
 				e.printStackTrace();
 			}
 		}

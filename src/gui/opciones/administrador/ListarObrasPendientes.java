@@ -5,7 +5,6 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 import Excepciones.ErrorCampoVacio;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Usuario.Administrador;
 import gui.paneles.PaneInteraccion;
 import gui.GraficadorObjetos;
@@ -21,7 +20,7 @@ public class ListarObrasPendientes extends OpcionDeMenu implements Independiente
 
 	@Override
 	public void ejecutar()
-			throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamano, ErrorCampoVacio {
+			throws JsonGenerationException, JsonMappingException, IOException, ErrorCampoVacio {
 		PaneInteraccion.setPaneActual(GraficadorObjetos.listarObraGraficaPendiente());
 		
 	}

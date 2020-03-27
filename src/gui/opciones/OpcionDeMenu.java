@@ -9,7 +9,6 @@ import org.codehaus.jackson.map.JsonMappingException;
 
 import Excepciones.ErrorCampoVacio;
 import Excepciones.ErrorEtiquetaRepetida;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gestorAplicacion.Obras.Tecnica;
@@ -29,7 +28,7 @@ public abstract class OpcionDeMenu{ // La clase abstracta obligatoria
 		return descripcion;
 	}
 	
-	public abstract void ejecutar() throws JsonGenerationException, JsonMappingException, IOException, NoCoincideTamano, ErrorCampoVacio ;
+	public abstract void ejecutar() throws JsonGenerationException, JsonMappingException, IOException, ErrorCampoVacio ;
 	
 	
 	
@@ -48,7 +47,7 @@ public abstract class OpcionDeMenu{ // La clase abstracta obligatoria
 	}
 	
 	
-	protected FieldPanel formularioObra() throws NoCoincideTamano, ErrorCampoVacio {
+	protected FieldPanel formularioObra() throws ErrorCampoVacio {
 		String[] criterios = new String[] {"Titulo","Descripcion","Altura","Ancho","Tecnica","Autor"};
 		CrearObraHandlerClass listener = new CrearObraHandlerClass();
 		return  new FieldPanel(this,"criterios",criterios,"valores",null,null,listener);

@@ -2,7 +2,6 @@ package gui.opciones.botones;
 
 import Excepciones.ErrorCampoVacio;
 import Excepciones.ErrorEtiquetaRepetida;
-import Excepciones.NoCoincideTamano;
 import gestorAplicacion.Obras.Etiqueta;
 import gestorAplicacion.Obras.Obra;
 import gui.paneles.FieldPanel;
@@ -27,7 +26,7 @@ public class AgregarEtiqueta extends OpcionDeMenu implements Dependiente{
 	}
 	
 	@Override
-	public void ejecutar() throws NoCoincideTamano, ErrorCampoVacio {
+	public void ejecutar() throws ErrorCampoVacio {
 		CrearEtiquetaHandler handler = new CrearEtiquetaHandler();
 		FieldPanel form = new FieldPanel(this,"Criterio",criterios,"Valores",null,null,handler);
 		PaneInteraccion.setPaneActual(form);

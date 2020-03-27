@@ -11,7 +11,7 @@ import gestorAplicacion.Usuario.Usuario;
 import gui.opciones.Independiente;
 import gui.opciones.OpcionDeMenu;
 import gui.paneles.PaneInteraccion;
-
+//Autor David Aristizabal Giraldo
 public class Novedades extends OpcionDeMenu implements Independiente{
 
 	public String toString() {
@@ -19,6 +19,9 @@ public class Novedades extends OpcionDeMenu implements Independiente{
 	}
 	@Override
 	public void ejecutar() throws JsonGenerationException, JsonMappingException, IOException, ErrorCampoVacio {
+		//Parte visual de una funcionalidad interesante, retorna las obras mas nuevas  ingresadas
+		//al sistema
+
 		PaneInteraccion.setPaneActual(Usuario.listarObraGrafica(Usuario.listarObra(Obra.getObras(),3,-1),2));
 	}
 

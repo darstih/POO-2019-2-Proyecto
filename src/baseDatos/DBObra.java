@@ -37,6 +37,7 @@ public class DBObra {
 		ArrayList<Obra> obrasVisible = new ArrayList<Obra>();
 		ArrayList<Obra> obrasNoVisible = new ArrayList<Obra>();
 		ArrayList<Obra> obras = (soyElMapa.readValue(coso, new TypeReference<ArrayList<Obra>>() {} ));
+		//aca separo las obras, las que ya estan publicadas en el sistema y las que faltan por ser aprobadas
 		for(int i = 0;i<obras.size();i++) {
 			Obra temp = obras.get(i);
 			if(temp.getVisible()) {

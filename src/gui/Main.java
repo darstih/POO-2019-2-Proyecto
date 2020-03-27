@@ -41,7 +41,7 @@ public class Main  extends Application{
 		DBObra.inicializar();//Todas las obras que hay en el sistema
 		DBUsuario.inicializar();//Todos los administradores del sistema
 		DBEtiqueta.inicializar();//Todas las etiquetas que hay en las obras (sin repeticion)
-		DBTecnica.inicializar();
+		DBTecnica.inicializar();//Todas las tecnias de las obras 
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception,JsonParseException, JsonMappingException, IOException {
@@ -90,7 +90,7 @@ public class Main  extends Application{
 		
 	}
 	public void stop() throws JsonGenerationException, JsonMappingException, IOException {
-		DBObra.guardar();
+		DBObra.guardar();//Guardar lo nuevo en la base de datos
 		DBUsuario.guardar();
 		DBEtiqueta.guardar();
 		DBTecnica.guardar();

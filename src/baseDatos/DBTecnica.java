@@ -15,7 +15,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
-
+//Autor David Aristizabal Giraldo
 public class DBTecnica {
 	
 	public static final ObjectMapper soyElMapa = new ObjectMapper();

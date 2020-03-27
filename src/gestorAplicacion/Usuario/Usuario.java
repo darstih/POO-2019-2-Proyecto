@@ -19,7 +19,7 @@ import javafx.scene.layout.FlowPane;
 public abstract class Usuario{
 
 	//Atributos
-
+	//Autor David Aristizabal Giraldo
 	// listado = 1 | ordena las obras por su fecha de creacion, de mas antiguo a mas nuevo
 	// listado = 2 | ordena por relevancia, siendo comentarios su criterio de relevancia mas comentarios a menos
 	// listado = 3 | ordena las obras por su fecha de ingreso al sistema, de mas antiguo a mas nuevo
@@ -40,6 +40,7 @@ public abstract class Usuario{
 			});
 			ArrayList<Obra> obraf = new ArrayList<Obra>();
 			int top = listaO.size();
+			//Aca es para retornar las obras mas nuevas, no todas
 			if(nove==-1) {
 				top = 3;
 			}
